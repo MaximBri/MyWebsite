@@ -1,0 +1,54 @@
+@import './vars.scss';
+.header{
+  background-color:  $grey;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  max-height: 100px;
+  &__left{
+    display: flex;
+    align-items: center;
+    >div{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: $green;
+    }
+  }
+  &_logo{
+    height: 100%;
+    max-height: 80px;
+  }
+  &_fire{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: blink 3s infinite;
+  }
+  &__nav{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    >.active{
+      border-bottom: 2px solid $green;
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+      background-color: black;
+  }
+  25%, 75% {
+      background-color: red;
+  }
+  50% {
+      background-color: black;
+  }
+}

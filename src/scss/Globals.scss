@@ -1,0 +1,12 @@
+@import './vars.scss';
+body{
+  overflow-x: hidden;
+  background-image: url('../data//main/bg.png');
+  background-repeat: repeat;
+  overflow-x: hidden;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: $white;
+}
