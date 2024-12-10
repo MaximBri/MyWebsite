@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Portfolio/static/css/main.4efacc68.css",
+    "main.js": "/Portfolio/static/js/main.eca92e67.js",
+    "static/media/Logo-light.png": "/Portfolio/static/media/Logo-light.08b808986cef7a6a519e.png",
+    "static/media/bg.png": "/Portfolio/static/media/bg.3008066a7efd7c814819.png",
+    "static/media/Mulish-Medium.woff2": "/Portfolio/static/media/Mulish-Medium.97952bebc179d0479bfe.woff2",
+    "static/media/Mulish-Black.woff2": "/Portfolio/static/media/Mulish-Black.881b6e6982d30a551176.woff2",
+    "static/media/Mulish-Regular.woff2": "/Portfolio/static/media/Mulish-Regular.f188daf01849fd250c9f.woff2",
+    "static/media/Mulish-Bold.woff2": "/Portfolio/static/media/Mulish-Bold.6f19e1ab88b801decc77.woff2",
+    "static/media/github.svg": "/Portfolio/static/media/github.bfbdbb7a7546f6960805905ecb946470.svg",
+    "index.html": "/Portfolio/index.html",
+    "main.4efacc68.css.map": "/Portfolio/static/css/main.4efacc68.css.map",
+    "main.eca92e67.js.map": "/Portfolio/static/js/main.eca92e67.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4efacc68.css",
+    "static/js/main.eca92e67.js"
+  ]
+}
