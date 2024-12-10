@@ -1,16 +1,17 @@
 @import './vars.scss';
-.header{
-  background-color:  $grey;
+.header {
+  background-color: $grey;
   padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
   max-height: 100px;
-  &__left{
+  transition: all 1s;
+  &__left {
     display: flex;
     align-items: center;
-    >div{
+    > div {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -20,35 +21,92 @@
       background-color: $green;
     }
   }
-  &_logo{
+  &_logo {
     height: 100%;
     max-height: 80px;
   }
-  &_fire{
+  &_fire {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     animation: blink 3s infinite;
   }
-  &__nav{
+  &__nav {
     display: flex;
     align-items: center;
     gap: 20px;
-    font-size: 18px;
-    >.active{
+    font-size: 20px;
+    > .active {
       border-bottom: 2px solid $green;
+    }
+    > a {
+      transition: all 0.3s;
+      &:hover:not(:last-child) {
+        border-bottom: 1px solid $green;
+      }
+    }
+    &_github {
+      height: 100%;
     }
   }
 }
 
+.unvisible{
+  position: relative;
+  transform: translateY(-100px);
+  transition: all 1s;
+}
+
 @keyframes blink {
-  0%, 100% {
-      background-color: black;
+  0%,
+  100% {
+    background-color: black;
   }
-  25%, 75% {
-      background-color: red;
+  25%,
+  75% {
+    background-color: red;
   }
   50% {
-      background-color: black;
+    background-color: black;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    gap: 30px;
+    max-height: 90px;
+    &__left {
+      > div {
+        font-size: 18px;
+      }
+    }
+    &_logo {
+      max-height: 70px;
+    }
+    &__nav {
+      gap: 20px;
+      font-size: 16px;
+      > .active {
+        border-bottom: 2px solid $green;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__nav {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .header {
+    &__left {
+      > div {
+        display: none;
+      }
+    }
   }
 }
