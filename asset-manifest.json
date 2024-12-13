@@ -1,20 +1,24 @@
 {
   "files": {
-    "main.css": "/MyWebsite/static/css/main.c060b410.css",
-    "main.js": "/MyWebsite/static/js/main.e1ae4286.js",
+    "main.css": "/MyWebsite/static/css/main.0a12b87d.css",
+    "main.js": "/MyWebsite/static/js/main.50e0a1af.js",
     "static/media/Logo-light.png": "/MyWebsite/static/media/Logo-light.08b808986cef7a6a519e.png",
+    "static/media/Typescript.png": "/MyWebsite/static/media/Typescript.1e3902edbe4c3f2970d8.png",
     "static/media/bg.png": "/MyWebsite/static/media/bg.3008066a7efd7c814819.png",
     "static/media/Mulish-Medium.woff2": "/MyWebsite/static/media/Mulish-Medium.97952bebc179d0479bfe.woff2",
     "static/media/Mulish-Black.woff2": "/MyWebsite/static/media/Mulish-Black.881b6e6982d30a551176.woff2",
     "static/media/Mulish-Regular.woff2": "/MyWebsite/static/media/Mulish-Regular.f188daf01849fd250c9f.woff2",
     "static/media/Mulish-Bold.woff2": "/MyWebsite/static/media/Mulish-Bold.6f19e1ab88b801decc77.woff2",
+    "static/media/html5.png": "/MyWebsite/static/media/html5.95f518e9c785895c8487.png",
+    "static/media/redux.png": "/MyWebsite/static/media/redux.fac58c56500e7d56ac40.png",
+    "static/media/js.png": "/MyWebsite/static/media/js.515a7597d88d9d7cb752.png",
     "static/media/github.svg": "/MyWebsite/static/media/github.bfbdbb7a7546f6960805905ecb946470.svg",
     "index.html": "/MyWebsite/index.html",
-    "main.c060b410.css.map": "/MyWebsite/static/css/main.c060b410.css.map",
-    "main.e1ae4286.js.map": "/MyWebsite/static/js/main.e1ae4286.js.map"
+    "main.0a12b87d.css.map": "/MyWebsite/static/css/main.0a12b87d.css.map",
+    "main.50e0a1af.js.map": "/MyWebsite/static/js/main.50e0a1af.js.map"
   },
   "entrypoints": [
-    "static/css/main.c060b410.css",
-    "static/js/main.e1ae4286.js"
+    "static/css/main.0a12b87d.css",
+    "static/js/main.50e0a1af.js"
   ]
 }
