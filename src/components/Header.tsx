@@ -44,7 +44,7 @@ const Header: React.FC = () => {
         <NavLink className='header_link' to='/About'>
           О мне
         </NavLink>
-        <NavLink className='header_link' to='/Works'>
+        <NavLink className='header_link' to='/Portfolio'>
           Работы
         </NavLink>
         <NavLink className='header_link' to='/Contacts'>

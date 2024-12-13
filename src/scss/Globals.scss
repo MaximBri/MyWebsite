@@ -10,3 +10,19 @@ body{
   line-height: 1.1;
   color: $white;
 }
+
+.container{
+  margin-inline: 10vw;
+}
+
+@media(max-width: 1024px){
+  .container{
+    margin-inline: 5vw;
+  }
+}
+
+@media(max-width: 576px){
+  .container{
+    margin-inline: 20px;
+  }
+}

@@ -8,6 +8,9 @@ import MainLayout from './layouts/MainLayout'
 import './scss/reset.css'
 import './scss/Globals.scss'
 import './fonts/fonts.css'
+import AboutPage from './pages/AboutPage'
+import ContactsPage from './pages/ContactsPage'
+import PortfolioPage from './pages/PortfolioPage'
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
           <Routes>
             <Route path='/' element={<MainLayout />}>
               <Route path='' element={<MainPage />} />
+              <Route path='about' element={<AboutPage />} />
+              <Route path='contacts' element={<ContactsPage />} />
+              <Route path='portfolio' element={<PortfolioPage />} />
               <Route path='*' element={<NotFound />} />
             </Route>
           </Routes>

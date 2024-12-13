@@ -8,6 +8,7 @@
   gap: 30px;
   max-height: 100px;
   transition: all 1s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   &__left {
     display: flex;
     align-items: center;

@@ -1,8 +1,11 @@
 import React from 'react'
+import HelloSection from '../components/ui/HelloSection'
 
 const MainPage = () => {
   return (
-    <div>MainPage</div>
+    <>
+      {/* <HelloSection /> */}
+    </>
   )
 }
 

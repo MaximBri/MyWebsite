@@ -12,6 +12,10 @@ const BurgerMenu = () => {
     <>
       <section className={burgerIsOpen ? 'burger open' : 'burger'}>
         <div className='burger__list'>
+          <button onClick={() => dispatch(setBurgerWindow(false))} title='close' className='burger_lock'>
+            <div></div>
+            <div></div>
+          </button>
           <NavLink className='burger_link' to='/'>
             Главная
           </NavLink>
