@@ -16,38 +16,69 @@
     margin-bottom: 30px;
   }
 }
-.skill{
-  &__box{
+.skill {
+  &__box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
-    &_item{
+
+    &_item {
+      flex-grow: 1;
+      perspective: 1000px;
+      cursor: pointer;
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 12px;
       min-width: min(200px, 45vw);
       height: min(200px, 45vw);
       background-color: $grey;
       position: relative;
-      display: flex;
-      flex-grow: 1;
-      align-items: center;
-      justify-content: center;
-      >img{
+      transform-style: preserve-3d; // Для 3D-трансформаций
+      transition: transform 1s; // Плавный поворот
+
+      &.flipped {
+        transform: rotateY(180deg); // Поворот на 180 градусов
+      }
+
+      .skill__item_front,
+      .skill__item_back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden; // Скрываем заднюю сторону
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .skill__item_front {
+        transform: rotateY(0deg); // Лицевая сторона
+      }
+
+      .skill__item_back {
+        transform: rotateY(180deg); // Задняя сторона
+      }
+
+      .skill__item_img {
         max-width: 100px;
       }
-      >h2{
+
+      .skill__item_title {
         font-size: 20px;
-        position: absolute;
-        top: 50%;
-        right: 50%;
-        transform: translate(50%, -50%);
       }
     }
   }
 }
 
+.visible2{
+  transform: translateY(0);
+  transition: transform 1s;
+}
+.not-visible2{
+  transform: translateY(0);
+  transition: transform 1s;
+}
 .not-visible{
   opacity: 0;
   transition: all .3s;

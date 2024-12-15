@@ -3,9 +3,22 @@ import React from 'react'
 const SkillItem = ({ title, img, key, scale }: SkillItemInterface) => {
   const [active, setActive] = React.useState<boolean>(false)
   return (
-    <li className='skill__box_item' key={key} onClick={() => setActive(!active)}>
-      <img className={`${active ? 'not-visible' : 'visible'}`} src={img} alt='Skill-image' style={{scale: scale}}/>
-      <h2 className={`skill__item_title ${!active ? 'not-visible' : 'visible'}`}>{title}</h2>
+    <li
+      className={`skill__box_item ${active ? 'flipped' : ''}`}
+      key={key}
+      onClick={() => setActive(!active)}
+    >
+      <div className='skill__item_front'>
+        <img
+          className='skill__item_img'
+          src={img}
+          alt='Skill-image'
+          style={{ scale: scale }}
+        />
+      </div>
+      <div className='skill__item_back'>
+        <h2 className='skill__item_title'>{title}</h2>
+      </div>
     </li>
   )
 }
