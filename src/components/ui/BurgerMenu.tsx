@@ -16,16 +16,16 @@ const BurgerMenu = () => {
             <div></div>
             <div></div>
           </button>
-          <NavLink className='burger_link' to='/'>
+          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger_link' to='/'>
             Главная
           </NavLink>
-          <NavLink className='burger_link' to='/About'>
+          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger_link' to='/About'>
             О мне
           </NavLink>
-          <NavLink className='burger_link' to='/Works'>
+          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger_link' to='/Portfolio'>
             Работы
           </NavLink>
-          <NavLink className='burger_link' to='/Contacts'>
+          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger_link' to='/Contacts'>
             Контакты
           </NavLink>
           <NavLink className='burger_github' to='https://github.com/MaximBri'>

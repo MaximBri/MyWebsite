@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getBurger, setBurgerWindow } from '../rtk/slices/WindowsSlice'
+import { getWidth } from '../rtk/slices/WidthSlice'
+import { useWidth } from './hooks/useWidth'
 import logo from '../data/globals/Logo-light.png'
 import githubSVG from '../data/globals/github.svg'
 import '../scss/header.scss'
@@ -11,21 +13,12 @@ import '../scss/ui/burger.scss'
 const Header: React.FC = () => {
   const burgerIsOpen = useSelector(getBurger)
   const dispatch = useDispatch()
-  const [width, setWidth] = React.useState<number>(window.innerWidth)
   const header: LegacyRef<HTMLElement> = React.useRef(null)
-
-  React.useEffect(() => { 
-    const f = () => {
-      setWidth(window.innerWidth)
-    }
-    window.addEventListener('resize', f)
-    return () => {
-      window.removeEventListener('resize', f)
-    }
-  }, [])
+  const width = useSelector(getWidth)
+  useWidth()
   // анимация появления хэдера
-  React.useEffect(() => { 
-    if(header) header.current.className = 'header'
+  React.useEffect(() => {
+    if (header) header.current.className = 'header'
   }, [header])
 
   return (

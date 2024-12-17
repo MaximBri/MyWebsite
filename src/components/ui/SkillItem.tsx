@@ -1,11 +1,11 @@
 import React from 'react'
 
-const SkillItem = ({ title, img, key, scale }: SkillItemInterface) => {
+const SkillItem = ({ title, img, scale }: SkillItemInterface) => {
   const [active, setActive] = React.useState<boolean>(false)
   return (
     <li
       className={`skill__box_item ${active ? 'flipped' : ''}`}
-      key={key}
+      // onMouseEnter={() => setActive(!active)}
       onClick={() => setActive(!active)}
     >
       <div className='skill__item_front'>
