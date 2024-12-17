@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/MyWebsite/static/css/main.be4008a6.css",
-    "main.js": "/MyWebsite/static/js/main.b909164d.js",
+    "main.css": "/MyWebsite/static/css/main.a1190bf6.css",
+    "main.js": "/MyWebsite/static/js/main.49d037d2.js",
     "static/js/757.24291483.chunk.js": "/MyWebsite/static/js/757.24291483.chunk.js",
     "static/js/661.b98109f1.chunk.js": "/MyWebsite/static/js/661.b98109f1.chunk.js",
-    "static/js/912.5a4d1f84.chunk.js": "/MyWebsite/static/js/912.5a4d1f84.chunk.js",
+    "static/js/531.37c38dd6.chunk.js": "/MyWebsite/static/js/531.37c38dd6.chunk.js",
     "static/js/556.355ed61a.chunk.js": "/MyWebsite/static/js/556.355ed61a.chunk.js",
     "static/js/394.9abecfb4.chunk.js": "/MyWebsite/static/js/394.9abecfb4.chunk.js",
     "static/js/550.e53de0a8.chunk.js": "/MyWebsite/static/js/550.e53de0a8.chunk.js",
@@ -13,6 +13,7 @@
     "static/js/183.431257f1.chunk.js": "/MyWebsite/static/js/183.431257f1.chunk.js",
     "static/js/88.a2f8e9e1.chunk.js": "/MyWebsite/static/js/88.a2f8e9e1.chunk.js",
     "static/js/49.3d0cd48d.chunk.js": "/MyWebsite/static/js/49.3d0cd48d.chunk.js",
+    "static/js/912.4893a99b.chunk.js": "/MyWebsite/static/js/912.4893a99b.chunk.js",
     "static/js/644.30bfe664.chunk.js": "/MyWebsite/static/js/644.30bfe664.chunk.js",
     "static/js/567.20f8bce0.chunk.js": "/MyWebsite/static/js/567.20f8bce0.chunk.js",
     "static/media/Logo-light.png": "/MyWebsite/static/media/Logo-light.08b808986cef7a6a519e.png",
@@ -28,11 +29,12 @@
     "static/media/wordpress.png": "/MyWebsite/static/media/wordpress.8f1b8a0cf0b0bcb8dbfc.png",
     "static/media/github.svg": "/MyWebsite/static/media/github.bfbdbb7a7546f6960805905ecb946470.svg",
     "index.html": "/MyWebsite/index.html",
-    "main.be4008a6.css.map": "/MyWebsite/static/css/main.be4008a6.css.map",
-    "main.b909164d.js.map": "/MyWebsite/static/js/main.b909164d.js.map"
+    "static/media/star.svg": "/MyWebsite/static/media/star.a4bea5df882193421c73.svg",
+    "main.a1190bf6.css.map": "/MyWebsite/static/css/main.a1190bf6.css.map",
+    "main.49d037d2.js.map": "/MyWebsite/static/js/main.49d037d2.js.map"
   },
   "entrypoints": [
-    "static/css/main.be4008a6.css",
-    "static/js/main.b909164d.js"
+    "static/css/main.a1190bf6.css",
+    "static/js/main.49d037d2.js"
   ]
 }
