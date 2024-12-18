@@ -51,8 +51,8 @@ const SkillsSection = () => {
     <section className='skills'>
       <div className='skills__top'>
         <div>
-          <h1 className='skills_title'>Стек</h1>
-          <div className='skills_dot'></div>
+          <h1 className='title'>Стек</h1>
+          <div className='dot'></div>
         </div>
         <h3 className='skills_descr'>
           <svg

@@ -1,15 +1,28 @@
 import React from 'react'
 
-const SkillChart = () => {
-  const skills = [
-    { name: 'HTML', percentage: 90 },
-    { name: 'CSS', percentage: 85 },
-    { name: 'JavaScript', percentage: 70 },
-    { name: 'React', percentage: 70 },
-  ]
-  return <section>
-    
-  </section>
+import '../../scss/ui/chart.scss'
+
+const SkillChart = ({ name, percentage, color }: skillChartInterface) => {
+  const [curPercent, setCurPercent] = React.useState<number>(0)
+
+  React.useEffect(() => {
+    setCurPercent(percentage)
+  }, [curPercent, percentage])
+
+  return (
+    <li className='chart'>
+      <div className='chart__header'>
+        <h3 className='chart_title'>{name}</h3>
+        <h4 className='chart_percent' style={{left: `${percentage}%`}}>{percentage + '%'}</h4>
+      </div>
+      <div className='chart__block'>
+        <div
+          className='chart__block_inner'
+          style={{ width: `${curPercent}%`, backgroundColor: `${color}` }}
+        ></div>
+      </div>
+    </li>
+  )
 }
 
 export default SkillChart
