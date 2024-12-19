@@ -1,19 +1,17 @@
 {
   "files": {
-    "main.css": "/MyWebsite/static/css/main.2b383bb1.css",
-    "main.js": "/MyWebsite/static/js/main.606151e1.js",
-    "static/js/757.24291483.chunk.js": "/MyWebsite/static/js/757.24291483.chunk.js",
+    "main.css": "/MyWebsite/static/css/main.33a122f1.css",
+    "main.js": "/MyWebsite/static/js/main.2bbc0fc4.js",
     "static/js/661.b98109f1.chunk.js": "/MyWebsite/static/js/661.b98109f1.chunk.js",
-    "static/js/531.37c38dd6.chunk.js": "/MyWebsite/static/js/531.37c38dd6.chunk.js",
+    "static/js/912.5a4d1f84.chunk.js": "/MyWebsite/static/js/912.5a4d1f84.chunk.js",
     "static/js/556.355ed61a.chunk.js": "/MyWebsite/static/js/556.355ed61a.chunk.js",
     "static/js/394.9abecfb4.chunk.js": "/MyWebsite/static/js/394.9abecfb4.chunk.js",
     "static/js/550.e53de0a8.chunk.js": "/MyWebsite/static/js/550.e53de0a8.chunk.js",
     "static/js/66.86f21739.chunk.js": "/MyWebsite/static/js/66.86f21739.chunk.js",
     "static/js/853.d6bcba5b.chunk.js": "/MyWebsite/static/js/853.d6bcba5b.chunk.js",
     "static/js/183.431257f1.chunk.js": "/MyWebsite/static/js/183.431257f1.chunk.js",
-    "static/js/88.a2f8e9e1.chunk.js": "/MyWebsite/static/js/88.a2f8e9e1.chunk.js",
+    "static/js/88.b4aca05f.chunk.js": "/MyWebsite/static/js/88.b4aca05f.chunk.js",
     "static/js/49.3d0cd48d.chunk.js": "/MyWebsite/static/js/49.3d0cd48d.chunk.js",
-    "static/js/912.4893a99b.chunk.js": "/MyWebsite/static/js/912.4893a99b.chunk.js",
     "static/js/644.30bfe664.chunk.js": "/MyWebsite/static/js/644.30bfe664.chunk.js",
     "static/js/567.20f8bce0.chunk.js": "/MyWebsite/static/js/567.20f8bce0.chunk.js",
     "static/media/Logo-light.png": "/MyWebsite/static/media/Logo-light.08b808986cef7a6a519e.png",
@@ -22,19 +20,17 @@
     "static/media/Mulish-Black.woff2": "/MyWebsite/static/media/Mulish-Black.881b6e6982d30a551176.woff2",
     "static/media/Mulish-Regular.woff2": "/MyWebsite/static/media/Mulish-Regular.f188daf01849fd250c9f.woff2",
     "static/media/Mulish-Bold.woff2": "/MyWebsite/static/media/Mulish-Bold.6f19e1ab88b801decc77.woff2",
-    "static/media/_Redux.jpeg": "/MyWebsite/static/media/5ed819a41bec6275eade8334_Redux.4e9e7276f3a74ae8f6ae.jpeg",
     "static/media/html5.png": "/MyWebsite/static/media/html5.1108e8376e205bad2041.png",
     "static/media/bg.png": "/MyWebsite/static/media/bg.91adebfa8cff4bfdfe5a.png",
     "static/media/js.png": "/MyWebsite/static/media/js.f3733906890adbafb648.png",
     "static/media/wordpress.png": "/MyWebsite/static/media/wordpress.8f1b8a0cf0b0bcb8dbfc.png",
     "static/media/github.svg": "/MyWebsite/static/media/github.bfbdbb7a7546f6960805905ecb946470.svg",
     "index.html": "/MyWebsite/index.html",
-    "static/media/star.svg": "/MyWebsite/static/media/star.a4bea5df882193421c73.svg",
-    "main.2b383bb1.css.map": "/MyWebsite/static/css/main.2b383bb1.css.map",
-    "main.606151e1.js.map": "/MyWebsite/static/js/main.606151e1.js.map"
+    "main.33a122f1.css.map": "/MyWebsite/static/css/main.33a122f1.css.map",
+    "main.2bbc0fc4.js.map": "/MyWebsite/static/js/main.2bbc0fc4.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b383bb1.css",
-    "static/js/main.606151e1.js"
+    "static/css/main.33a122f1.css",
+    "static/js/main.2bbc0fc4.js"
   ]
 }

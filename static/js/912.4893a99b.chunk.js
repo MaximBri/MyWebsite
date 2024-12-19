@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[912],{531:(s,e,t)=>{s.exports=t.p+"static/media/star.a4bea5df882193421c73.svg"}}]);
