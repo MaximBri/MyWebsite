@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../../scss/ui/skills.scss'
+
 const SkillItem = ({ title, img, scale }: SkillItemInterface) => {
   const [active, setActive] = React.useState<boolean>(false)
   return (

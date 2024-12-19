@@ -1,0 +1,5 @@
+export {default as MainPage} from './MainPage'
+export {default as AboutPage} from './AboutPage'
+export {default as ContactsPage} from './ContactsPage'
+export {default as PortfolioPage} from './PortfolioPage'
+export {default as NotFound} from './NotFound'

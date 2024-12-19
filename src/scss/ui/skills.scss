@@ -30,6 +30,7 @@
 }
 
 .skill {
+  margin: 40px 0;
   &__box {
     display: flex;
     align-items: center;
@@ -77,11 +78,8 @@
       .skill__item_img {
         max-width: 100px;
       }
-
-      .skill__item_title {
-        font-size: 20px;
-      }
     }
+
     &_btn {
       display: flex;
       justify-content: center;
@@ -95,6 +93,11 @@
       font-family: 'Mulish', sans-serif;
       font-weight: 700;
       margin-top: 30px;
+    }
+  }
+  &__item {
+    &_title {
+      font-size: 20px;
     }
   }
 }
@@ -112,6 +115,7 @@
     }
   }
   .skill {
+    margin: 20px 0;
     &__box {
       gap: 10px;
       &_item {
@@ -127,6 +131,11 @@
         margin-top: 20px;
       }
     }
+    &__item {
+      &_title {
+        font-size: 16px;
+      }
+    }
   }
 }
 
@@ -140,6 +149,7 @@
     }
   }
   .skill {
+    margin: 10px 0;
     &__box {
       margin-top: 10px;
       gap: 10px;
@@ -153,6 +163,11 @@
       &_btn {
         font-size: 14px;
         margin-top: 20px;
+      }
+    }
+    &__item {
+      &_title {
+        font-size: 14px;
       }
     }
   }

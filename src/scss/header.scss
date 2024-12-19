@@ -104,10 +104,14 @@
 
 @media (max-width: 460px) {
   .header {
+    padding: 14px;
     &__left {
       > div {
         display: none;
       }
+    }
+    &_logo {
+      max-height: 50px;
     }
   }
 }

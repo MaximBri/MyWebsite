@@ -18,6 +18,10 @@ body {
   justify-content: space-between;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .dot {
   background-color: $green;
   border-radius: 20px;

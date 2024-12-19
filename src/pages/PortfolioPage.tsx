@@ -2,13 +2,15 @@ import React from 'react'
 
 import SkillsSection from '../components/sections/SkillsSection'
 import SkillsChartSection from '../components/sections/SkillChartSection'
+import WorksSection from '../components/sections/WorksSection'
 
 const PortfolioPage = () => {
   return (
-    <main>
+    <>
       <SkillsSection />
       <SkillsChartSection />
-    </main>
+      <WorksSection />
+    </>
   )
 }
 

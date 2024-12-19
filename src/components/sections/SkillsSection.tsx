@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import SkillItem from '../ui/SkillItem'
+import { skillBox, skillsItems } from '../../data/skillsBox'
 import { getWidth } from '../../rtk/slices/WidthSlice'
 import '../../scss/ui/skills.scss'
 
@@ -10,24 +11,13 @@ const SkillsSection = () => {
   const [countItems, setCountItems] = React.useState<number>(4)
   const [loading, setLoading] = React.useState<boolean>(true)
   const width = useSelector(getWidth)
+  let skillsBox: skillBoxInterface[] = []
   React.useEffect(() => {
     const importImages = async () => {
-      const imageFiles = [
-        'html5.png',
-        'css3.png',
-        'scsslogo.png',
-        'js.png',
-        'react.png',
-        'redux.png',
-        'Typescript.png',
-        'wordpress.png',
-        'tailwind.png',
-        'docker.png',
-      ]
       const importedImages = await Promise.all(
-        imageFiles.map(async (file) => {
-          const image = await import(`../../data/skills/${file}`)
-          return { [file.replace('.png', '')]: image.default }
+        skillBox.map(async (file) => {
+          const image = await import(`../../data/skills/${file}.png`)
+          return { [file]: image.default }
         })
       )
       setImages(importedImages.reduce((acc, item) => ({ ...acc, ...item }), {}))
@@ -35,18 +25,13 @@ const SkillsSection = () => {
     }
     importImages()
   }, [])
-  const skillsBox = [
-    { img: images['html5'], title: 'HTML 5', scale: '1.4' },
-    { img: images['css3'], title: 'CSS 3', scale: '1' },
-    { img: images['scsslogo'], title: 'Scss', scale: '1' },
-    { img: images['tailwind'], title: 'Tailwind', scale: '1.5' },
-    { img: images['js'], title: 'JavaScript', scale: '1' },
-    { img: images['react'], title: 'React', scale: '2.5' },
-    { img: images['redux'], title: 'Redux ToolKit', scale: '2.5' },
-    { img: images['Typescript'], title: 'TypeScript', scale: '1' },
-    { img: images['docker'], title: 'Docker', scale: '1.3' },
-    { img: images['wordpress'], title: 'Wordpress', scale: '2' },
-  ]
+  for (let i: number = 0; i < skillBox.length; i++) {
+    skillsBox.push({
+      img: images[skillBox[i]],
+      title: skillsItems[i].title,
+      scale: skillsItems[i].scale,
+    })
+  }
   return (
     <section className='skills'>
       <div className='skills__top'>
@@ -93,7 +78,7 @@ const SkillsSection = () => {
                   : setCountItems(4)
               }
             >
-              {countItems === 4 ? 'Показать все' : 'Скрыть'}
+              {countItems === 4 ? 'Показать весь' : 'Скрыть'}
             </button>
           )}
         </>
