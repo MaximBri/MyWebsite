@@ -21,3 +21,14 @@ interface skillBoxInterface {
   title: string
   scale: string
 }
+
+interface worksBoxInterface{
+  img: string,
+  title: string,
+  difficulty: string
+}
+
+interface WorkItemInterface{
+  data: worksBoxInterface,
+  key: number
+}

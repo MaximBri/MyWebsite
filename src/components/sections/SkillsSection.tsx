@@ -25,6 +25,7 @@ const SkillsSection = () => {
     }
     importImages()
   }, [])
+  console.log(images)
   for (let i: number = 0; i < skillBox.length; i++) {
     skillsBox.push({
       img: images[skillBox[i]],
