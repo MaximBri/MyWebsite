@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/MyWebsite/static/css/main.33a122f1.css",
-    "main.js": "/MyWebsite/static/js/main.2bbc0fc4.js",
+    "main.css": "/MyWebsite/static/css/main.2909f5b4.css",
+    "main.js": "/MyWebsite/static/js/main.05581f2d.js",
     "static/js/661.b98109f1.chunk.js": "/MyWebsite/static/js/661.b98109f1.chunk.js",
     "static/js/912.5a4d1f84.chunk.js": "/MyWebsite/static/js/912.5a4d1f84.chunk.js",
     "static/js/556.355ed61a.chunk.js": "/MyWebsite/static/js/556.355ed61a.chunk.js",
@@ -14,7 +14,15 @@
     "static/js/49.3d0cd48d.chunk.js": "/MyWebsite/static/js/49.3d0cd48d.chunk.js",
     "static/js/644.30bfe664.chunk.js": "/MyWebsite/static/js/644.30bfe664.chunk.js",
     "static/js/567.20f8bce0.chunk.js": "/MyWebsite/static/js/567.20f8bce0.chunk.js",
+    "static/js/415.63de1d3e.chunk.js": "/MyWebsite/static/js/415.63de1d3e.chunk.js",
+    "static/js/229.eebcc220.chunk.js": "/MyWebsite/static/js/229.eebcc220.chunk.js",
+    "static/js/398.02e4db1a.chunk.js": "/MyWebsite/static/js/398.02e4db1a.chunk.js",
+    "static/js/80.c5b226c4.chunk.js": "/MyWebsite/static/js/80.c5b226c4.chunk.js",
+    "static/media/Takeaway&delivery.png": "/MyWebsite/static/media/Takeaway&delivery.0cd8d008d7c29b8d2961.png",
+    "static/media/SaleApartment.png": "/MyWebsite/static/media/SaleApartment.cbd01879a8b5feb56c85.png",
     "static/media/Logo-light.png": "/MyWebsite/static/media/Logo-light.08b808986cef7a6a519e.png",
+    "static/media/stayHealthy.png": "/MyWebsite/static/media/stayHealthy.d5490f332b40402994d0.png",
+    "static/media/positivus.png": "/MyWebsite/static/media/positivus.2c855fc88e450c186447.png",
     "static/media/git.png": "/MyWebsite/static/media/git.5cf8a29a76bde177c0c4.png",
     "static/media/Mulish-Medium.woff2": "/MyWebsite/static/media/Mulish-Medium.97952bebc179d0479bfe.woff2",
     "static/media/Mulish-Black.woff2": "/MyWebsite/static/media/Mulish-Black.881b6e6982d30a551176.woff2",
@@ -26,11 +34,11 @@
     "static/media/wordpress.png": "/MyWebsite/static/media/wordpress.8f1b8a0cf0b0bcb8dbfc.png",
     "static/media/github.svg": "/MyWebsite/static/media/github.bfbdbb7a7546f6960805905ecb946470.svg",
     "index.html": "/MyWebsite/index.html",
-    "main.33a122f1.css.map": "/MyWebsite/static/css/main.33a122f1.css.map",
-    "main.2bbc0fc4.js.map": "/MyWebsite/static/js/main.2bbc0fc4.js.map"
+    "main.2909f5b4.css.map": "/MyWebsite/static/css/main.2909f5b4.css.map",
+    "main.05581f2d.js.map": "/MyWebsite/static/js/main.05581f2d.js.map"
   },
   "entrypoints": [
-    "static/css/main.33a122f1.css",
-    "static/js/main.2bbc0fc4.js"
+    "static/css/main.2909f5b4.css",
+    "static/js/main.05581f2d.js"
   ]
 }
