@@ -111,7 +111,9 @@ const WorksSection = () => {
               value={search}
               onChange={(e) => setSeatch(e.target.value)}
               className='works_search'
-              placeholder='Поиск по ключевым словам'
+              placeholder={
+                window.innerWidth > 1024 ? 'Поиск по ключевым словам' : 'Поиск'
+              }
             />
             <button
               onMouseEnter={() => setOpenSort(true)}
@@ -141,7 +143,11 @@ const WorksSection = () => {
             : Array.from({ length: 3 }).map((_, index) => (
                 <WorksSkeleton key={index} />
               ))}
-              {!loading && sortedWorks.length === 0 && curSearch && <h2 className='works__not-found'>По вашему запросу ничего не найдено :(</h2>}
+          {!loading && sortedWorks.length === 0 && curSearch && (
+            <h2 className='works__not-found'>
+              По вашему запросу ничего не найдено :(
+            </h2>
+          )}
         </ul>
       </div>
     </section>
