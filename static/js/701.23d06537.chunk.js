@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[701],{701:(e,s,t)=>{e.exports=t.p+"static/media/kokos.0ac49048e8b6c0ba2e86.png"}}]);
