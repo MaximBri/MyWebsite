@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import SkillItem from '../ui/SkillItem'
 import { skillBox, skillsItems } from '../../data/skillsBox'
+import WorksSkeleton from '../ui/SkillsSkeleton'
 import { getWidth } from '../../rtk/slices/WidthSlice'
 import '../../scss/ui/skills.scss'
 
@@ -25,7 +26,6 @@ const SkillsSection = () => {
     }
     importImages()
   }, [])
-  console.log(images)
   for (let i: number = 0; i < skillBox.length; i++) {
     skillsBox.push({
       img: images[skillBox[i]],
@@ -84,7 +84,12 @@ const SkillsSection = () => {
           )}
         </>
       ) : (
-        <h2 className='skills_loading'>Загрузка...</h2>
+        <ul className='skill__box'>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <WorksSkeleton key={index} />
+          ))}
+        </ul>
+        // <h2 className='skills_loading'>Загрузка...</h2>
       )}
     </section>
   )

@@ -25,7 +25,11 @@ interface skillBoxInterface {
 interface worksBoxInterface{
   img: string,
   title: string,
-  difficulty: string
+  difficulty: string,
+  tags: string[],
+  about: string,
+  link: string,
+  quality: number
 }
 
 interface WorkItemInterface{
