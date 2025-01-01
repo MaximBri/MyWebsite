@@ -1,5 +1,5 @@
 import React, { LegacyRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getBurger, setBurgerWindow } from '../rtk/slices/WindowsSlice'
@@ -24,7 +24,9 @@ const Header: React.FC = () => {
   return (
     <header ref={header} className='header unvisible'>
       <div className='header__left'>
-        <img src={logo} alt='Logo' className='header_logo' />
+        <Link to='/'>
+          <img src={logo} alt='Logo' className='header_logo' />
+        </Link>
         <div>
           Frontend-разработка
           <div className='header_fire'></div>

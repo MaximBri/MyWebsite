@@ -1,0 +1,86 @@
+@import '../vars.scss';
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: transparent;
+  color: $golden;
+  padding: 10px 0;
+  border: 2px solid $golden;
+  border-right: none;
+  border-left: none;
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px; 
+    z-index: 100; 
+    pointer-events: none; 
+  }
+
+  &::before {
+    left: -20px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+  }
+
+  &::after {
+    right: -20px;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+  }
+  &__content {
+    width: 100%;
+    animation: marquee 10s linear infinite;
+    display: flex;
+    > li {
+      margin-right: 50px;
+      font-size: 20px;
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-1000px);
+  }
+  100% {
+    transform: translateX(-100px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .marquee {
+    &__content {
+      animation: marquee 10s linear infinite;
+      > li {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee {
+    &__content {
+      animation: marquee 10s linear infinite;
+      > li {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .marquee {
+    padding: 5px 0;
+    &__content {
+      animation: marquee 10s linear infinite;
+      > li {
+        font-size: 14px;
+      }
+    }
+  }
+}

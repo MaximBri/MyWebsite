@@ -138,3 +138,5 @@ export const worksBox: worksBoxInterface[] = [
     quality: 1,
   },
 ]
+
+export const worksBoxLength = worksBox.length

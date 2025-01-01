@@ -1,22 +1,17 @@
 import React from 'react'
 
+import '../../scss/ui/hello.scss'
+
 const HelloSection = () => {
-  const helloText = 'Привет, меня зовут Максим и я - Frontend разработчик.'
-  const [currentHelloText, setCurrentHelloText] = React.useState('')
-  const [index, setIndex] = React.useState(0) 
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      if (index < helloText.length) {
-        setCurrentHelloText((prevText) => prevText + helloText.charAt(index))
-        setIndex((prevIndex) => prevIndex + 1) 
-      } else clearInterval(interval)
-    }, 80)
-
-    return () => clearInterval(interval)
-  }, [index])
-
-  return <h2>{currentHelloText}</h2>
+  const helloText = '✌️ Привет, меня зовут Максим, я - Frontend разработчик.'
+  const subtitle = 'Я занимаюсь разработкой Frontend части приложений. Больше обо мне ниже 👇'
+  
+  return (
+    <section className='hello'>
+      <h2 className='hello_title title'>{helloText}</h2>
+      <h1 className='hello_subtitle'>{subtitle}</h1>
+    </section>
+  )
 }
 
 export default HelloSection

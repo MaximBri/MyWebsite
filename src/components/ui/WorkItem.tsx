@@ -1,16 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import ButtonPng from '../../data/works/upArrow.png'
 import '../../scss/ui/work.scss'
 import '../../scss/ui/wordsInWorks.scss'
-import { Link } from 'react-router-dom'
 
 const WorkItem = ({ data }: WorkItemInterface) => {
   const [open, setOpen] = React.useState<boolean>(false)
   return (
     <li className='work'>
       <Link to={data.link} target='_blank'>
-        <img className='work__img' src={data.img} alt='Картинка портфолио'></img>
+        <img
+          className='work__img'
+          src={data.img}
+          alt='Картинка портфолио'
+        ></img>
       </Link>
       <div className='work__about'>
         <div className='work__main'>

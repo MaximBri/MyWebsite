@@ -1,18 +1,28 @@
 import React from 'react'
-import { worksBox } from '../../data/worksBox'
+import { useSelector } from 'react-redux'
+
 import WorksSkeleton from '../ui/WorksSkeleton'
 import WorkItem from '../ui/WorkItem'
+import { worksBox, worksBoxLength } from '../../data/worksBox'
+import { getWidth } from '../../rtk/slices/WidthSlice'
+import { useWidth } from '../hooks/useWidth'
 import '../../scss/ui/works.scss'
 
 const stringsForSort: string[] = ['по рейтингу', 'по алфавиту', 'по сложности']
 
 const WorksSection = () => {
+  useWidth()
+  const countWorksInArray = worksBoxLength
+  const showedWorksInMobile = 4
+  const addWorksOnClick = 4
+  const width = useSelector(getWidth)
   const [images, setImages] = React.useState({})
   const [loading, setLoading] = React.useState<boolean>(true)
   const [openSort, setOpenSort] = React.useState<boolean>(false)
   const [search, setSeatch] = React.useState<string>('')
   const [curSearch, setCurSearch] = React.useState<string>('')
   const [sort, setSort] = React.useState<string>(stringsForSort[0])
+  const [countWorks, setCountWorks] = React.useState<number>(countWorksInArray)
 
   const changeSort = (newSort: string) => {
     setSort(newSort)
@@ -70,6 +80,14 @@ const WorksSection = () => {
     importImages()
   }, [])
 
+  React.useEffect(() => {
+    if (width < 768) {
+      setCountWorks(showedWorksInMobile)
+    } else {
+      setCountWorks(countWorksInArray)
+    }
+  }, [width])
+
   const works = React.useMemo(() => {
     return worksBox.map((item) => ({
       ...item,
@@ -94,10 +112,12 @@ const WorksSection = () => {
             tag.toLowerCase().includes(curSearch.toLowerCase())
           )
       )
-      console.log(sorted, curSearch)
+    }
+    if (countWorksInArray !== countWorks) {
+      sorted = sorted.slice(0, countWorks)
     }
     return sorted
-  }, [sort, works, curSearch])
+  }, [sort, works, curSearch, countWorks, countWorksInArray])
 
   return (
     <section className='works'>
@@ -149,6 +169,22 @@ const WorksSection = () => {
             </h2>
           )}
         </ul>
+        {countWorksInArray !== sortedWorks.length && (
+          <div className='works__show'>
+            <button
+              className='works__show-more'
+              onClick={() =>
+                setCountWorks(
+                  countWorks + addWorksOnClick > countWorksInArray
+                    ? countWorksInArray
+                    : countWorks + addWorksOnClick
+                )
+              }
+            >
+              Показать больше
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )
