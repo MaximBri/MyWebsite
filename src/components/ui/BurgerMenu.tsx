@@ -16,19 +16,19 @@ const BurgerMenu = () => {
             <div></div>
             <div></div>
           </button>
-          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger_link' to='/'>
+          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger__link' to='/'>
             Главная
           </NavLink>
-          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger_link' to='/About'>
+          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger__link' to='/About'>
             О мне
           </NavLink>
-          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger_link' to='/Portfolio'>
+          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger__link' to='/Portfolio'>
             Работы
           </NavLink>
-          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger_link' to='/Contacts'>
+          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger__link' to='/Contacts'>
             Контакты
           </NavLink>
-          <NavLink className='burger_github' to='https://github.com/MaximBri'>
+          <NavLink className='burger__github' to='https://github.com/MaximBri'>
             <img src={githubSVG} alt='github' />
           </NavLink>
         </div>

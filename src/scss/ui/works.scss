@@ -1,5 +1,6 @@
 @import '../vars.scss';
 .works {
+  position: relative;
   padding: 50px 0;
   &__wrapper {
     display: flex;
@@ -36,7 +37,7 @@
     position: relative;
   }
   &__sort {
-    &_list {
+    &-list {
       z-index: 100;
       width: 280px;
       padding: 15px;
@@ -81,7 +82,7 @@
     text-align: center;
     font-size: 24px;
   }
-  &_search {
+  &__search {
     width: 400px;
     padding: 10px 20px;
     border-radius: 10px;
@@ -93,6 +94,22 @@
       color: $white;
     }
   }
+  // &_hint{
+  //   // position: absolute;
+  //   top: 50px;
+  //   right: 0;
+  //   padding: 10px 15px;
+  //   background-color: $green;
+  //   color: white;
+  //   border-radius: 5px;
+  //   font-size: 16px;
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 10px;
+  //   >img{
+  //     width: 30px;
+  //   }
+  // }
 }
 
 @media (max-width: 1024px) {
@@ -120,7 +137,7 @@
       gap: 20px;
     }
     &__sort {
-      &_list {
+      &-list {
         width: 200px;
         padding: 10px 20px;
         gap: 10px;
@@ -129,7 +146,7 @@
     &__not-found {
       font-size: 18px;
     }
-    &_search {
+    &__search {
       width: 300px;
       padding: 10px 20px;
       font-size: 16px;
@@ -164,7 +181,7 @@
       gap: 10px;
     }
     &__sort {
-      &_list {
+      &-list {
         width: 200px;
         bottom: -500%;
         padding: 10px 20px;
@@ -178,7 +195,7 @@
     &__not-found {
       font-size: 16px;
     }
-    &_search {
+    &__search {
       width: auto;
       padding: 10px 20px;
       font-size: 14px;
@@ -190,7 +207,7 @@
   .works {
     padding: 20px 0;
     &__sort {
-      &_list {
+      &-list {
         width: 200px;
         bottom: -500%;
         padding: 5px 10px;

@@ -2,7 +2,7 @@
 .hello {
   padding: 50px 0;
   text-align: center;
-  &_subtitle{
+  &__subtitle{
     margin-top: 20px;
     font-size: 20px;
   }
@@ -11,7 +11,7 @@
 @media (max-width: 1024px){
   .hello {
     padding: 40px 0;
-    &_subtitle{
+    &__subtitle{
       margin-top: 15px;
       font-size: 18px;
     }
@@ -21,7 +21,7 @@
 @media (max-width: 768px){
   .hello {
     padding: 30px 0;
-    &_subtitle{
+    &__subtitle{
       margin-top: 10px;
       font-size: 16px;
     }
@@ -31,7 +31,7 @@
 @media (max-width: 420px){
   .hello {
     padding: 20px 0;
-    &_subtitle{
+    &__subtitle{
       font-size: 14px;
     }
   }

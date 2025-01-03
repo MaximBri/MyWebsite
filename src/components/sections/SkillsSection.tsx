@@ -40,7 +40,7 @@ const SkillsSection = () => {
           <h1 className='title'>Стек</h1>
           <div className='dot'></div>
         </div>
-        <h3 className='skills_descr'>
+        <h3 className='skills__descr'>
           <svg
             width='20px'
             height='20px'

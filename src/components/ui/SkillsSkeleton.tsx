@@ -4,7 +4,7 @@ import ContentLoader from 'react-content-loader'
 const SkillSkeleton = (props) => (
   <ContentLoader
     speed={2}
-    className='skill__box_item'
+    className='skill__box-item'
     viewBox='0 0 200 200'
     backgroundColor='#1b1b1b'
     foregroundColor='#ecebeb'

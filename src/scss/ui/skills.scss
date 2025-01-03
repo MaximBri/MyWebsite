@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  &_descr {
+  &__descr {
     display: flex;
     align-items: center;
     background-color: $green;
@@ -38,7 +38,7 @@
     flex-wrap: wrap;
     gap: 20px;
 
-    &_item {
+    &-item {
       flex-grow: 1;
       perspective: 1000px;
       cursor: pointer;
@@ -55,8 +55,8 @@
         transform: rotateY(180deg);
       }
 
-      .skill__item_front,
-      .skill__item_back {
+      .skill__item-front,
+      .skill__item-back {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -67,15 +67,15 @@
         justify-content: center;
       }
 
-      .skill__item_front {
+      .skill__item-front {
         transform: rotateY(0deg);
       }
 
-      .skill__item_back {
+      .skill__item-back {
         transform: rotateY(180deg);
       }
 
-      .skill__item_img {
+      .skill__item-img {
         max-width: 100px;
       }
     }
@@ -96,7 +96,7 @@
     }
   }
   &__item {
-    &_title {
+    &-title {
       font-size: 20px;
     }
   }
@@ -105,7 +105,7 @@
 @media (max-width: 576px) {
   .skills {
     padding: 30px 0;
-    &_descr {
+    &__descr {
       padding: 8px;
       font-size: 12px;
       gap: 10px;
@@ -121,7 +121,7 @@
       &_item {
         min-width: min(150px, 45vw);
         height: min(200px, 45vw);
-        &_img {
+        &-img {
           max-width: min(100px, 45vw);
         }
       }
@@ -142,7 +142,7 @@
 @media (max-width: 420px) {
   .skills {
     padding: 15px 0;
-    &_descr {
+    &__descr {
       padding: 5px;
       font-size: 10px;
       gap: 5px;
@@ -156,7 +156,7 @@
       &_item {
         min-width: min(100px, 45vw);
         height: min(100px, 45vw);
-        .skill__item_img {
+        .skill__item-img {
           max-width: 50px;
         }
       }

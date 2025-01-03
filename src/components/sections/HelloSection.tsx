@@ -8,8 +8,8 @@ const HelloSection = () => {
   
   return (
     <section className='hello'>
-      <h2 className='hello_title title'>{helloText}</h2>
-      <h1 className='hello_subtitle'>{subtitle}</h1>
+      <h2 className='title'>{helloText}</h2>
+      <h1 className='hello__subtitle'>{subtitle}</h1>
     </section>
   )
 }

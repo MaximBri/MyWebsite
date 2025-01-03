@@ -45,7 +45,7 @@
     gap: 20px;
     border-top: 2px solid $black;
   }
-  &_btn {
+  &__btn {
     transition: all 0.8s;
     position: absolute;
     border-radius: 50%;
@@ -60,7 +60,7 @@
     }
   }
 
-  &_title {
+  &__title {
     margin: 10px 0;
     font-size: 28px;
   }
@@ -86,7 +86,7 @@
       font-size: 16px;
       gap: 15px;
     }
-    &_btn {
+    &__btn {
       bottom: -20px;
       margin-top: 20px;
       > img {
@@ -95,7 +95,7 @@
       }
     }
   
-    &_title {
+    &__title {
       font-size: 24px;
     }
   }
@@ -127,12 +127,12 @@
       font-size: 16px;
       gap: 15px;
     }
-    &_btn {
+    &__btn {
       bottom: -20px;
       margin-top: 20px;
     }
   
-    &_title {
+    &__title {
       font-size: 20px;
     }
   }
@@ -154,7 +154,7 @@
       font-size: 14px;
       gap: 10px;
     }
-    &_btn {
+    &__btn {
       bottom: -20px;
       margin-top: 20px;
       > img {
@@ -162,7 +162,7 @@
         height: 30px;
       }
     }
-    &_title {
+    &__title {
       font-size: 18px;
     }
   }

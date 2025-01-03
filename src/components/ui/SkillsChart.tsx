@@ -12,14 +12,14 @@ const SkillChart = ({ name, percentage, color }: skillChartInterface) => {
   return (
     <li className='chart'>
       <div className='chart__header'>
-        <h3 className='chart_title'>{name}</h3>
-        <h4 className='chart_percent' style={{ left: `${percentage}%` }}>
+        <h3 className='chart__title'>{name}</h3>
+        <h4 className='chart__percent' style={{ left: `${percentage}%` }}>
           {percentage + '%'}
         </h4>
       </div>
       <div className='chart__block'>
         <div
-          className='chart__block_inner'
+          className='chart__block-inner'
           style={{ width: `${curPercent}%`, backgroundColor: `${color}` }}
         ></div>
       </div>

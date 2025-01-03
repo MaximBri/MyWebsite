@@ -1,0 +1,42 @@
+@import '../vars.scss';
+.form {
+  display: flex;
+  flex-direction: column;
+  > label {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  > textarea {
+    flex-grow: 1;
+    background-color: $grey;
+    color: $white;
+    font-size: 18px;
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    min-height: 45px;
+    max-height: 200px;
+    resize: vertical;
+    &::placeholder {
+      color: $white;
+    }
+  }
+  &__proof{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 16px;
+  }
+  &__btn{
+    margin: 30px auto 0 auto;
+    width: min-content;
+    padding: 20px;
+    font-size: 20px;
+    color: $white;
+    background-color: $blue;
+    border-radius: 10px;
+  }
+  &__input--hidden{
+    display: none;
+  }
+}

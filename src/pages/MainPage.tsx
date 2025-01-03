@@ -3,6 +3,7 @@ import HelloSection from '../components/sections/HelloSection'
 import SkillsSection from '../components/sections/SkillsSection'
 import SkillsChartSection from '../components/sections/SkillChartSection'
 import MarqueeSection from '../components/sections/MarqueeSection'
+import LinkSection from '../components/sections/LinkSection'
 
 const MainPage = () => {
   return (
@@ -11,6 +12,7 @@ const MainPage = () => {
       <SkillsSection />
       <MarqueeSection />
       <SkillsChartSection />
+      <LinkSection />
     </>
   )
 }

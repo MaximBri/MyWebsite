@@ -18,7 +18,7 @@ const WorkItem = ({ data }: WorkItemInterface) => {
       </Link>
       <div className='work__about'>
         <div className='work__main'>
-          <h2 className='work_title'>{data.title}</h2>
+          <h2 className='work__title'>{data.title}</h2>
           <ul className='work__key-words'>
             {data.tags.map((item, i) => {
               return (
@@ -37,7 +37,7 @@ const WorkItem = ({ data }: WorkItemInterface) => {
         )}
         <button
           onClick={() => setOpen(!open)}
-          className='work_btn'
+          className='work__btn'
           style={{ transform: `rotateX(${open ? 0 : 180}deg)` }}
         >
           <img src={ButtonPng} alt='more' />

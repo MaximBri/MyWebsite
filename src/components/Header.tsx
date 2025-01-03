@@ -25,33 +25,33 @@ const Header: React.FC = () => {
     <header ref={header} className='header unvisible'>
       <div className='header__left'>
         <Link to='/'>
-          <img src={logo} alt='Logo' className='header_logo' />
+          <img src={logo} alt='Logo' className='header__logo' />
         </Link>
         <div>
           Frontend-разработка
-          <div className='header_fire'></div>
+          <div className='header__fire'></div>
         </div>
       </div>
       <nav className='header__nav'>
-        <NavLink className='header_link' to='/'>
+        <NavLink className='header__nav-link' to='/'>
           Главная
         </NavLink>
-        <NavLink className='header_link' to='/About'>
+        <NavLink className='header__nav-link' to='/About'>
           О мне
         </NavLink>
-        <NavLink className='header_link' to='/Portfolio'>
+        <NavLink className='header__nav-link' to='/Portfolio'>
           Работы
         </NavLink>
-        <NavLink className='header_link' to='/Contacts'>
+        <NavLink className='header__nav-link' to='/Contacts'>
           Контакты
         </NavLink>
-        <NavLink className='header_github' to='https://github.com/MaximBri'>
+        <NavLink className='header__github' to='https://github.com/MaximBri'>
           <img src={githubSVG} alt='github' />
         </NavLink>
       </nav>
       {width < 768 && (
         <div
-          className='burger_open'
+          className='burger--open'
           onClick={() => dispatch(setBurgerWindow(!burgerIsOpen))}
         >
           <div></div>

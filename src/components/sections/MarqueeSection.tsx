@@ -4,14 +4,22 @@ import '../../scss/ui/marquee.scss'
 const MarqueeSection = () => {
   let words: string =
     ' Frontend  Вёрстка  Создание сайтов  HTML  CSS  JS  React  Git '
-  for (let i = 0; i < 3; i++) words += words
+  words = words.repeat(3)
+
   return (
     <section className='marquee'>
-      <ul className='marquee__content'>
-        {words.split('  ').map((item, i) => {
-          return <li key={i}>{item}</li>
-        })}
-      </ul>
+      <div className='marquee__container'>
+        <ul className='marquee__content'>
+          {words.split('  ').map((item, i) => {
+            return <li key={i}>{item}</li>
+          })}
+        </ul>
+        <ul className='marquee__content'>
+          {words.split('  ').map((item, i) => {
+            return <li key={i}>{item}</li>
+          })}
+        </ul>
+      </div>
     </section>
   )
 }

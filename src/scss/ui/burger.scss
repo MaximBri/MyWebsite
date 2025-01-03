@@ -13,7 +13,7 @@
   z-index: 50;
   transition: all .4s;
   left: -300px;
-  &_open{
+  &--open{
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@
     align-items: baseline;
     padding: 30px;
   }
-  &_github{
+  &__github{
     padding: 10px;
     box-sizing: content-box ;
     width: 40px;
@@ -46,7 +46,7 @@
       width: 100%;
     }
   }
-  &_link{
+  &__link{
     padding: 10px;
   }
   &-bg{
