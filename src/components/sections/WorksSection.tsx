@@ -12,7 +12,7 @@ const stringsForSort: string[] = ['по рейтингу', 'по алфавит�
 
 const WorksSection = () => {
   useWidth()
-  const countWorksInArray = worksBoxLength
+  let countWorksInArray = worksBoxLength
   const showedWorksInMobile = 4
   const addWorksOnClick = 4
   const width = useSelector(getWidth)
@@ -112,6 +112,9 @@ const WorksSection = () => {
             tag.toLowerCase().includes(curSearch.toLowerCase())
           )
       )
+      countWorksInArray = sorted.length
+    } else {
+      countWorksInArray = worksBoxLength
     }
     if (countWorksInArray !== countWorks) {
       sorted = sorted.slice(0, countWorks)

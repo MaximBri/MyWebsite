@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getBurger, setBurgerWindow } from '../../rtk/slices/WindowsSlice'
+import { routes } from '../../data/routes'
 import githubSVG from '../../data/globals/github.svg'
 
 const BurgerMenu = () => {
@@ -12,28 +13,37 @@ const BurgerMenu = () => {
     <>
       <section className={burgerIsOpen ? 'burger open' : 'burger'}>
         <div className='burger__list'>
-          <button onClick={() => dispatch(setBurgerWindow(false))} title='close' className='burger_lock'>
+          <button
+            onClick={() => dispatch(setBurgerWindow(false))}
+            title='close'
+            className='burger_lock'
+          >
             <div></div>
             <div></div>
           </button>
-          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger__link' to='/'>
-            Главная
-          </NavLink>
-          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger__link' to='/About'>
-            О мне
-          </NavLink>
-          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger__link' to='/Portfolio'>
-            Работы
-          </NavLink>
-          <NavLink onClick={() => dispatch(setBurgerWindow(false))} className='burger__link' to='/Contacts'>
-            Контакты
-          </NavLink>
+          {routes.map((item, i) => {
+            return (
+              <NavLink
+                key={i}
+                onClick={() => dispatch(setBurgerWindow(false))}
+                className='burger__link'
+                to={item.path}
+              >
+                {item.name}
+              </NavLink>
+            )
+          })}
           <NavLink className='burger__github' to='https://github.com/MaximBri'>
             <img src={githubSVG} alt='github' />
           </NavLink>
         </div>
       </section>
-      {burgerIsOpen && <div className='burger-bg' onClick={() => dispatch(setBurgerWindow(false))}></div>}
+      {burgerIsOpen && (
+        <div
+          className='burger-bg'
+          onClick={() => dispatch(setBurgerWindow(false))}
+        ></div>
+      )}
     </>
   )
 }

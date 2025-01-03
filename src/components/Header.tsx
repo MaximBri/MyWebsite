@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getBurger, setBurgerWindow } from '../rtk/slices/WindowsSlice'
 import { getWidth } from '../rtk/slices/WidthSlice'
 import { useWidth } from './hooks/useWidth'
+import { routes } from '../data/routes'
 import logo from '../data/globals/Logo-light.png'
 import githubSVG from '../data/globals/github.svg'
 import '../scss/header.scss'
@@ -16,7 +17,6 @@ const Header: React.FC = () => {
   const header: LegacyRef<HTMLElement> = React.useRef(null)
   const width = useSelector(getWidth)
   useWidth()
-  // анимация появления хэдера
   React.useEffect(() => {
     if (header) header.current.className = 'header'
   }, [header])
@@ -33,18 +33,13 @@ const Header: React.FC = () => {
         </div>
       </div>
       <nav className='header__nav'>
-        <NavLink className='header__nav-link' to='/'>
-          Главная
-        </NavLink>
-        <NavLink className='header__nav-link' to='/About'>
-          О мне
-        </NavLink>
-        <NavLink className='header__nav-link' to='/Portfolio'>
-          Работы
-        </NavLink>
-        <NavLink className='header__nav-link' to='/Contacts'>
-          Контакты
-        </NavLink>
+        {routes.map((item, i) => {
+          return (
+            <NavLink className='header__nav-link' to={item.path} key={i}>
+              {item.name}
+            </NavLink>
+          )
+        })}
         <NavLink className='header__github' to='https://github.com/MaximBri'>
           <img src={githubSVG} alt='github' />
         </NavLink>

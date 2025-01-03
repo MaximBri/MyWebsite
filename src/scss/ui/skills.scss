@@ -118,12 +118,9 @@
     margin: 20px 0;
     &__box {
       gap: 10px;
-      &_item {
+      &-item {
         min-width: min(150px, 45vw);
         height: min(200px, 45vw);
-        &-img {
-          max-width: min(100px, 45vw);
-        }
       }
       &_btn {
         padding: 5px 10px;
