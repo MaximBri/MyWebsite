@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[567],{567:(s,e,b)=>{s.exports=b.p+"static/media/wordpress.8f1b8a0cf0b0bcb8dbfc.png"}}]);

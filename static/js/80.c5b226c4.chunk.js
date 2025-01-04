@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[80],{80:(e,s,t)=>{e.exports=t.p+"static/media/stayHealthy.d5490f332b40402994d0.png"}}]);

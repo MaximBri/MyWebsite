@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[186],{186:(e,s,t)=>{e.exports=t.p+"static/media/react-pizza.89a5d1f986e592516ec2.png"}}]);
