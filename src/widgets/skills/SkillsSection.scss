@@ -1,0 +1,171 @@
+@import '../../app/styles/Vars.scss';
+
+.skills {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__descr {
+    display: flex;
+    align-items: center;
+    background-color: $green;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    gap: 20px;
+    & > img {
+      width: 20px;
+    }
+  }
+  &_loading {
+    text-align: center;
+    font-size: 16px;
+  }
+}
+
+.skill {
+  margin: 40px 0;
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    &-item {
+      flex-grow: 1;
+      perspective: 1000px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      min-width: min(200px, 45vw);
+      height: min(200px, 45vw);
+      background-color: $grey;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+
+      &.flipped {
+        transform: rotateY(180deg);
+      }
+
+      .skill__item-front,
+      .skill__item-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .skill__item-front {
+        transform: rotateY(0deg);
+      }
+
+      .skill__item-back {
+        transform: rotateY(180deg);
+      }
+
+      .skill__item-img {
+        max-width: 100px;
+      }
+    }
+
+    &_btn {
+      display: flex;
+      justify-content: center;
+      width: min-content;
+      text-wrap-mode: nowrap;
+      background-color: $blue;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 20px;
+      color: $white;
+      font-family: 'Mulish', sans-serif;
+      font-weight: 700;
+      margin-top: 30px;
+    }
+  }
+  &__item {
+    &-title {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .skills {
+    padding: 30px 0;
+    &__descr {
+      padding: 8px;
+      font-size: 12px;
+      gap: 10px;
+    }
+    &_loading {
+      font-size: 14px;
+    }
+  }
+  .skill {
+    margin: 20px 0;
+    &__box {
+      gap: 10px;
+      &-item {
+        min-width: min(150px, 45vw);
+        height: min(200px, 45vw);
+      }
+      &_btn {
+        padding: 5px 10px;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+    }
+    &__item {
+      &_title {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .skills {
+    padding: 15px 0;
+    &__descr {
+      padding: 5px;
+      font-size: 10px;
+      gap: 5px;
+    }
+  }
+  .skill {
+    margin: 10px 0;
+    &__box {
+      margin-top: 10px;
+      gap: 10px;
+      &_item {
+        min-width: min(100px, 45vw);
+        height: min(100px, 45vw);
+        .skill__item-img {
+          max-width: 50px;
+        }
+      }
+      &_btn {
+        font-size: 14px;
+        margin-top: 20px;
+      }
+    }
+    &__item {
+      &_title {
+        font-size: 14px;
+      }
+    }
+  }
+}

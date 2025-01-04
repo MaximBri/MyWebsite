@@ -1,0 +1,77 @@
+@import './vars.scss';
+body {
+  overflow-x: hidden;
+  // background-image: url('../data/main/bg.png');
+  background-image: url('../../../public/images/main/bg.png');
+  background-repeat: repeat;
+  overflow-x: hidden;
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: $white;
+  user-select: none;
+  background-color: $grey;
+}
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dot {
+  background-color: $green;
+  border-radius: 20px;
+  max-width: 10vw;
+  height: 8px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.container {
+  margin-inline: 10vw;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    margin-inline: 5vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    margin-inline: 20px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .dot {
+    max-width: 15vw;
+    height: 5px;
+    margin-top: 7px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .dot {
+    max-width: 30vw;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  .title {
+    font-size: 18px;
+  }
+}

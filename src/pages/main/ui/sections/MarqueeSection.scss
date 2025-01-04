@@ -1,0 +1,90 @@
+@import '../../../../app/styles/Vars.scss';
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: transparent;
+  color: $golden;
+  padding: 10px 0;
+  border: 2px solid $golden;
+  border-right: none;
+  border-left: none;
+  position: relative;
+  box-shadow: 0px 0px 10px 20px rgba(0, 0, 0, 0.2);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1), transparent);
+  }
+
+  &::after {
+    right: 0px;
+    background: linear-gradient(to left, rgba(0, 0, 0, 1), transparent);
+  }
+
+  &__container {
+    display: flex;
+    width: max-content;
+    animation: marquee 20s linear infinite;
+  }
+
+  &__content {
+    display: flex;
+    > li {
+      margin-right: 50px;
+      font-size: 20px;
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1024px) {
+  .marquee {
+    &__content {
+      > li {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee {
+    &__content {
+      > li {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .marquee {
+    padding: 5px 0;
+    &__content {
+      > li {
+        font-size: 14px;
+      }
+    }
+  }
+}

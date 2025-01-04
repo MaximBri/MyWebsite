@@ -1,0 +1,91 @@
+@import '../../app/styles/Vars.scss';
+.burger{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 100vh;
+  background-color: $grey-black;
+  z-index: 50;
+  transition: all .4s;
+  left: -300px;
+  &--open{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    >div{
+      width: 100%;
+      background-color: $white;
+      height: 3px;
+      border-radius: 5px;
+    }
+  }
+  &__list{
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    font-size: 22px;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 30px;
+  }
+  &__github{
+    padding: 10px;
+    box-sizing: content-box ;
+    width: 40px;
+    >img{
+      width: 100%;
+    }
+  }
+  &__link{
+    padding: 10px;
+  }
+  &-bg{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 25;
+  }
+  &_lock{
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    :first-child{
+      transform: rotate(45deg);
+    }
+    :last-child{
+      transform: rotate(135deg);
+    }
+    >div{
+      position: absolute;
+      top: 50%;
+      right: 0%;
+      background-color: $white;
+      border-radius: 5px;
+      width: 100%;
+      height: 5px;
+    }
+  }
+}
+
+.open{
+  transition: all .4s;
+  left: 0;
+}
