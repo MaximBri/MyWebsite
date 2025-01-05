@@ -22,17 +22,31 @@ interface skillBoxInterface {
   scale: string
 }
 
-interface worksBoxInterface{
-  img: string,
-  title: string,
-  difficulty: string,
-  tags: string[],
-  about: string,
-  link: string,
+interface worksBoxInterface {
+  img: string
+  title: string
+  difficulty: string
+  tags: string[]
+  about: string
+  link: string
   quality: number
 }
 
-interface WorkItemInterface{
-  data: worksBoxInterface,
+interface WorkItemInterface {
+  data: worksBoxInterface
   key: number
+}
+
+interface reviewInterface {
+  name: string
+  task: string
+  comment?: string
+  review?: string
+  theme: string
+  date: string
+  status: 'positive' | 'negative' | 'in_process'
+}
+
+interface reviewItemInterface {
+  data: reviewInterface
 }

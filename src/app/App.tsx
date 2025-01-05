@@ -6,6 +6,7 @@ import MainLayout from './layouts/MainLayout'
 import { MainPage } from '../pages/main'
 import { AboutPage } from '../pages/about'
 import { PortfolioPage } from '../pages/portfolio'
+import { ReviewsPage } from '../pages/reviews'
 import { NotFound } from '../pages/not-found'
 import './styles/Reset.css'
 import './styles/Globals.scss'
@@ -21,6 +22,7 @@ function App() {
               <Route path='about' element={<AboutPage />} />
               {/* <Route path='contacts' element={<ContactsPage />} /> */}
               <Route path='portfolio' element={<PortfolioPage />} />
+              <Route path='reviews' element={<ReviewsPage />}></Route>
               <Route path='*' element={<NotFound />} />
             </Route>
           </Routes>

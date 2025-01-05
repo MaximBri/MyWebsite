@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { getBurger, setBurgerWindow } from '../../app/store/slices/WindowsSlice'
 import { routes } from '../data/routes'
-const githubSVG = '/images/globals/github.svg'
+const githubSVG = `${process.env.PUBLIC_URL}/images/globals/github.svg`
 
 const BurgerMenu = () => {
   const dispatch = useDispatch()
