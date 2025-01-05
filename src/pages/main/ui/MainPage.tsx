@@ -5,6 +5,7 @@ import MarqueeSection from './sections/MarqueeSection'
 import LinkSection from './sections/LinkSection'
 import SkillsChartSection from './sections/SkillChartSection'
 import SkillsSection from '../../../widgets/skills/SkillsSection'
+import ServicesSection from './sections/ServicesSection'
 
 export const MainPage = () => {
   return (
@@ -13,6 +14,7 @@ export const MainPage = () => {
       <SkillsSection />
       <MarqueeSection />
       <SkillsChartSection />
+      <ServicesSection />
       <LinkSection />
     </>
   )
