@@ -2,37 +2,135 @@
 .hello {
   padding: 50px 0;
   text-align: center;
-  &__subtitle{
+  position: relative;
+  &__subtitle {
     margin-top: 20px;
     font-size: 20px;
   }
+  &__browser,
+  &__web,
+  &__html,
+  &__wp {
+    position: absolute;
+    z-index: -10;
+    box-shadow: 0px 0px 35px 30px rgba(236, 236, 236, 0.2);
+  }
+  &__browser {
+    rotate: 10deg;
+    width: 80px;
+    top: 90%;
+    left: 35%;
+    filter: brightness(40%);
+    box-shadow: 0px 0px 15px 4px rgba(236, 236, 236, 0.2);
+    animation: float 8s ease-in-out infinite;
+  }
+  &__web {
+    rotate: -25deg;
+    width: 90px;
+    top: 50%;
+    right: 10%;
+    filter: brightness(30%);
+    border-radius: 50%;
+    animation: float 7s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+  &__html {
+    rotate: 35deg;
+    width: 70px;
+    top: 40%;
+    left: 5%;
+    filter: brightness(50%);
+    box-shadow: none;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 0.4s;
+  }
+  &__wp {
+    rotate: -10deg;
+    filter: brightness(40%);
+    width: 70px;
+    top: 100%;
+    right: 40%;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 0.8s;
+  }
 }
 
-@media (max-width: 1024px){
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-5px, -10px) rotate(-5deg);
+  }
+  50% {
+    transform: translate(5px, -5px) rotate(5deg);
+  }
+  75% {
+    transform: translate(-5px, 10px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@media (max-width: 1024px) {
   .hello {
     padding: 40px 0;
-    &__subtitle{
+    &__subtitle {
       margin-top: 15px;
       font-size: 18px;
     }
   }
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .hello {
     padding: 30px 0;
-    &__subtitle{
+    &__subtitle {
       margin-top: 10px;
       font-size: 16px;
+    }
+    &__browser {
+      width: 70px;
+      left: 30%;
+    }
+    &__web {
+      width: 70px;
+      right: 10%;
+    }
+    &__html {
+      width: 60px;
+      left: 5%;
+    }
+    &__wp {
+      width: 70px;
+      right: 30%;
     }
   }
 }
 
-@media (max-width: 420px){
+@media (max-width: 420px) {
   .hello {
     padding: 20px 0;
-    &__subtitle{
+    &__subtitle {
       font-size: 14px;
+    }
+    &__browser {
+      width: 50px;
+      left: 30%;
+    }
+    &__web {
+      width: 50px;
+      right: 0%;
+    }
+    &__html {
+      width: 40px;
+      left: 0%;
+    }
+    &__wp {
+      width: 50px;
+      right: 30%;
     }
   }
 }

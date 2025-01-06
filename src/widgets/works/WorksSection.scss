@@ -44,7 +44,7 @@
       padding: 10px 20px;
       transform: translate(50%, -50%);
       position: absolute;
-      bottom: calc(-270% - 50px);
+      bottom: calc(-150% - 50px);
       right: 50%;
       background-color: $grey-input;
       border-radius: 15px;
@@ -183,7 +183,7 @@
     &__sort {
       &-list {
         width: 200px;
-        bottom: -500%;
+        bottom: -350%;
         padding: 10px 20px;
         gap: 10px;
         :hover {
@@ -209,7 +209,7 @@
     &__sort {
       &-list {
         width: 200px;
-        bottom: -500%;
+        bottom: -300%;
         padding: 5px 10px;
         gap: 10px;
       }

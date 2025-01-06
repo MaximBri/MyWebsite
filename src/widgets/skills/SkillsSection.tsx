@@ -9,7 +9,6 @@ import './SkillsSection.scss'
 const SkillsSection = () => {
   const [countItems, setCountItems] = React.useState<number>(4)
   const width = useSelector(getWidth)
-  let skillsBox: skillBoxInterface[] = []
   return (
     <section className='skills'>
       <div className='skills__top'>
@@ -60,7 +59,7 @@ const SkillsSection = () => {
           className='skill__box_btn'
           onClick={() =>
             countItems === 4
-              ? setCountItems(skillsBox.length)
+              ? setCountItems(skillBox.length)
               : setCountItems(4)
           }
         >

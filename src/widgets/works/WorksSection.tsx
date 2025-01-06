@@ -1,33 +1,25 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import WorkItem from './ui/WorkItem'
 import { worksBox, worksBoxLength } from '../../shared/data/worksBox'
-import { getWidth } from '../../app/store/slices/WidthSlice'
-import { useWidth } from '../../shared/hooks/useWidth'
 import './WorksSection.scss'
 
-const stringsForSort: string[] = ['по рейтингу', 'по алфавиту', 'по сложности']
+const stringsForSort: string[] = ['по алфавиту ⬆️', 'по сложности ⬇️']
 
 const WorksSection = () => {
-  useWidth()
   let countWorksInArray = worksBoxLength
   const showedWorksInMobile = 4
   const addWorksOnClick = 4
-  const width = useSelector(getWidth)
   const [openSort, setOpenSort] = React.useState<boolean>(false)
   const [search, setSeatch] = React.useState<string>('')
   const [curSearch, setCurSearch] = React.useState<string>('')
-  const [sort, setSort] = React.useState<string>(stringsForSort[0])
-  const [countWorks, setCountWorks] = React.useState<number>(countWorksInArray)
+  const [sort, setSort] = React.useState<string>(stringsForSort[1])
+  const [countWorks, setCountWorks] =
+    React.useState<number>(showedWorksInMobile)
 
   const changeSort = (newSort: string) => {
     setSort(newSort)
     setOpenSort(false)
-  }
-
-  const sortRaiting = (a: worksBoxInterface, b: worksBoxInterface) => {
-    return b.quality - a.quality
   }
 
   const sortAlfabet = (a: worksBoxInterface, b: worksBoxInterface) => {
@@ -49,21 +41,11 @@ const WorksSection = () => {
     return () => clearTimeout(debounceTimer)
   }, [search])
 
-  React.useEffect(() => {
-    if (width < 768) {
-      setCountWorks(showedWorksInMobile)
-    } else {
-      setCountWorks(countWorksInArray)
-    }
-  }, [width])
-
   const sortedWorks = React.useMemo(() => {
     let sorted = [...worksBox]
     if (sort === stringsForSort[0]) {
-      sorted.sort((a, b) => sortRaiting(a, b))
-    } else if (sort === stringsForSort[1]) {
       sorted.sort((a, b) => sortAlfabet(a, b))
-    } else if (sort === stringsForSort[2]) {
+    } else if (sort === stringsForSort[1]) {
       sorted.sort((a, b) => sortDifficulty(a, b))
     }
     if (curSearch) {
