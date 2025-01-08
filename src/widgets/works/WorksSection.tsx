@@ -73,7 +73,7 @@ const WorksSection = () => {
         <div className='dot'></div>
       </div>
       <div className='works__wrapper'>
-        <div id='animation' className='fade-in-right'>
+        <div>
           <nav className='works__navigation'>
             <input
               type='search'
@@ -91,7 +91,10 @@ const WorksSection = () => {
             >
               Сортировка: {sort}
               {openSort && (
-                <ul className='works__sort-list'>
+                <ul
+                  className='works__sort-list'
+                  // onMouseEnter={() => setOpenSort(true)}
+                >
                   {stringsForSort.map((item, i) => {
                     return (
                       <li onClick={() => changeSort(item)} key={i}>

@@ -2,17 +2,11 @@ import React, { useEffect } from 'react'
 
 const lazyLoadOnScroll = (className: string, procent: number): void => {
   const contentBlocks = document.querySelectorAll(`#${className}`)
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-
   contentBlocks.forEach((block) => {
-    if (isMobile) {
+    if (block.getBoundingClientRect().top < window.innerHeight * procent) {
       block.classList.add('fade-in')
     } else {
-      if (block.getBoundingClientRect().top < window.innerHeight * procent) {
-        block.classList.add('fade-in')
-      } else {
-        block.classList.remove('fade-in')
-      }
+      block.classList.remove('fade-in')
     }
   })
 }
@@ -20,7 +14,7 @@ const lazyLoadOnScroll = (className: string, procent: number): void => {
 const ScrollAnimation = () => {
   useEffect(() => {
     const handleScroll = () => {
-      lazyLoadOnScroll('animation', 0.7)
+      lazyLoadOnScroll('animation', 0.8)
     }
     window.addEventListener('scroll', handleScroll)
     handleScroll()

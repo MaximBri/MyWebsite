@@ -10,7 +10,7 @@ const LinkSection = () => {
         <h2 className='title'>Для связи со мной</h2>
         <div className='dot'></div>
       </div>
-      <div id='animation' className='link__wrapper fade-in-top'>
+      <div className='link__wrapper'>
         <LinkForm />
       </div>
     </section>
