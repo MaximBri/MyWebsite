@@ -6,7 +6,7 @@ const Review: React.FC<reviewItemInterface> = ({
   data: { task, review, date },
 }) => {
   return (
-    <li className='review'>
+    <li id='animation' className='review fade-in-right'>
       <h3 className='review__task'>
         Техническое задание:
         <br /> {task}

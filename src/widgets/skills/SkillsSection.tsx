@@ -4,7 +4,10 @@ import { useSelector } from 'react-redux'
 import SkillItem from '../../widgets/skills/SkillItem'
 import { skillBox, skillsItems } from '../../shared/data/skillsBox'
 import { getWidth } from '../../app/store/slices/WidthSlice'
+
 import './SkillsSection.scss'
+const man1 = `${process.env.PUBLIC_URL}/images/skills/operator (1).png`
+const man2 = `${process.env.PUBLIC_URL}/images/skills/operator (2).png`
 
 const SkillsSection = () => {
   const [countItems, setCountItems] = React.useState<number>(4)
@@ -12,11 +15,11 @@ const SkillsSection = () => {
   return (
     <section className='skills'>
       <div className='skills__top'>
-        <div>
+        <div id='animation' className='fade-in-left'>
           <h1 className='title'>Стек</h1>
           <div className='dot'></div>
         </div>
-        <h3 className='skills__descr'>
+        <h3 id='animation' className='skills__descr fade-in-right'>
           <svg
             width='20px'
             height='20px'
@@ -32,7 +35,7 @@ const SkillsSection = () => {
           Кликабельно
         </h3>
       </div>
-      <ul className='skill__box'>
+      <ul id='animation' className='skill__box fade-in-top'>
         {skillsItems
           .slice(0, width > 576 ? undefined : countItems)
           .map((item, i) => (
@@ -54,13 +57,13 @@ const SkillsSection = () => {
                 />
               ))} */}
       </ul>
+      <img className='skills__img' src={man1} alt='man' />
+      <img className='skills__img' src={man2} alt='man' />
       {width < 576 && (
         <button
           className='skill__box_btn'
           onClick={() =>
-            countItems === 4
-              ? setCountItems(skillBox.length)
-              : setCountItems(4)
+            countItems === 4 ? setCountItems(skillBox.length) : setCountItems(4)
           }
         >
           {countItems === 4 ? 'Показать весь' : 'Скрыть'}

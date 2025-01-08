@@ -8,8 +8,9 @@ import { useWidth } from '../hooks/useWidth'
 import { routes } from '../data/routes'
 import './Header.scss'
 import './BurgerMenu.scss'
+import { GithubLink } from '../data/private'
 const logo = `${process.env.PUBLIC_URL}/images/globals/Logo-light.png`
-const githubSVG = `${process.env.PUBLIC_URL}/images/globals/github.svg`;
+const githubSVG = `${process.env.PUBLIC_URL}/images/globals/github.svg`
 
 const Header: React.FC = () => {
   const burgerIsOpen = useSelector(getBurger)
@@ -40,7 +41,7 @@ const Header: React.FC = () => {
             </NavLink>
           )
         })}
-        <NavLink className='header__github' to='https://github.com/MaximBri' target='_blank'>
+        <NavLink className='header__github' to={GithubLink} target='_blank'>
           <img src={githubSVG} alt='github' />
         </NavLink>
       </nav>

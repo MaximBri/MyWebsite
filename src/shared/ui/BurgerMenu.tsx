@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { getBurger, setBurgerWindow } from '../../app/store/slices/WindowsSlice'
 import { routes } from '../data/routes'
+import { GithubLink } from '../data/private'
 const githubSVG = `${process.env.PUBLIC_URL}/images/globals/github.svg`
 
 const BurgerMenu = () => {
@@ -33,7 +34,7 @@ const BurgerMenu = () => {
               </NavLink>
             )
           })}
-          <NavLink className='burger__github' to='https://github.com/MaximBri'>
+          <NavLink className='burger__github' to={GithubLink}>
             <img src={githubSVG} alt='github' />
           </NavLink>
         </div>

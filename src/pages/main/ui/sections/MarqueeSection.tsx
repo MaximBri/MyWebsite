@@ -7,7 +7,7 @@ const MarqueeSection = () => {
   words = words.repeat(3)
 
   return (
-    <section className='marquee'>
+    <section id='animation' className='marquee fade-in-btm '>
       <div className='marquee__container'>
         <ul className='marquee__content'>
           {words.split('  ').map((item, i) => {

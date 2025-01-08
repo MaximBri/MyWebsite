@@ -6,9 +6,11 @@ import './ServicesSection.scss'
 const ServicesSection = () => {
   return (
     <section className='services'>
-      <h2 className='title'>Услуги 👇</h2>
-      <div className='dot'></div>
-      <div className='services__body'>
+      <div id='animation' className='fade-in-left'>
+        <h2 className='title'>Услуги 👇</h2>
+        <div className='dot'></div>
+      </div>
+      <div id='animation' className='services__body fade-in-top'>
         <ul className='services__box'>
           {services.map((item, i) => {
             return <li key={i}>✅ {item}</li>

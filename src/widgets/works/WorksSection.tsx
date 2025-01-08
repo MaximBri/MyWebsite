@@ -68,10 +68,12 @@ const WorksSection = () => {
 
   return (
     <section className='works'>
-      <h2 className='title'>Мои работы</h2>
-      <div className='dot'></div>
+      <div id='animation' className='fade-in-left'>
+        <h2 className='title'>Мои работы</h2>
+        <div className='dot'></div>
+      </div>
       <div className='works__wrapper'>
-        <div>
+        <div id='animation' className='fade-in-right'>
           <nav className='works__navigation'>
             <input
               type='search'

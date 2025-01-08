@@ -8,7 +8,7 @@ const ButtonPng = `${process.env.PUBLIC_URL}/images/works/upArrow.png`
 const WorkItem = ({ data }: WorkItemInterface) => {
   const [open, setOpen] = React.useState<boolean>(false)
   return (
-    <li className='work'>
+    <li id='animation' className='work fade-in-top'>
       <Link to={data.link} target='_blank'>
         <img
           className='work__img'

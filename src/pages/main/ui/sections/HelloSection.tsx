@@ -14,8 +14,8 @@ const HelloSection = () => {
 
   return (
     <section className='hello'>
-      <h2 className='title'>{helloText}</h2>
-      <h1 className='hello__subtitle'>{subtitle}</h1>
+      <h2 id='animation' className='title fade-in-btm'>{helloText}</h2>
+      <h1 id='animation' className='hello__subtitle fade-in-right'>{subtitle}</h1>
       <img className='hello__browser' src={browser} alt='browser' />
       <img className='hello__web' src={webDevelopment} alt='web development' />
       <img className='hello__html' src={html} alt='html' />

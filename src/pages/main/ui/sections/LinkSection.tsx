@@ -6,9 +6,11 @@ import './LinkSection.scss'
 const LinkSection = () => {
   return (
     <section className='link'>
-      <h2 className='title'>Для связи со мной</h2>
-      <div className='dot'></div>
-      <div className='link__wrapper'>
+      <div id='animation' className='fade-in-left'>
+        <h2 className='title'>Для связи со мной</h2>
+        <div className='dot'></div>
+      </div>
+      <div id='animation' className='link__wrapper fade-in-top'>
         <LinkForm />
       </div>
     </section>
