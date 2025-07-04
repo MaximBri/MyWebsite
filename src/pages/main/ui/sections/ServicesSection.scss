@@ -1,83 +1,95 @@
-@import '../../../../app/styles/Vars.scss';
 .services {
-  padding: 50px 0 0;
+  padding: rem(50) 0 0;
+
   &__body {
     background-color: $grey;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    padding: 15px 20px;
+    border: rem(1) solid rgb(255 255 255 / 25%);
+    border-radius: rem(10);
+    padding: rem(15) rem(20);
   }
+
   &__box {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    font-size: 20px;
+    gap: rem(20);
+    font-size: rem(20);
     line-height: 1.2;
-    margin-bottom: 30px;
+    margin-bottom: rem(30);
   }
+
   &__subtitle {
-    font-size: 22px;
-    margin-bottom: 20px;
+    font-size: rem(22);
+    margin-bottom: rem(20);
   }
+
   &__features {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    font-size: 20px;
+    gap: rem(20);
+    font-size: rem(20);
   }
 }
 
-@media (max-width: 1024px) {
+@media (width <= rem(1024)) {
   .services {
-    padding: 40px 0 0;
+    padding: rem(40) 0 0;
+
     &__box {
-      font-size: 18px;
+      font-size: rem(18);
     }
+
     &__subtitle {
-      font-size: 20px;
+      font-size: rem(20);
     }
+
     &__features {
-      font-size: 18px;
+      font-size: rem(18);
     }
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= rem(768)) {
   .services {
-    padding: 30px 0 0;
+    padding: rem(30) 0 0;
+
     &__body {
-      padding: 10px 15px;
+      padding: rem(10) rem(15);
     }
+
     &__box {
-      gap: 15px;
-      font-size: 16px;
-      margin-bottom: 20px;
+      gap: rem(15);
+      font-size: rem(16);
+      margin-bottom: rem(20);
     }
+
     &__subtitle {
-      font-size: 18px;
-      margin-bottom: 10px;
+      font-size: rem(18);
+      margin-bottom: rem(10);
     }
+
     &__features {
-      gap: 10px;
-      font-size: 16px;
+      gap: rem(10);
+      font-size: rem(16);
     }
   }
 }
 
-@media (max-width: 420px) {
+@media (width <= rem(420)) {
   .services {
-    padding: 20px 0 0;
+    padding: rem(20) 0 0;
+
     &__box {
-      gap: 10px;
-      font-size: 14px;
-      margin-bottom: 15px;
+      gap: rem(10);
+      font-size: rem(14);
+      margin-bottom: rem(15);
     }
+
     &__subtitle {
-      font-size: 15px;
+      font-size: rem(15);
     }
+
     &__features {
-      font-size: 14px;
+      font-size: rem(14);
     }
   }
 }
-

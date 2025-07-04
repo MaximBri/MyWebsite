@@ -1,17 +1,17 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
-import SkillItem from '../../widgets/skills/SkillItem'
-import { skillBox, skillsItems } from '../../shared/data/skillsBox'
-import { getWidth } from '../../app/store/slices/WidthSlice'
-
+import { skillsItems } from '@/shared/data/skillsBox'
+import { SkillItem } from '@/widgets/skills/skill-item/SkillItem'
 import './SkillsSection.scss'
-const man1 = `${process.env.PUBLIC_URL}/images/skills/operator (1).png`
-const man2 = `${process.env.PUBLIC_URL}/images/skills/operator (2).png`
+const man1 = '/images/skills/operator (1).png'
+const man2 = '/images/skills/operator (2).png'
 
 const SkillsSection = () => {
-  const [countItems, setCountItems] = React.useState<number>(4)
-  const width = useSelector(getWidth)
+  const isMobile = useMediaQuery({ maxWidth: 576 })
+
+  const [countItems, setCountItems] = useState<number>(4)
+
   return (
     <section className='skills'>
       <div className='skills__top'>
@@ -37,33 +37,25 @@ const SkillsSection = () => {
       </div>
       <ul id='animation' className='skill__box fade-in-top'>
         {skillsItems
-          .slice(0, width > 576 ? undefined : countItems)
+          .slice(0, !isMobile ? undefined : countItems)
           .map((item, i) => (
             <SkillItem
-              img={skillBox[i]}
+              img={item.techName}
               key={i}
               title={item.title}
               scale={item.scale}
             />
           ))}
-        {/* {skillsBox
-              .slice(0, width > 576 ? undefined : countItems)
-              .map((item, i) => (
-                <SkillItem
-                  img={item.img}
-                  key={i}
-                  title={item.title}
-                  scale={item.scale}
-                />
-              ))} */}
       </ul>
       <img className='skills__img' src={man1} alt='man' />
       <img className='skills__img' src={man2} alt='man' />
-      {width < 576 && (
+      {isMobile && (
         <button
           className='skill__box_btn'
           onClick={() =>
-            countItems === 4 ? setCountItems(skillBox.length) : setCountItems(4)
+            countItems === 4
+              ? setCountItems(skillsItems.length)
+              : setCountItems(4)
           }
         >
           {countItems === 4 ? 'Показать весь' : 'Скрыть'}

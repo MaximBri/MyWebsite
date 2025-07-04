@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { reviews, updatesDate } from '../../../shared/data/reviews'
 import { KworkLink } from '../../../shared/data/private'
 import Review from './components/Review'
-import ScrollAnimation from '../../../widgets/animation/ScrollAnimation'
+import ScrollAnimation from '../../../shared/utils/ScrollAnimation'
 import './ReviewsPage.scss'
 
 export const ReviewsPage = () => {

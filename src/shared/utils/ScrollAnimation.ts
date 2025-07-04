@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 const lazyLoadOnScroll = (className: string, procent: number): void => {
   const contentBlocks = document.querySelectorAll(`#${className}`)
@@ -12,12 +12,14 @@ const lazyLoadOnScroll = (className: string, procent: number): void => {
 }
 
 const ScrollAnimation = () => {
+  const handleScroll = () => {
+    lazyLoadOnScroll('animation', 0.8)
+  }
+
   useEffect(() => {
-    const handleScroll = () => {
-      lazyLoadOnScroll('animation', 0.8)
-    }
     window.addEventListener('scroll', handleScroll)
     handleScroll()
+    
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }

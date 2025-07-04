@@ -1,5 +1,3 @@
-import React from 'react'
-
 import LinkForm from '../components/LinkForm'
 import './LinkSection.scss'
 

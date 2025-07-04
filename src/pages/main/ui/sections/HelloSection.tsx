@@ -1,21 +1,23 @@
-import React from 'react'
-
 import './HelloSection.scss'
 
-const browser = `${process.env.PUBLIC_URL}/images/hello/browser-web-development-svgrepo-com.svg`
-const html = `${process.env.PUBLIC_URL}/images/hello/html5-svgrepo-com.svg`
-const webDevelopment = `${process.env.PUBLIC_URL}/images/hello/web-development-svgrepo-com.svg`
-const wordpress = `${process.env.PUBLIC_URL}/images/hello/wordpress-svgrepo-com.svg`
+const browser = `/images/hello/browser-web-development-svgrepo-com.svg`
+const html = `/images/hello/html5-svgrepo-com.svg`
+const webDevelopment = `/images/hello/web-development-svgrepo-com.svg`
+const wordpress = `/images/hello/wordpress-svgrepo-com.svg`
 
-const HelloSection = () => {
+export const HelloSection = () => {
   const helloText = '✌️ Привет, меня зовут Максим, я - Frontend разработчик.'
   const subtitle =
-    'Я занимаюсь разработкой Frontend части приложений. Больше обо мне ниже 👇'
+    'Я занимаюсь разработкой визуальной части приложений. Больше обо мне ниже 👇'
 
   return (
     <section className='hello'>
-      <h2 id='animation' className='title fade-in-btm'>{helloText}</h2>
-      <h1 id='animation' className='hello__subtitle fade-in-right'>{subtitle}</h1>
+      <h2 id='animation' className='title fade-in-btm'>
+        {helloText}
+      </h2>
+      <h1 id='animation' className='hello__subtitle fade-in-right'>
+        {subtitle}
+      </h1>
       <img className='hello__browser' src={browser} alt='browser' />
       <img className='hello__web' src={webDevelopment} alt='web development' />
       <img className='hello__html' src={html} alt='html' />
@@ -23,5 +25,3 @@ const HelloSection = () => {
     </section>
   )
 }
-
-export default HelloSection

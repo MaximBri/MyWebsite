@@ -1,0 +1,141 @@
+.skill {
+  margin: rem(40) 0;
+  position: relative;
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: rem(20);
+
+    &-item {
+      flex-grow: 1;
+      perspective: rem(1000);
+      cursor: pointer;
+      border: rem(1) solid rgb(255 255 255 / 25%);
+      border-radius: rem(12);
+      min-width: min(rem(200), 45vw);
+      height: min(rem(200), 45vw);
+      background-color: $grey;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+
+      &.flipped {
+        transform: rotateY(180deg);
+      }
+
+      .skill__item-front,
+      .skill__item-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .skill__item-front {
+        transform: rotateY(0deg);
+      }
+
+      .skill__item-back {
+        transform: rotateY(180deg);
+      }
+
+      .skill__item-img {
+        max-width: rem(100);
+      }
+    }
+  }
+
+  &__item {
+    &-title {
+      width: 100%;
+      font-size: rem(20);
+      padding: rem(20);
+      overflow: hidden;
+      white-space: normal;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: rem(20);
+    right: -7%;
+    width: rem(120);
+    z-index: -1;
+    animation: rotate 25s infinite linear;
+    filter: drop-shadow(0 0 rem(26) rgb(250 250 250 / 30%));
+  }
+}
+
+@media (width <= rem(576)) {
+  .skill {
+    margin: rem(20) 0;
+
+    &__box {
+      gap: rem(10);
+
+      &-item {
+        min-width: min(rem(150), 45vw);
+        height: min(rem(200), 45vw);
+      }
+    }
+
+    &__item {
+      &_title {
+        font-size: rem(16);
+      }
+    }
+
+    &__img {
+      top: -rem(10);
+      right: 0%;
+      width: rem(80);
+    }
+  }
+}
+
+@media (width <= rem(420)) {
+  .skills {
+    padding: rem(15) 0;
+
+    &__descr {
+      padding: rem(5);
+      font-size: rem(10);
+      gap: rem(5);
+    }
+  }
+
+  .skill {
+    margin: rem(10) 0;
+
+    &__box {
+      margin-top: rem(10);
+      gap: rem(10);
+      // &_item {
+      //   min-width: min(rem(100), 45vw);
+      //   height: min(rem(100), 45vw);
+      //   .skill__item-img {
+      //     max-width: rem(50);
+      //   }
+      // }
+      &_btn {
+        font-size: rem(14);
+        margin-top: rem(20);
+      }
+    }
+
+    &__item {
+      &_title {
+        font-size: rem(14);
+      }
+    }
+  }
+}

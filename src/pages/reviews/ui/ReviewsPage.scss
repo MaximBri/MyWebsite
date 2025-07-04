@@ -1,105 +1,120 @@
-@import '../../../app/styles/Vars.scss';
 .reviews {
-  padding: 50px 0;
+  padding: rem(50) 0;
+
   &__title {
     > span {
       color: $orange-red;
     }
   }
+
   &__box {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px 30px;
+    gap: rem(20) rem(30);
     width: 100%;
+
     &-button {
       width: 100%;
       display: flex;
       justify-content: center;
     }
   }
+
   &__original {
-    margin: 20px auto;
+    margin: rem(20) auto;
     text-align: center;
-    font-size: 22px;
+    font-size: rem(22);
+
     > a {
       color: $orange-red;
       text-decoration: underline;
       font-weight: 700;
     }
   }
+
   &__about,
   &__about-text {
-    margin-top: 10px;
-    font-size: 20px;
+    margin-top: rem(10);
+    font-size: rem(20);
   }
+
   &__add-button {
     width: min-content;
-    font-size: 20px;
+    font-size: rem(20);
     background-color: $blue;
-    border-radius: 10px;
-    padding: 20px 15px;
+    border-radius: rem(10);
+    padding: rem(20) rem(15);
     text-wrap: nowrap;
     color: $white;
-    margin-top: 20px;
+    margin-top: rem(20);
   }
+
   &__spec {
-    margin-top: 10px;
-    font-size: 20px;
+    margin-top: rem(10);
+    font-size: rem(20);
+
     > span {
       color: $orange-red;
     }
   }
 }
 
-@media (max-width: 1024px) {
+@media (width <= rem(1024)) {
   .reviews {
-    padding: 40px 0;
+    padding: rem(40) 0;
+
     &__about,
     &__about-text,
     &__spec,
     &__original {
-      font-size: 18px;
+      font-size: rem(18);
     }
+
     &__add-button {
-      font-size: 18px;
-      margin-top: 20px;
+      font-size: rem(18);
+      margin-top: rem(20);
     }
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= rem(768)) {
   .reviews {
-    padding: 30px 0;
+    padding: rem(30) 0;
+
     &__box {
-      gap: 10px;
+      gap: rem(10);
     }
+
     &__about,
     &__about-text,
     &__spec,
     &__original {
-      font-size: 16px;
+      font-size: rem(16);
     }
+
     &__add-button {
-      font-size: 16px;
-      padding: 15px 10px;
-      margin-top: 15px;
+      font-size: rem(16);
+      padding: rem(15) rem(10);
+      margin-top: rem(15);
     }
   }
 }
 
-@media (max-width: 420px) {
+@media (width <= rem(420)) {
   .reviews {
-    padding: 20px 0;
+    padding: rem(20) 0;
+
     &__about,
     &__about-text,
     &__spec,
     &__original {
-      font-size: 14px;
+      font-size: rem(14);
     }
+
     &__add-button {
-      font-size: 14px;
-      padding: 10px 10px;
+      font-size: rem(14);
+      padding: rem(10);
     }
   }
 }
