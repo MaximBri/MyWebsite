@@ -1,0 +1,50 @@
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: rem(70);
+  font-size: rem(18);
+  text-align: center;
+  background-color: $grey;
+
+  &__github {
+    position: absolute;
+    top: 50%;
+    right: rem(50);
+    transform: translate(50%, -50%);
+    width: rem(40);
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  &__author {
+    font-size: rem(20);
+
+    > span {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (width <= rem(1024)) {
+  .footer {
+    height: rem(50);
+    font-size: rem(18);
+
+    &__github {
+      top: 50%;
+      width: rem(30);
+    }
+  }
+}
+
+@media (width <= rem(420)) {
+  .footer {
+    &__github {
+      display: none;
+    }
+  }
+}

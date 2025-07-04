@@ -1,9 +1,8 @@
-import React from 'react'
 import './MarqueeSection.scss'
 
 const MarqueeSection = () => {
   let words: string =
-    ' Frontend  Вёрстка  Создание сайтов  HTML  CSS  JS  React  Git '
+    ' Frontend  Вёрстка  Создание сайтов  HTML  CSS  JS  React  Git  TypeScript  CRM  Next.js  Material UI '
   words = words.repeat(3)
 
   return (

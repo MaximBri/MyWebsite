@@ -1,15 +1,15 @@
-import React from 'react'
+import { MouseEvent, useRef, useState } from 'react'
 
-import ThanksPopUp from '../../../../shared/pop-ups/ThanksPopUp'
+import ThanksPopUp from '@/shared/pop-ups/ThanksPopUp'
 import './LinkForm.scss'
 
 const LinkForm = () => {
-  const [popUp, setPopUp] = React.useState<boolean>(false)
-  const [message, setMessage] = React.useState<string>('')
-  const hiddenInput = React.useRef(null)
-  const sendForm = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const hiddenInput = useRef(null)
+  
+  const [message, setMessage] = useState<string>('')
+  const [popUp, setPopUp] = useState<boolean>(false)
+
+  const sendForm = async (e: MouseEvent) => {
     e.preventDefault()
     if (message && !hiddenInput.current.value) {
       const data = await fetch('https://725148df8a039a5c.mokky.dev/token')

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './WorkItem.scss'
 import './WordsInWorks.scss'
-const ButtonPng = `${process.env.PUBLIC_URL}/images/works/upArrow.png`
+const ButtonPng = `/images/works/upArrow.png`
 
 const WorkItem = ({ data }: WorkItemInterface) => {
   const [open, setOpen] = React.useState<boolean>(false)
@@ -12,7 +12,7 @@ const WorkItem = ({ data }: WorkItemInterface) => {
       <Link to={data.link} target='_blank'>
         <img
           className='work__img'
-          src={`${process.env.PUBLIC_URL}/images/works/${data.img}.png`}
+          src={`/images/works/${data.img}.png`}
           alt='Картинка портфолио'
         ></img>
       </Link>

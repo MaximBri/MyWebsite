@@ -1,45 +1,49 @@
-@import '../../../../app/styles/Vars.scss';
 .link {
-  padding: 50px 0;
+  padding: rem(50) 0;
+
   &__wrapper {
     background-color: $grey;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    padding: 15px 20px;
+    border: rem(1) solid rgb(255 255 255 / 25%);
+    border-radius: rem(10);
+    padding: rem(15) rem(20);
   }
+
   &_subtitle {
-    font-size: 24px;
-    padding: 20px;
+    font-size: rem(24);
+    padding: rem(20);
     text-align: center;
   }
 }
 
-@media (max-width: 1024px) {
+@media (width <= rem(1024)) {
   .link {
-    padding: 40px 0;
+    padding: rem(40) 0;
+
     &_subtitle {
-      font-size: 22px;
-      // padding: 20px;
+      font-size: rem(22);
+      // padding: rem(20);
     }
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= rem(768)) {
   .link {
-    padding: 30px 0;
+    padding: rem(30) 0;
+
     &_subtitle {
-      font-size: 20px;
-      padding: 15px;
+      font-size: rem(20);
+      padding: rem(15);
     }
   }
 }
 
-@media (max-width: 420px) {
+@media (width <= rem(420)) {
   .link {
-    padding: 20px 0;
+    padding: rem(20) 0;
+
     &_subtitle {
-      font-size: 18px;
-      padding: 10px;
+      font-size: rem(18);
+      padding: rem(10);
     }
   }
 }

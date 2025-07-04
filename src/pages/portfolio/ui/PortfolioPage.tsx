@@ -1,7 +1,7 @@
 import React from 'react'
 
 import WorksSection from '../../../widgets/works/WorksSection'
-import ScrollAnimation from '../../../widgets/animation/ScrollAnimation'
+import ScrollAnimation from '../../../shared/utils/ScrollAnimation'
 
 export const PortfolioPage = () => {
   ScrollAnimation()

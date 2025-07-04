@@ -1,19 +1,17 @@
-import React from 'react'
+import { useState } from 'react'
+import './SkillItem.scss'
 
-import './SkillsSection.scss'
-
-const SkillItem = ({ title, img, scale }: SkillItemInterface) => {
-  const [active, setActive] = React.useState<boolean>(false)
+export const SkillItem = ({ title, img, scale }: SkillItemInterface) => {
+  const [active, setActive] = useState<boolean>(false)
   return (
     <li
       className={`skill__box-item ${active ? 'flipped' : ''}`}
-      // onMouseEnter={() => setActive(!active)}
       onClick={() => setActive(!active)}
     >
       <div className='skill__item-front'>
         <img
           className='skill__item-img'
-          src={`${process.env.PUBLIC_URL}/images/skills/${img}.png`}
+          src={`/images/skills/${img}`}
           alt='Skill-image'
           style={{ scale: scale }}
         />
@@ -24,5 +22,3 @@ const SkillItem = ({ title, img, scale }: SkillItemInterface) => {
     </li>
   )
 }
-
-export default SkillItem

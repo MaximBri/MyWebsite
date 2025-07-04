@@ -1,6 +1,4 @@
-import React from 'react'
-
-import { services, servicesFeatures } from '../../../../shared/data/services'
+import { services, servicesFeatures } from '@/shared/data/services'
 import './ServicesSection.scss'
 
 const ServicesSection = () => {

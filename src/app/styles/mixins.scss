@@ -1,0 +1,21 @@
+@use 'sass:math';
+
+$font-size-base: 16;
+
+@function rem($px) {
+  @return math.div($px, $font-size-base) * 1rem;
+}
+
+%text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-truncate-expanded($lines: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  text-overflow: ellipsis;
+}

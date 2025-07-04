@@ -1,86 +1,94 @@
-@import '../../../../app/styles/Vars.scss';
 .review {
   width: 45%;
   background-color: $grey;
-  padding: 0 30px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
+  padding: 0 rem(30);
+  border: rem(1) solid rgb(255 255 255 / 25%);
+  border-radius: rem(20);
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: rem(20);
   flex-direction: column;
+
   &__task {
-    padding: 20px 10px 5px;
+    padding: rem(20) rem(10) rem(5);
     background-color: $vk;
     color: $black;
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 rem(15) rem(15);
     text-align: center;
-    font-size: 24px;
-    box-shadow: 0px 3px 30px 3px rgba(255, 255, 255, 0.2);
+    font-size: rem(24);
+    box-shadow: rem(0) rem(3) rem(30) rem(3) rgb(255 255 255 / 20%);
   }
+
   &__date {
-    padding-bottom: 10px;
-    font-size: 20px;
+    font-size: rem(20);
     text-align: center;
     background-color: $green;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
+    padding: rem(10);
+    padding-bottom: rem(10);
+    border-radius: rem(10) rem(10) 0 0;
     width: min-content;
     text-wrap: nowrap;
     margin: 0 auto;
   }
+
   &__text {
-    border: 2px solid $black;
-    font-size: 22px;
-    padding: 10px;
+    border: rem(2) solid $black;
+    font-size: rem(22);
+    padding: rem(10);
     background-color: $grey-input;
-    border-radius: 15px 25px 15px 0;
+    border-radius: rem(15) rem(25) rem(15) 0;
   }
 }
 
-@media (max-width: 1024px) {
+@media (width <= rem(1024)) {
   .review {
     width: 100%;
-    padding: 0 20px;
+    padding: 0 rem(20);
+
     &__task {
-      padding: 20px 10px 5px;
-      font-size: 20px;
+      padding: rem(20) rem(10) rem(5);
+      font-size: rem(20);
     }
+
     &__date {
-      font-size: 18px;
+      font-size: rem(18);
     }
+
     &__text {
-      font-size: 22px;
-      padding: 10px;
+      font-size: rem(22);
+      padding: rem(10);
     }
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= rem(768)) {
   .review {
     &__task {
-      padding: 15px 5px 5px;
-      font-size: 18px;
+      padding: rem(15) rem(5) rem(5);
+      font-size: rem(18);
     }
+
     &__date {
-      font-size: 16px;
+      font-size: rem(16);
     }
+
     &__text {
-      font-size: 18px;
+      font-size: rem(18);
     }
   }
 }
 
-@media (max-width: 420px) {
+@media (width <= rem(420)) {
   .review {
-    padding: 0 15px;
-    gap: 10px;
+    padding: 0 rem(15);
+    gap: rem(10);
+
     &__task {
-      padding: 10px 5px 5px;
+      padding: rem(10) rem(5) rem(5);
     }
+
     &__text {
-      font-size: 16px;
-      // padding: 10px;
+      font-size: rem(16);
     }
   }
 }

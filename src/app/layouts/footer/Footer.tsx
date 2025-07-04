@@ -1,11 +1,10 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 import './Footer.scss'
-import { GithubLink, TgLink } from '../data/private'
-const githubSVG = `${process.env.PUBLIC_URL}/images/globals/github.svg`
+import { GithubLink, TgLink } from '@/shared/data/private'
+const githubSVG = `/images/globals/github.svg`
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className='footer'>
       <Link className='footer__author' to={TgLink} target='_blank'>
@@ -17,5 +16,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

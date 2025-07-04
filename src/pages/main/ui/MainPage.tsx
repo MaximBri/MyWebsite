@@ -1,12 +1,9 @@
-import React from 'react'
-
-import HelloSection from './sections/HelloSection'
+import { HelloSection } from './sections/HelloSection'
 import MarqueeSection from './sections/MarqueeSection'
 import LinkSection from './sections/LinkSection'
-import SkillsChartSection from './sections/SkillChartSection'
-import SkillsSection from '../../../widgets/skills/SkillsSection'
+import SkillsSection from '@/widgets/skills/SkillsSection'
 import ServicesSection from './sections/ServicesSection'
-import ScrollAnimation from '../../../widgets/animation/ScrollAnimation'
+import ScrollAnimation from '@/shared/utils/ScrollAnimation'
 
 export const MainPage = () => {
   ScrollAnimation()
@@ -15,7 +12,6 @@ export const MainPage = () => {
       <HelloSection />
       <SkillsSection />
       <MarqueeSection />
-      <SkillsChartSection />
       <ServicesSection />
       <LinkSection />
     </>
