@@ -80,12 +80,12 @@
   30%,
   50%,
   70% {
-    transform: translateY(-rem(10)) rotate(-5deg);
+    transform: translateY(rem(-10)) rotate(-5deg);
   }
 
   40%,
   60% {
-    transform: translateY(-rem(10)) rotate(5deg);
+    transform: translateY(rem(-10)) rotate(5deg);
   }
 }
 

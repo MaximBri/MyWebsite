@@ -23,7 +23,7 @@ export const BurgerMenu: FC<{ close: () => void }> = ({ close }) => {
     <>
       <section className={isOpen ? 'burger open' : 'burger'}>
         <div className='burger__list'>
-          <button onClick={handleClick} title='close' className='burger_lock'>
+          <button onClick={handleClick} title='close' className='burger__lock'>
             <div></div>
             <div></div>
           </button>
@@ -44,7 +44,7 @@ export const BurgerMenu: FC<{ close: () => void }> = ({ close }) => {
           </NavLink>
         </div>
       </section>
-      {isOpen && <div className='burger-bg' onClick={handleClick}></div>}
+      {isOpen && <div className='burger__bg' onClick={handleClick}></div>}
     </>
   )
 }
