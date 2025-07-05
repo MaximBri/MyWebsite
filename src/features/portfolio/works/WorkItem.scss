@@ -1,0 +1,243 @@
+.work {
+  // z-index: -100;
+  width: 100%;
+  padding: rem(20);
+  border-radius: rem(15);
+  background-color: $grey;
+  box-shadow: 0 rem(7) rem(8) rem(5) rgb(83 83 83 / 20%);
+  border: rem(2) solid #848484;
+
+  &__about {
+    position: relative;
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__img {
+    border-radius: rem(5);
+    width: 100%;
+  }
+
+  &__key {
+    &-word {
+      padding: rem(10) rem(20);
+      border-radius: rem(10);
+      background-color: $white;
+      color: $black;
+      font-size: rem(18);
+      font-weight: 600;
+    }
+
+    &-words {
+      margin-top: rem(10);
+      justify-content: end;
+      max-width: 48%;
+      gap: rem(5) rem(20);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__details {
+    margin-top: rem(20);
+    padding: rem(20) 0 rem(40);
+    font-size: rem(20);
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+    border-top: rem(2) solid $black;
+  }
+
+  &__btn {
+    transition: all 0.8s;
+    position: absolute;
+    border-radius: 50%;
+    background-color: transparent;
+    bottom: -rem(20);
+    right: calc(50% - rem(25));
+    box-shadow: rem(4) rem(4) rem(35) 0 rgb(10 255 2 / 20%);
+    margin-top: rem(20);
+
+    > img {
+      width: rem(50);
+      height: rem(50);
+    }
+  }
+
+  &__title {
+    margin: rem(10) 0;
+    font-size: rem(28);
+  }
+}
+
+.word- {
+  &html {
+    background-color: #ff8c00;
+    color: $black;
+    border: rem(3) solid #a38f76c5;
+  }
+
+  &css {
+    background-color: #000dff;
+    color: $white;
+    border: rem(3) solid #7679a3c5;
+  }
+
+  &javascript {
+    background-color: #ffe600;
+    color: $black;
+    border: rem(3) solid #a3a276c5;
+  }
+
+  &scss {
+    background-color: #ff00f2;
+    color: $white;
+    border: rem(3) solid #9e76a3c5;
+  }
+
+  &tailwind {
+    background-color: #00c3ff;
+    color: $black;
+    border: rem(3) solid #7699a3c5;
+  }
+
+  &react {
+    background-color: #2b00ff;
+    color: $white;
+    border: rem(3) solid #7678a3c5;
+  }
+
+  &rtk {
+    background-color: #a600ff;
+    color: $white;
+    border: rem(3) solid #9176a3c5;
+  }
+
+  &typescript {
+    background-color: #40f;
+    color: $white;
+    border: rem(3) solid #8376a3c5;
+  }
+}
+
+@media (width <= rem(1024)) {
+  .work {
+    padding: rem(15);
+
+    &__key {
+      &-word {
+        padding: rem(5) rem(10);
+        font-size: rem(18);
+      }
+
+      &-words {
+        margin-top: rem(10);
+        gap: rem(5) rem(10);
+        max-width: 45%;
+      }
+    }
+
+    &__details {
+      margin-top: rem(10);
+      padding: rem(15) 0 rem(40);
+      font-size: rem(16);
+      gap: rem(15);
+    }
+
+    &__btn {
+      bottom: -rem(20);
+      margin-top: rem(20);
+
+      > img {
+        width: rem(40);
+        height: rem(40);
+      }
+    }
+
+    &__title {
+      font-size: rem(24);
+    }
+  }
+}
+
+@media (width <= rem(768)) {
+  .work {
+    padding: rem(10);
+
+    &__main {
+      flex-direction: column;
+    }
+
+    &__key {
+      &-word {
+        padding: rem(5);
+        font-size: rem(16);
+      }
+
+      &-words {
+        width: 100%;
+        margin-top: rem(10);
+        gap: rem(5) rem(10);
+        max-width: 100%;
+        margin-bottom: rem(40);
+        justify-content: start;
+      }
+    }
+
+    &__details {
+      margin-top: rem(10);
+      padding: rem(10) 0 rem(40);
+      font-size: rem(16);
+      gap: rem(15);
+    }
+
+    &__btn {
+      bottom: -rem(20);
+      margin-top: rem(20);
+    }
+
+    &__title {
+      font-size: rem(20);
+    }
+  }
+}
+
+@media (width <= rem(420)) {
+  .work {
+    &__key {
+      &-word {
+        font-size: rem(14);
+      }
+
+      &-words {
+        gap: rem(5);
+        margin-bottom: rem(40);
+      }
+    }
+
+    &__details {
+      padding: rem(5) 0 rem(30);
+      font-size: rem(14);
+      gap: rem(10);
+    }
+
+    &__btn {
+      bottom: -rem(20);
+      margin-top: rem(20);
+
+      > img {
+        width: rem(30);
+        height: rem(30);
+      }
+    }
+
+    &__title {
+      font-size: rem(18);
+    }
+  }
+}

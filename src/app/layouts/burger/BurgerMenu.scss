@@ -10,7 +10,7 @@
   background-color: $grey-black;
   z-index: 50;
   transition: all 0.4s;
-  left: -rem(300);
+  left: rem(-300);
 
   &--open {
     display: flex;
@@ -53,13 +53,13 @@
     padding: rem(10);
   }
 
-  &-bg {
+  &__bg {
     position: fixed;
     inset: 0;
     z-index: 25;
   }
 
-  &_lock {
+  &__lock {
     position: absolute;
     top: rem(40);
     right: rem(40);

@@ -2,9 +2,9 @@
 @use './mixins' as *;
 
 body {
-  background-image: url('../../../public/images/main/bg.png');
+  background-image: url('/images/main/bg.png');
   background-repeat: repeat;
-  overflow-x: hidden;
+  overflow: hidden auto;
   font-family: Mulish, sans-serif;
   font-size: rem(14);
   font-weight: 600;
@@ -12,6 +12,33 @@ body {
   color: $white;
   user-select: none;
   background-color: $grey;
+}
+
+html,
+body {
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar-button {
+    display: none;
+    width: rem(10);
+    height: rem(10);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    margin: rem(20) 0;
+    background-color: $golden;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
 }
 
 .App {

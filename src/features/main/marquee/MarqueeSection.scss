@@ -1,0 +1,99 @@
+.marquee {
+  width: 100%;
+  white-space: nowrap;
+  background-color: transparent;
+  color: $golden;
+  position: relative;
+  box-shadow: rem(0) rem(0) rem(10) rem(20) rgb(0 0 0 / 20%);
+  margin-bottom: rem(30);
+
+  &__wrapper {
+    position: absolute;
+    border: rem(2) solid $golden;
+    border-right: none;
+    border-left: none;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: rem(10) 0;
+    width: 100vw;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: rem(80);
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    &::before {
+      left: rem(0);
+      background: linear-gradient(to right, rgb(0 0 0 / 100%), transparent);
+    }
+
+    &::after {
+      right: rem(0);
+      background: linear-gradient(to left, rgb(0 0 0 / 100%), transparent);
+    }
+  }
+
+  &__container {
+    display: flex;
+    width: max-content;
+    animation: marquee 20s linear infinite;
+  }
+
+  &__content {
+    display: flex;
+
+    > li {
+      margin-right: rem(50);
+      font-size: rem(20);
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (width <= rem(1024)) {
+  .marquee {
+    &__content {
+      > li {
+        font-size: rem(18);
+      }
+    }
+  }
+}
+
+@media (width <= rem(768)) {
+  .marquee {
+    &__content {
+      > li {
+        font-size: rem(16);
+      }
+    }
+  }
+}
+
+@media (width <= rem(420)) {
+  .marquee {
+    padding: rem(5) 0;
+
+    &__content {
+      > li {
+        font-size: rem(14);
+      }
+    }
+  }
+}
