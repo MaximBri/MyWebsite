@@ -40,10 +40,15 @@
     background-color: $blue;
     border-radius: rem(10);
     opacity: 1;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, transform 0.3s ease-in-out;
 
     &:disabled {
-      opacity: 0.8;
+      opacity: 0.7;
+      cursor: auto;
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.98);
     }
   }
 
@@ -90,7 +95,6 @@
 
     > textarea {
       font-size: rem(16);
-      // padding: rem(10) rem(15);
       min-height: rem(40);
       max-height: rem(150);
     }
@@ -99,6 +103,10 @@
       margin: rem(20) auto 0;
       padding: rem(5) rem(10);
       font-size: rem(16);
+
+      &:active:not(:disabled) {
+        transform: scale(1);
+      }
     }
   }
 }

@@ -1,0 +1,163 @@
+.my-group {
+  display: flex;
+  gap: rem(20);
+  background-color: $grey;
+  border: rem(1) solid rgb(255 255 255 / 25%);
+  border-radius: rem(10);
+  padding: rem(20);
+  overflow: hidden;
+
+  &__header {
+    margin-top: rem(30);
+  }
+
+  &__link {
+    width: rem(168);
+    height: rem(168);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(27 146 209 / 25%);
+  }
+
+  &__texts {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+
+    &-title {
+      font-weight: 700;
+      font-size: rem(28);
+      margin-top: rem(4);
+    }
+
+    &-subtitle {
+      font-weight: 400;
+      font-size: rem(18);
+      color: rgb(255 255 255 / 70%);
+      margin: rem(12) 0;
+    }
+
+    &-button {
+      padding: rem(8) rem(24);
+      font-size: rem(16);
+      text-align: center;
+      border-radius: 8px;
+      background-color: $green;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+      &:hover {
+        background-color: $green-hover;
+      }
+
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+  }
+
+  &__images {
+    position: absolute;
+    right: 0;
+
+    &-megaphone {
+      position: absolute;
+      right: 0;
+    }
+
+    &-wind {
+      position: absolute;
+      right: rem(140);
+      top: rem(-20);
+    }
+
+    &-circle {
+      position: absolute;
+      top: rem(-20);
+      right: 0;
+
+      &--big {
+        position: absolute;
+        bottom: rem(-200);
+        right: 0;
+      }
+    }
+  }
+}
+
+@media (width <= 856px) {
+  .my-group {
+    &__images {
+      display: none;
+    }
+  }
+}
+
+@media (width <= 768px) {
+  .my-group {
+    gap: rem(10);
+    padding: rem(10);
+
+    &__header {
+      margin-top: rem(20);
+    }
+
+    &__link {
+      min-width: rem(148);
+      height: rem(148);
+    }
+
+    &__texts {
+      &-title {
+        font-size: rem(24);
+      }
+
+      &-subtitle {
+        font-size: rem(16);
+        margin: rem(8) 0;
+      }
+
+      &-button {
+        padding: rem(6) rem(20);
+
+        &:hover {
+          background-color: $green;
+        }
+
+        &:active {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 520px) {
+  .my-group {
+    &__link {
+      min-width: rem(100);
+      width: rem(100);
+      height: rem(100);
+
+      & > img {
+        width: rem(40);
+      }
+    }
+
+    &__texts {
+      &-title {
+        font-size: rem(20);
+      }
+
+      &-subtitle {
+        font-size: rem(14);
+      }
+
+      &-button {
+        padding: rem(6) rem(15);
+      }
+    }
+  }
+}

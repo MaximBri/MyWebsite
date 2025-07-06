@@ -8,6 +8,7 @@ import './LinkForm.scss'
 
 export const LinkForm = () => {
   const { chatId, token } = useMainContext()
+  
   const hiddenInput = useRef(null)
 
   const [message, setMessage] = useState<string>('')
@@ -52,7 +53,7 @@ export const LinkForm = () => {
         <button
           className='form__btn'
           onClick={(e) => sendForm(e)}
-          disabled={loading}
+          disabled={loading || !message}
         >
           {loading ? (
             <img src={loaderSvg} className='form__loader' alt='loading' />
