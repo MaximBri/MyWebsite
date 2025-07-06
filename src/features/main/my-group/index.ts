@@ -1,0 +1,1 @@
+export { MyGroup } from './MyGroup'
