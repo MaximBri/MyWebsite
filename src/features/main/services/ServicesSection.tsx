@@ -1,13 +1,11 @@
 import { services, servicesFeatures } from '@/shared/data/services'
 import './ServicesSection.scss'
+import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 
 export const ServicesSection = () => {
   return (
     <section className='services'>
-      <div id='animation' className='fade-in-left'>
-        <h2 className='title'>Услуги 👇</h2>
-        <div className='dot'></div>
-      </div>
+      <SectionTitle title={'Услуги 👇'} />
       <div id='animation' className='services__body fade-in-top'>
         <ul className='services__box'>
           {services.map((item, i) => {

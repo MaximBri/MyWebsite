@@ -30,11 +30,11 @@ interface worksBoxInterface {
   about: string
   link: string
   quality: number
+  specialTag?: string
 }
 
 interface WorkItemInterface {
   data: worksBoxInterface
-  key: number
 }
 
 interface reviewInterface {

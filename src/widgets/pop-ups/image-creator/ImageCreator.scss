@@ -1,0 +1,39 @@
+.creator {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  background-color: $white;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 20px;
+  opacity: 1;
+  transition: opacity 0.3s;
+
+  &__background {
+    position: fixed;
+    inset: 0;
+    background-color: #181818ab;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  &__image {
+    display: block;
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 20px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &--hidden {
+    opacity: 0;
+  }
+}

@@ -1,6 +1,7 @@
 import { skillsItems } from '@/shared/data/skillsBox'
 import { SkillItem } from '../skill-item'
 import './SkillsSection.scss'
+import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 const man1 = '/images/skills/operator (1).png'
 const man2 = '/images/skills/operator (2).png'
 
@@ -8,10 +9,7 @@ export const SkillsSection = () => {
   return (
     <section className='skills'>
       <div className='skills__top'>
-        <div id='animation' className='fade-in-left'>
-          <h1 className='title'>Стек</h1>
-          <div className='dot'></div>
-        </div>
+        <SectionTitle title='Стек, навыки' />
         <h3 id='animation' className='skills__descr fade-in-right'>
           <svg
             width='20px'
