@@ -2,7 +2,7 @@ import { MouseEvent, useRef, useState } from 'react'
 
 import { useMainContext } from '@/app/context/MainContext'
 import { sendMessageInTg } from '@/shared/utils/sendMessageInTg'
-import ThanksPopUp from '@/widgets/pop-ups/ThanksPopUp'
+import ThanksPopUp from '@/widgets/pop-ups/thanks/ThanksPopUp'
 import loaderSvg from './icons/loader.svg'
 import './LinkForm.scss'
 

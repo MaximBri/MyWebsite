@@ -18,7 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(27 146 209 / 25%);
+    background: url('/images/globals/group.jpg') center;
+    background-size: cover;
   }
 
   &__texts {

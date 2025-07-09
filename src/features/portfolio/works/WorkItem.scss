@@ -1,77 +1,36 @@
 .work {
-  // z-index: -100;
-  width: 100%;
-  padding: rem(20);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: rem(10);
+  width: calc(33% - 20px);
+  padding: rem(10) rem(20) rem(20);
   border-radius: rem(15);
   background-color: $grey;
   box-shadow: 0 rem(7) rem(8) rem(5) rgb(83 83 83 / 20%);
-  border: rem(2) solid #848484;
-
-  &__about {
-    position: relative;
-  }
-
-  &__main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  border: rem(2) solid #b47e7e;
 
   &__img {
     border-radius: rem(5);
     width: 100%;
   }
 
-  &__key {
-    &-word {
-      padding: rem(10) rem(20);
-      border-radius: rem(10);
-      background-color: $white;
-      color: $black;
-      font-size: rem(18);
-      font-weight: 600;
-    }
-
-    &-words {
-      margin-top: rem(10);
-      justify-content: end;
-      max-width: 48%;
-      gap: rem(5) rem(20);
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-  }
-
-  &__details {
-    margin-top: rem(20);
-    padding: rem(20) 0 rem(40);
-    font-size: rem(20);
-    display: flex;
-    flex-direction: column;
-    gap: rem(20);
-    border-top: rem(2) solid $black;
-  }
-
-  &__btn {
-    transition: all 0.8s;
-    position: absolute;
-    border-radius: 50%;
-    background-color: transparent;
-    bottom: -rem(20);
-    right: calc(50% - rem(25));
-    box-shadow: rem(4) rem(4) rem(35) 0 rgb(10 255 2 / 20%);
-    margin-top: rem(20);
-
-    > img {
-      width: rem(50);
-      height: rem(50);
-    }
-  }
-
   &__title {
-    margin: rem(10) 0;
     font-size: rem(28);
+  }
+
+  &__hint {
+    position: absolute;
+    padding: rem(3) rem(5);
+    transform: translate(5px, -40%);
+    top: 0;
+    right: 0;
+    font-size: rem(18);
+    line-height: 1.2;
+    background-color: $orange-red;
+    border-radius: 5px;
+    color: $white;
   }
 }
 
@@ -129,38 +88,18 @@
   .work {
     padding: rem(15);
 
-    &__key {
-      &-word {
-        padding: rem(5) rem(10);
-        font-size: rem(18);
-      }
-
-      &-words {
-        margin-top: rem(10);
-        gap: rem(5) rem(10);
-        max-width: 45%;
-      }
-    }
-
-    &__details {
-      margin-top: rem(10);
-      padding: rem(15) 0 rem(40);
-      font-size: rem(16);
-      gap: rem(15);
-    }
-
-    &__btn {
-      bottom: -rem(20);
-      margin-top: rem(20);
-
-      > img {
-        width: rem(40);
-        height: rem(40);
-      }
-    }
-
     &__title {
       font-size: rem(24);
+    }
+  }
+}
+
+@media (width <= 850px) {
+  .work {
+    width: calc(50% - 10px);
+
+    &__title {
+      font-size: rem(20);
     }
   }
 }
@@ -169,75 +108,25 @@
   .work {
     padding: rem(10);
 
-    &__main {
-      flex-direction: column;
-    }
-
-    &__key {
-      &-word {
-        padding: rem(5);
-        font-size: rem(16);
-      }
-
-      &-words {
-        width: 100%;
-        margin-top: rem(10);
-        gap: rem(5) rem(10);
-        max-width: 100%;
-        margin-bottom: rem(40);
-        justify-content: start;
-      }
-    }
-
-    &__details {
-      margin-top: rem(10);
-      padding: rem(10) 0 rem(40);
-      font-size: rem(16);
-      gap: rem(15);
-    }
-
-    &__btn {
-      bottom: -rem(20);
-      margin-top: rem(20);
-    }
-
     &__title {
-      font-size: rem(20);
+      font-size: rem(18);
+    }
+
+    &__hint {
+      padding: rem(3) rem(4);
+      font-size: rem(16);
     }
   }
 }
 
-@media (width <= rem(420)) {
+@media (width <= rem(470)) {
   .work {
-    &__key {
-      &-word {
-        font-size: rem(14);
-      }
+    width: 100%;
 
-      &-words {
-        gap: rem(5);
-        margin-bottom: rem(40);
-      }
-    }
-
-    &__details {
-      padding: rem(5) 0 rem(30);
-      font-size: rem(14);
-      gap: rem(10);
-    }
-
-    &__btn {
-      bottom: -rem(20);
-      margin-top: rem(20);
-
-      > img {
-        width: rem(30);
-        height: rem(30);
-      }
-    }
-
-    &__title {
-      font-size: rem(18);
+    &__hint {
+      padding: rem(3) rem(4);
+      transform: translate(5px, -20%);
+      font-size: rem(16);
     }
   }
 }
