@@ -36,51 +36,57 @@
 
 .word- {
   &html {
-    background-color: #ff8c00;
+    background-color: #ffa500;
     color: $black;
-    border: rem(3) solid #a38f76c5;
+    border: 2px solid #a38f76c5;
   }
 
   &css {
     background-color: #000dff;
     color: $white;
-    border: rem(3) solid #7679a3c5;
+    border: 2px solid #7679a3c5;
   }
 
   &javascript {
     background-color: #ffe600;
     color: $black;
-    border: rem(3) solid #a3a276c5;
+    border: 2px solid #a3a276c5;
   }
 
   &scss {
     background-color: #ff00f2;
     color: $white;
-    border: rem(3) solid #9e76a3c5;
+    border: 2px solid #54025fc5;
   }
 
   &tailwind {
     background-color: #00c3ff;
     color: $black;
-    border: rem(3) solid #7699a3c5;
+    border: 2px solid #7699a3c5;
   }
 
   &react {
     background-color: #2b00ff;
     color: $white;
-    border: rem(3) solid #7678a3c5;
+    border: 2px solid #7678a3c5;
   }
 
   &rtk {
     background-color: #a600ff;
     color: $white;
-    border: rem(3) solid #9176a3c5;
+    border: 2px solid #ff39b3c5;
   }
 
   &typescript {
     background-color: #40f;
     color: $white;
-    border: rem(3) solid #8376a3c5;
+    border: 2px solid #8376a3c5;
+  }
+
+  &vite, &webpack {
+    background-color: #4e29f3;
+    color: $white;
+    border: 2px solid #8376a3c5;
   }
 }
 
