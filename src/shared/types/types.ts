@@ -28,9 +28,9 @@ interface worksBoxInterface {
   difficulty: string
   tags: string[]
   about: string
-  link: string
-  quality: number
+  appLink?: string | 'private'
   specialTag?: string
+  gitRepo?: string | 'private'
 }
 
 interface WorkItemInterface {

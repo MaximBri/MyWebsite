@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: rem(24);
+  padding: rem(10) rem(24);
   transition: all 1s;
   background-color: $grey;
   gap: rem(30);
-  max-height: rem(100);
+  max-height: rem(70);
   border-bottom: rem(1) solid rgb(255 255 255 / 25%);
 
   &__left {
@@ -16,8 +16,8 @@
     > div {
       display: flex;
       align-items: center;
-      padding: rem(10);
-      font-size: rem(22);
+      padding: rem(8);
+      font-size: rem(18);
       gap: rem(10);
       border-radius: rem(10);
       background-color: $green;
@@ -26,7 +26,8 @@
 
   &__logo {
     height: 100%;
-    max-height: rem(80);
+    max-height: rem(60);
+    margin-top: rem(10);
   }
 
   &__fire {
@@ -40,7 +41,7 @@
     display: flex;
     align-items: center;
     gap: rem(20);
-    font-size: rem(20);
+    font-size: rem(18);
 
     > .active {
       border-bottom: rem(2) solid $green;
@@ -60,7 +61,7 @@
     animation: shake 2s ease-in-out infinite;
 
     > img {
-      width: rem(40);
+      width: rem(35);
     }
   }
 }
@@ -108,7 +109,6 @@
 @media (width <= rem(1024)) {
   .header {
     gap: rem(30);
-    max-height: rem(90);
 
     &__left {
       > div {
@@ -133,6 +133,8 @@
 
 @media (width <= rem(768)) {
   .header {
+    max-height: rem(60);
+
     &__nav {
       display: none;
     }
@@ -141,7 +143,7 @@
 
 @media (width <= rem(460)) {
   .header {
-    padding: rem(14);
+    padding: rem(8) rem(14);
 
     &__left {
       > div {

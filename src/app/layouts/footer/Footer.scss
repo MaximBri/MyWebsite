@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: rem(70);
+  height: rem(50);
   font-size: rem(18);
   text-align: center;
   background-color: $grey;
@@ -13,7 +13,7 @@
     top: 50%;
     right: rem(50);
     transform: translate(50%, -50%);
-    width: rem(40);
+    width: rem(30);
 
     > img {
       width: 100%;
@@ -31,12 +31,15 @@
 
 @media (width <= rem(1024)) {
   .footer {
-    height: rem(50);
-    font-size: rem(18);
+    height: rem(40);
+    font-size: rem(16);
 
     &__github {
       top: 50%;
-      width: rem(30);
+    }
+
+    &__author {
+      font-size: rem(18);
     }
   }
 }
@@ -45,6 +48,10 @@
   .footer {
     &__github {
       display: none;
+    }
+
+    &__author {
+      font-size: rem(16);
     }
   }
 }
