@@ -5,7 +5,7 @@ import { getDataToSendMessages } from '@/shared/utils/getDataToSendMessages'
 import { useMainContext } from '../context/MainContext'
 import { Header } from './header/Header'
 import { Footer } from './footer/Footer'
-import '../styles/animations.scss'
+import '../styles/Animations.scss'
 
 export const MainLayout = () => {
   const { setChatId, setToken } = useMainContext()
