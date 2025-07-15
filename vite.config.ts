@@ -4,6 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import path from 'path'
 
 export default defineConfig({
+  base: '/MyWebsite/',
   plugins: [react(), tsconfigPaths()],
   css: {
     preprocessorOptions: {
