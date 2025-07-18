@@ -6,7 +6,7 @@ import { useMainContext } from '../context/MainContext'
 import { Header } from './header/Header'
 import { Footer } from './footer/Footer'
 import { getWorks } from '@/shared/utils/getWorks'
-import '../styles/animations.scss'
+import '../styles/Animations.scss'
 
 export const MainLayout = () => {
   const { setChatId, setToken, works, setWorks } = useMainContext()
