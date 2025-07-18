@@ -9,39 +9,41 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # 1) Checkout
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2) Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '18' # <-- более стабильная LTS‑версия
           cache: 'npm'
 
+      # 3) Build
       - name: Install & Build
         run: |
           npm ci --legacy-peer-deps
           npm run build
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Add VPS to known_hosts
+      # 4) Настройка SSH вручную
+      - name: Setup SSH key
         run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
+      # 5) Диагностический тест подключения
       - name: Test SSH connection (verbose)
         run: |
-          ssh -vvv -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} exit
+          ssh -vvv -i ~/.ssh/id_ed25519 \
+            -o StrictHostKeyChecking=no \
+            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} exit
 
+      # 6) Деплой через rsync
       - name: Deploy to VPS
-        env:
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
         run: |
-          rsync -avz --delete \
-            ./dist/ \
-            $REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH/
+          rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+            --delete ./dist/ \
+            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
