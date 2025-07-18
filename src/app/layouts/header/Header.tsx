@@ -1,26 +1,41 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useMediaQuery } from 'react-responsive'
+import { createPortal } from 'react-dom'
 
 import { routes as navRoutes } from '@/shared/data/routes'
 import { GithubLink } from '@/shared/data/private'
 import { routes } from '@/shared/config/routes'
+import { BurgerMenu } from '../burger/BurgerMenu'
 import './Header.scss'
 import '../burger/BurgerMenu.scss'
-import { useMediaQuery } from 'react-responsive'
-import { createPortal } from 'react-dom'
-import { BurgerMenu } from '../burger/BurgerMenu'
 const logo = '/images/globals/Logo-light.png'
 const githubSVG = '/images/globals/github.svg'
 
 export const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 })
+  const location = useLocation()
+
   const header = useRef<HTMLElement>(null)
+  const navRef = useRef<HTMLElement>(null)
+  const indicatorRef = useRef<HTMLDivElement>(null)
 
   const [burgerIsOpen, setBurgerIsOpen] = useState<boolean>(false)
 
   useEffect(() => {
-    if (header) header.current.className = 'header'
-  }, [header])
+    const activeLink = navRef.current?.querySelector(
+      '.header__nav-link.active'
+    ) as HTMLElement
+    if (activeLink && indicatorRef.current) {
+      const { offsetLeft, offsetWidth } = activeLink
+      indicatorRef.current.style.transform = `translateX(${offsetLeft}px)`
+      indicatorRef.current.style.width = `${offsetWidth}px`
+    }
+  }, [location.pathname])
+
+  useEffect(() => {
+    if (header.current) header.current.classList.remove('unvisible')
+  }, [])
 
   return (
     <>
@@ -34,18 +49,26 @@ export const Header = () => {
             <div className='header__fire'></div>
           </div>
         </div>
-        <nav className='header__nav'>
-          {navRoutes.map((item, i) => {
-            return (
-              <NavLink className='header__nav-link' to={item.path} key={i}>
+        {!isMobile && (
+          <nav className='header__nav' ref={navRef}>
+            {navRoutes.map((item, i) => (
+              <NavLink
+                key={i}
+                to={item.path}
+                end
+                className={({ isActive }) =>
+                  `header__nav-link${isActive ? ' active' : ''}`
+                }
+              >
                 {item.name}
               </NavLink>
-            )
-          })}
-          <Link className='header__github' to={GithubLink} target='_blank'>
-            <img src={githubSVG} alt='github' />
-          </Link>
-        </nav>
+            ))}
+            <Link className='header__github' to={GithubLink} target='_blank'>
+              <img src={githubSVG} alt='github' />
+            </Link>
+            <div className='header__indicator' ref={indicatorRef} />
+          </nav>
+        )}
         {isMobile && (
           <div className='burger--open' onClick={() => setBurgerIsOpen(true)}>
             <div></div>

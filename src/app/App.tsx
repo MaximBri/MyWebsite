@@ -1,17 +1,17 @@
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import { MainProvider } from './context/MainContext'
 import { AppRoutes } from './routes/AppRoutes'
-import './styles/Reset.css'
-import './styles/Globals.scss'
+import './styles/reset.css'
+import './styles/globals.scss'
 
 function App() {
   return (
     <div className='App'>
       <MainProvider>
-        <HashRouter>
+        <BrowserRouter>
           <AppRoutes />
-        </HashRouter>
+        </BrowserRouter>
       </MainProvider>
     </div>
   )
