@@ -37,31 +37,46 @@
     animation: blink 3s infinite;
   }
 
-  &__nav {
-    display: flex;
-    align-items: center;
-    gap: rem(20);
-    font-size: rem(18);
-
-    > .active {
-      border-bottom: rem(2) solid $green;
-    }
-
-    > a {
-      transition: all 0.3s;
-
-      &:hover:not(:last-child) {
-        border-bottom: rem(1) solid $green;
-      }
-    }
-  }
-
   &__github {
     height: 100%;
     animation: shake 2s ease-in-out infinite;
 
     > img {
       width: rem(35);
+    }
+  }
+
+  &__nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: rem(20);
+    font-size: rem(18);
+
+    .header__nav-link {
+      position: relative;
+      z-index: 1;
+      padding: rem(8) rem(12);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    & > .header__github {
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s;
+    }
+
+    .header__indicator {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: rem(4);
+      border-radius: 2px;
+      background-color: $green;
+      transition: transform 0.3s ease, width 0.3s ease;
+      z-index: 0;
+      width: 0;
     }
   }
 }
@@ -123,10 +138,6 @@
     &__nav {
       gap: rem(20);
       font-size: rem(16);
-
-      > .active {
-        border-bottom: rem(2) solid $green;
-      }
     }
   }
 }
