@@ -45,7 +45,7 @@ export const Header = () => {
             <img src={logo} alt='Logo' className='header__logo' />
           </Link>
           <div>
-            Frontend-разработка
+            Frontend
             <div className='header__fire'></div>
           </div>
         </div>
