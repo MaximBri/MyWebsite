@@ -1,4 +1,4 @@
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import { MainProvider } from './context/MainContext'
 import { AppRoutes } from './routes/AppRoutes'
@@ -9,9 +9,9 @@ function App() {
   return (
     <div className='App'>
       <MainProvider>
-        <HashRouter>
+        <BrowserRouter>
           <AppRoutes />
-        </HashRouter>
+        </BrowserRouter>
       </MainProvider>
     </div>
   )

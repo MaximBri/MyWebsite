@@ -28,6 +28,7 @@ interface worksBoxInterface {
   difficulty: string
   tags: string[]
   about: string
+  allImages: string[]
   appLink?: string | 'private'
   specialTag?: string
   gitRepo?: string | 'private'

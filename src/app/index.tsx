@@ -5,8 +5,4 @@ import App from './App'
 const rootElement = document.getElementById('root')
 if (!rootElement) alert('Ошибка на сайте')
 const root = ReactDOM.createRoot(rootElement as HTMLDivElement)
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+root.render(<App />)

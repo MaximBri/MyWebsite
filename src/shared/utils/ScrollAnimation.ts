@@ -1,3 +1,4 @@
+import { useMainContext } from '@/app/context/MainContext'
 import { useEffect } from 'react'
 
 const lazyLoadOnScroll = (className: string, procent: number): void => {
@@ -12,6 +13,7 @@ const lazyLoadOnScroll = (className: string, procent: number): void => {
 }
 
 const ScrollAnimation = () => {
+  const { works } = useMainContext()
   const handleScroll = () => {
     lazyLoadOnScroll('animation', 0.8)
   }
@@ -19,11 +21,11 @@ const ScrollAnimation = () => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     handleScroll()
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [works])
 }
 
 export default ScrollAnimation
