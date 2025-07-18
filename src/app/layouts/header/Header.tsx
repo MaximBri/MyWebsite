@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import { createPortal } from 'react-dom'
 
-import { routes as navRoutes } from '@/shared/data/routes'
+import { navRoutes } from '@/shared/data/navRoutes'
 import { GithubLink } from '@/shared/data/private'
 import { routes } from '@/shared/config/routes'
 import { BurgerMenu } from '../burger/BurgerMenu'

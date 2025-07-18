@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { FC, useEffect, useState } from 'react'
 
-import { routes } from '@/shared/data/routes'
+import { navRoutes } from '@/shared/data/navRoutes'
 import { GithubLink } from '@/shared/data/private'
 const githubSVG = '/images/globals/github.svg'
 
@@ -27,7 +27,7 @@ export const BurgerMenu: FC<{ close: () => void }> = ({ close }) => {
             <div></div>
             <div></div>
           </button>
-          {routes.map((item, i) => {
+          {navRoutes.map((item, i) => {
             return (
               <NavLink
                 key={i}
