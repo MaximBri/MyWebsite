@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { TgGroupLink } from '@/shared/data/private'
 import tgSvg from './icons/tg.svg'
 import megaphoneSvg from './icons/megaphone.svg'
@@ -8,14 +8,6 @@ import bigCircleSvg from './icons/circle-big.svg'
 import './MyGroup.scss'
 
 export const MyGroup = () => {
-  const { search } = useLocation()
-  const params = new URLSearchParams(search)
-
-  const isPublic = params.get('isPublic') || false
-
-  if (!isPublic) {
-    return null
-  }
   return (
     <section className='my-group__header'>
       <div id='animation' className='fade-in-left'>

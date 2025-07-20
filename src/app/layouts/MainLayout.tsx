@@ -32,8 +32,6 @@ export const MainLayout = () => {
     }
   }, [works])
 
-  // useScrollAnimation('animation', 0.8)
-
   return (
     <>
       <Header />

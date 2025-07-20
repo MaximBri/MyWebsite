@@ -4,6 +4,7 @@ import { MainProvider } from './context/MainContext'
 import { AppRoutes } from './routes/AppRoutes'
 import './styles/Reset.css'
 import './styles/Globals.scss'
+import { CursorFollower } from '@/features/cursor-follower'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <MainProvider>
         <BrowserRouter>
           <AppRoutes />
+          <CursorFollower />
         </BrowserRouter>
       </MainProvider>
     </div>

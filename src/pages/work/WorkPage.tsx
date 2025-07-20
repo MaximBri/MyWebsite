@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { routes } from '@/shared/config/routes'
@@ -19,6 +20,8 @@ export const WorkPage = () => {
   }
 
   if (!data) return null
+
+  console.log(data.about)
 
   return (
     <section className='workpage'>
@@ -63,7 +66,13 @@ export const WorkPage = () => {
       </nav>
       <SectionTitle title='Описание проекта' withAnimation={false} />
       <div className='workpage__description'>
-        <ReactMarkdown>{data.about}</ReactMarkdown>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          disallowedElements={[]}
+          allowElement={(node) => true}
+        >
+          {data.about}
+        </ReactMarkdown>
       </div>
       <SectionTitle title='Стек' withAnimation={false} />
       <ul className='workpage__stack'>
