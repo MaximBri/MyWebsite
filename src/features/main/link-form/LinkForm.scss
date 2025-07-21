@@ -15,10 +15,22 @@
     padding: rem(10) rem(15);
     border: rem(1) solid rgb(255 255 255 / 25%);
     border-radius: rem(10);
-    min-height: rem(45);
+    min-height: rem(100);
     max-height: rem(200);
     resize: vertical;
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
 
+    &::-webkit-scrollbar-thumb {
+      background-color: $golden;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
     &::placeholder {
       color: $white;
     }
