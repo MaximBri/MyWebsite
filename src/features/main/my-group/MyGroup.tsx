@@ -19,7 +19,7 @@ export const MyGroup = () => {
           <img src={tgSvg} alt='telegram' />
         </Link>
         <div className='my-group__texts'>
-          <h3 className='my-group__texts-title'>На пути к Frontend`у</h3>
+          <h3 className='my-group__texts-title'>Записки фронтендера</h3>
           <p className='my-group__texts-subtitle'>
             Вещаю о фронтенд разработке и не только
           </p>
