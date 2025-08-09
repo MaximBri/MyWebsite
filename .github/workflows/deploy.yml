@@ -82,28 +82,33 @@ jobs:
           mkdir -p build-dir
           cp -r .next public package.json package-lock.json node_modules build-dir/
           tar -czf build.tar.gz -C build-dir .
+          ls -la build.tar.gz # Проверка, что архив создан
 
       - name: Upload to server
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/scp-action@v0.1.7 # Обновлено до последней версии
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: 'build.tar.gz'
           target: '/var/www/front-craft'
-          strip_components: 1 # Удаляет префикс директории при распаковке
+          strip_components: 1
+          debug: true # Включаем отладочные логи
 
       - name: SSH and deploy
-        uses: appleboy/ssh-action@v0.1.8
+        uses: appleboy/ssh-action@v1.0.3 # Обновлено до последней версии
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            set -e # Прерывать выполнение при ошибке
+            set -e
             cd /var/www/front-craft
+            df -h # Проверка свободного места
+            ls -la # Проверка содержимого директории
             rm -rf .next public node_modules package.json package-lock.json || true
             tar -xzf build.tar.gz
+            ls -la # Проверка после распаковки
             pm2 delete front-craft || true
             pm2 start npm --name front-craft -- run start
             pm2 save
