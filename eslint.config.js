@@ -6,12 +6,13 @@ module.exports = {
         serviceworker: true,
       },
       rules: {
-        'no-restricted-globals': [
-          'error',
-          'event',
-          'fdescribe', 
-        ],
+        'no-restricted-globals': ['error', 'event', 'fdescribe'],
       },
     },
   ],
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
 }

@@ -1,32 +1,35 @@
 import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm';
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import remarkGfm from 'remark-gfm'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { routes } from '@/shared/config/routes'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 import { useMainContext } from '@/app/context/MainContext'
 import { Carousel } from '@/features/portfolio/carousel'
 import './WorkPage.scss'
+import Image from 'next/image'
 
 export const WorkPage = () => {
-  const { id } = useParams()
+  const router = useRouter()
+  const { id } = router.query
   const { works } = useMainContext()
-  const navigate = useNavigate()
+
+  if (!id || Array.isArray(id)) return null
 
   const data = works?.find((item) => item.img === id)
 
-  if (!data && works) {
-    navigate('/')
+  if (works && !data) {
+    router.push(routes.home)
+    return null
   }
 
   if (!data) return null
 
-  console.log(data.about)
-
   return (
     <section className='workpage'>
       <div className='workpage__path'>
-        <Link to={routes.portfolio}>{'Работы /'}</Link>
+        <Link href={routes.portfolio}>Работы /</Link>
         <span>{data.title}</span>
       </div>
       <h2 className='workpage__title'>{data.title}</h2>
@@ -39,8 +42,9 @@ export const WorkPage = () => {
         {data.appLink !== 'private' ? (
           <Link
             className='workpage__nav-button'
-            to={data.appLink}
+            href={data.appLink ?? ''}
             target='_blank'
+            rel='noopener noreferrer'
           >
             Ссылка на сайт
           </Link>
@@ -52,11 +56,17 @@ export const WorkPage = () => {
         {data.gitRepo !== 'private' ? (
           <Link
             className='workpage__nav-button'
-            to={data.gitRepo}
+            href={data.gitRepo ?? ''}
             target='_blank'
+            rel='noopener noreferrer'
           >
             Репозиторий проекта
-            <img src={'/images/globals/github.svg'} alt='github' />
+            <Image
+              src={'/images/globals/github.svg'}
+              alt='github'
+              width={22}
+              height={22}
+            />
           </Link>
         ) : (
           <div className='workpage__nav-button workpage__nav-button--private'>
