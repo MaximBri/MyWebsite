@@ -84,6 +84,11 @@ jobs:
           tar -czf build.tar.gz -C build-dir .
           ls -lh build.tar.gz # Проверка размера архива
 
+      - name: Create SSH key file
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key
+          chmod 600 ssh_key
+
       - name: Test SSH connection
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -95,18 +100,13 @@ jobs:
             mkdir -p /var/www/front-craft
             ls -ld /var/www/front-craft
             df -h /var/www/front-craft
+            echo "SSH connection successful"
 
-      - name: Upload to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: 'build.tar.gz'
-          target: '/var/www/front-craft'
-          strip_components: 1
-          overwrite: true # Перезаписывать существующие файлы
-          debug: true
+      - name: Upload file via SCP
+        run: |
+          scp -o StrictHostKeyChecking=no -i ssh_key build.tar.gz ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/var/www/front-craft/build.tar.gz
+        env:
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: SSH and deploy
         uses: appleboy/ssh-action@v1.0.3
@@ -117,11 +117,11 @@ jobs:
           script: |
             set -e
             cd /var/www/front-craft
-            df -h # Проверка свободного места
-            ls -la # Проверка содержимого
+            df -h
+            ls -la
             rm -rf .next public node_modules package.json package-lock.json || true
             tar -xzf build.tar.gz
-            ls -la # Проверка после распаковки
+            ls -la
             pm2 delete front-craft || true
             pm2 start npm --name front-craft -- run start
             pm2 save
