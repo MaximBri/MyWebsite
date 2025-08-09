@@ -71,26 +71,50 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Prepare SSH key
-        run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+      - name: Archive production files
+        run: tar -czf build.tar.gz .next public package.json package-lock.json node_modules
 
-      - name: Rsync build + prod deps to VPS
-        run: |
-          rsync -avz --delete \
-            -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-            .next/ public/ node_modules/ package.json package-lock.json ecosystem.config.js \
-            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
+      - name: Deploy to server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "build.tar.gz"
+          target: "/var/www/front-craft"
 
-      - name: Ensure remote dir exists & set permissions
-        run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
-            "bash -lc 'mkdir -p \"${{ secrets.REMOTE_PATH }}\" && chmod -R u+rwX \"${{ secrets.REMOTE_PATH }}\" || true'"
+      - name: SSH restart app
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/front-craft
+            tar -xzf build.tar.gz
+            pm2 delete front-craft || true
+            pm2 start npm --name front-craft -- run start
+            pm2 save
+      # - name: Prepare SSH key
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+      #     chmod 600 ~/.ssh/id_ed25519
+      #     ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Restart app via pm2
-        run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
-            "bash -lc 'cd \"${{ secrets.REMOTE_PATH }}\" && pm2 startOrRestart ecosystem.config.js --env production && pm2 save'"
+      # - name: Rsync build + prod deps to VPS
+      #   run: |
+      #     rsync -avz --delete \
+      #       -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+      #       .next/ public/ node_modules/ package.json package-lock.json ecosystem.config.js \
+      #       ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
+
+      # - name: Ensure remote dir exists & set permissions
+      #   run: |
+      #     ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
+      #       "bash -lc 'mkdir -p \"${{ secrets.REMOTE_PATH }}\" && chmod -R u+rwX \"${{ secrets.REMOTE_PATH }}\" || true'"
+
+      # - name: Restart app via pm2
+      #   run: |
+      #     ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
+      #       "bash -lc 'cd \"${{ secrets.REMOTE_PATH }}\" && pm2 startOrRestart ecosystem.config.js --env production && pm2 save'"
