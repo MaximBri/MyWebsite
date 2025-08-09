@@ -49,13 +49,13 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/wide-1.png",
+      "src": "/screenshots/wide.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "/screenshots/mobile-1.png",
+      "src": "/screenshots/mobile.png",
       "sizes": "640x360",
       "type": "image/png"
     }

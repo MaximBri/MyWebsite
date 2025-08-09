@@ -18,10 +18,11 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - name: Install & Build
-        run: |
-          npm ci --legacy-peer-deps
-          npm run build
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build Next.js app
+        run: npm run build
 
       - name: Setup SSH key
         run: |
@@ -30,8 +31,16 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to VPS
+      - name: Deploy files to VPS
         run: |
           rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-            --delete ./dist/ \
+            --delete .next/ \
+            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/.next/
+
+          rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+            package.json package-lock.json .env \
             ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
+
+      - name: Install dependencies on server & restart app
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "bash -lc 'cd ${{ secrets.REMOTE_PATH }} && npm ci --production --legacy-peer-deps && pm2 restart next-app || pm2 start npm --name next-app -- start'"

@@ -3,6 +3,7 @@ import './SkillItem.scss'
 
 export const SkillItem = ({ title, img, scale }: SkillItemInterface) => {
   const [active, setActive] = useState<boolean>(false)
+  
   return (
     <li
       className={`skill__box-item ${active ? 'flipped' : ''}`}
