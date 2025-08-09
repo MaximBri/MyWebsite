@@ -1,3 +1,49 @@
+# name: CI/CD Deploy to VPS
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '22'
+#           cache: 'npm'
+
+#       - name: Install dependencies
+#         run: npm ci --legacy-peer-deps
+
+#       - name: Build Next.js app
+#         run: npm run build
+
+#       - name: Setup SSH key
+#         run: |
+#           mkdir -p ~/.ssh
+#           printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+#           chmod 600 ~/.ssh/id_ed25519
+#           ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+#       - name: Deploy files to VPS
+#         run: |
+#           rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+#             --delete .next/ \
+#             ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
+
+#           rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+#             package.json package-lock.json .env \
+#             ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
+
+#       - name: Install dependencies on server & restart app
+#         run: |
+#           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "bash -lc 'cd ${{ secrets.REMOTE_PATH }} && npm ci --production --legacy-peer-deps && pm2 restart next-app || pm2 start npm --name next-app -- start'"
 name: CI/CD Deploy to VPS
 
 on:
@@ -18,29 +64,33 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+      - name: Install production dependencies (CI)
+        run: |
+          npm ci --production --prefer-offline --no-audit
 
       - name: Build Next.js app
         run: npm run build
 
-      - name: Setup SSH key
+      - name: Prepare SSH key
         run: |
           mkdir -p ~/.ssh
           printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy files to VPS
+      - name: Rsync build + prod deps to VPS
         run: |
-          rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-            --delete .next/ \
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+            .next/ public/ node_modules/ package.json package-lock.json ecosystem.config.js \
             ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
 
-          rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-            package.json package-lock.json .env \
-            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
-
-      - name: Install dependencies on server & restart app
+      - name: Ensure remote dir exists & set permissions
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "bash -lc 'cd ${{ secrets.REMOTE_PATH }} && npm ci --production --legacy-peer-deps && pm2 restart next-app || pm2 start npm --name next-app -- start'"
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
+            "bash -lc 'mkdir -p \"${{ secrets.REMOTE_PATH }}\" && chmod -R u+rwX \"${{ secrets.REMOTE_PATH }}\" || true'"
+
+      - name: Restart app via pm2
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
+            "bash -lc 'cd \"${{ secrets.REMOTE_PATH }}\" && pm2 startOrRestart ecosystem.config.js --env production && pm2 save'"
