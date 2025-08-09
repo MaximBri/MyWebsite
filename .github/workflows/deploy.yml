@@ -89,7 +89,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key
           chmod 600 ssh_key
 
-      - name: Test SSH connection
+      - name: Test SSH connection and prepare directory
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.REMOTE_HOST }}
@@ -98,9 +98,11 @@ jobs:
           script: |
             whoami
             mkdir -p /var/www/front-craft
+            chown ${REMOTE_USER}:${REMOTE_USER} /var/www/front-craft
+            chmod 755 /var/www/front-craft
             ls -ld /var/www/front-craft
             df -h /var/www/front-craft
-            echo "SSH connection successful"
+            echo "SSH connection and directory setup successful"
 
       - name: Upload file via SCP
         run: |
