@@ -2,7 +2,6 @@ import path from 'path'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: 'react',
   reactStrictMode: true,
   webpack: (config) => {
     config.resolve.alias = {
