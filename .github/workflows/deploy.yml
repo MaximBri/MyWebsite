@@ -69,13 +69,18 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps --prefer-offline --no-audit
+
       - name: Build Next.js app
         run: npm run build
+        env:
+          NODE_ENV: production
 
-      - name: Archive source files
+      - name: Archive production files
         run: |
-          mkdir build-dir
-          cp -r .next public package.json package-lock.json build-dir/
+          mkdir -p build-dir
+          cp -r .next public package.json package-lock.json node_modules build-dir/
           tar -czf build.tar.gz -C build-dir .
 
       - name: Upload to server
@@ -84,8 +89,9 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: 'app.tar.gz'
+          source: 'build.tar.gz'
           target: '/var/www/front-craft'
+          strip_components: 1 # Удаляет префикс директории при распаковке
 
       - name: SSH and deploy
         uses: appleboy/ssh-action@v0.1.8
@@ -94,10 +100,10 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e # Прерывать выполнение при ошибке
             cd /var/www/front-craft
-            tar -xzf app.tar.gz
-            npm ci --legacy-peer-deps --only=production
-            npm run build
+            rm -rf .next public node_modules package.json package-lock.json || true
+            tar -xzf build.tar.gz
             pm2 delete front-craft || true
             pm2 start npm --name front-craft -- run start
             pm2 save
