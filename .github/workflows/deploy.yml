@@ -64,7 +64,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Archive source files
-        run: tar --exclude=node_modules --exclude=.next -czf app.tar.gz .
+        run: |
+          mkdir build-dir
+          cp -r .next public package.json package-lock.json build-dir/
+          tar -czf build.tar.gz -C build-dir .
 
       - name: Upload to server
         uses: appleboy/scp-action@v0.1.4
