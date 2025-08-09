@@ -36,9 +36,11 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".next/types/**/*.ts",
+    "front-craft/types/**/*.ts",
     "next-env.d.ts",
     "src",
-    ".next/types/**/*.ts"
+    "react/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

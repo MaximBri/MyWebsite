@@ -12,6 +12,8 @@
 /build
 /dist
 /.next
+/react
+/front-craft
 
 # misc
 .DS_Store
