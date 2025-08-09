@@ -2,6 +2,7 @@ import { skillsItems } from '@/shared/data/skillsBox'
 import { SkillItem } from '../skill-item'
 import './SkillsSection.scss'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
+import Image from 'next/image'
 const man1 = '/images/skills/operator (1).png'
 const man2 = '/images/skills/operator (2).png'
 
@@ -36,8 +37,20 @@ export const SkillsSection = () => {
           />
         ))}
       </ul>
-      <img className='skills__img' src={man1} alt='man' />
-      <img className='skills__img' src={man2} alt='man' />
+      <Image
+        className='skills__img'
+        width={173}
+        height={173}
+        src={man1}
+        alt='man'
+      />
+      <Image
+        className='skills__img'
+        width={173}
+        height={173}
+        src={man2}
+        alt='man'
+      />
     </section>
   )
 }

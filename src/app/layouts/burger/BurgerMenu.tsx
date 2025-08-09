@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { navRoutes } from '@/shared/data/navRoutes'
 import { GithubLink } from '@/shared/data/private'
+import Image from 'next/image'
 const githubSVG = '/images/globals/github.svg'
 
 export const BurgerMenu: FC<{ close: () => void }> = ({ close }) => {
@@ -40,7 +41,7 @@ export const BurgerMenu: FC<{ close: () => void }> = ({ close }) => {
             )
           })}
           <NavLink className='burger__github' to={GithubLink} target='_blank'>
-            <img src={githubSVG} alt='github' />
+            <Image src={githubSVG} alt='github' />
           </NavLink>
         </div>
       </section>

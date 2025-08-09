@@ -1,4 +1,3 @@
-import { Outlet } from 'react-router-dom'
 import { useEffect } from 'react'
 
 import { getDataToSendMessages } from '@/shared/utils/getDataToSendMessages'
@@ -7,8 +6,10 @@ import { Header } from './header/Header'
 import { Footer } from './footer/Footer'
 import { getWorks } from '@/shared/utils/getWorks'
 import '../styles/Animations.scss'
+import '../styles/Globals.scss'
+import '../styles/Reset.css'
 
-export const MainLayout = () => {
+export const MainLayout = ({ children }) => {
   const { setChatId, setToken, works, setWorks } = useMainContext()
 
   const setDataInStore = async () => {
@@ -35,9 +36,7 @@ export const MainLayout = () => {
   return (
     <>
       <Header />
-      <main className='main container'>
-        <Outlet />
-      </main>
+      <main className='main container'>{children}</main>
       <Footer />
     </>
   )

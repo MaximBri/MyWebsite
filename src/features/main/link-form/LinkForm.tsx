@@ -5,11 +5,12 @@ import { sendMessageInTg } from '@/shared/utils/sendMessageInTg'
 import ThanksPopUp from '@/widgets/pop-ups/thanks/ThanksPopUp'
 import loaderSvg from './icons/loader.svg'
 import './LinkForm.scss'
+import Image from 'next/image'
 
 export const LinkForm = () => {
   const { chatId, token } = useMainContext()
-  
-  const hiddenInput = useRef(null)
+
+  const hiddenInput = useRef<HTMLInputElement>(null)
 
   const [message, setMessage] = useState<string>('')
   const [popUp, setPopUp] = useState<boolean>(false)
@@ -17,7 +18,7 @@ export const LinkForm = () => {
 
   const sendForm = async (e: MouseEvent) => {
     e.preventDefault()
-    if (message && !hiddenInput.current.value && !loading) {
+    if (message && !hiddenInput.current?.value && !loading && chatId && token) {
       setLoading(true)
       try {
         const text = `Сообщение: ${message}`
@@ -56,7 +57,13 @@ export const LinkForm = () => {
           disabled={loading || !message}
         >
           {loading ? (
-            <img src={loaderSvg} className='form__loader' alt='loading' />
+            <Image
+              src={loaderSvg}
+              width={35}
+              height={35}
+              className='form__loader'
+              alt='loading'
+            />
           ) : (
             'Отправить'
           )}

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import { createPortal } from 'react-dom'
 
@@ -9,12 +8,15 @@ import { routes } from '@/shared/config/routes'
 import { BurgerMenu } from '../burger/BurgerMenu'
 import './Header.scss'
 import '../burger/BurgerMenu.scss'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import Image from 'next/image'
 const logo = '/images/globals/Logo-light.png'
 const githubSVG = '/images/globals/github.svg'
 
 export const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 })
-  const location = useLocation()
+  const location = useRouter()
 
   const header = useRef<HTMLElement>(null)
   const navRef = useRef<HTMLElement>(null)
@@ -41,8 +43,14 @@ export const Header = () => {
     <>
       <header ref={header} className='header unvisible'>
         <div className='header__left'>
-          <Link to={routes.home}>
-            <img src={logo} alt='Logo' className='header__logo' />
+          <Link href={routes.home}>
+            <Image
+              src={logo}
+              width={85}
+              height={60}
+              alt='Logo'
+              className='header__logo'
+            />
           </Link>
           <div>
             Frontend-разработка
@@ -51,20 +59,20 @@ export const Header = () => {
         </div>
         {!isMobile && (
           <nav className='header__nav' ref={navRef}>
-            {navRoutes.map((item, i) => (
-              <NavLink
-                key={i}
-                to={item.path}
-                end
-                className={({ isActive }) =>
-                  `header__nav-link${isActive ? ' active' : ''}`
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
-            <Link className='header__github' to={GithubLink} target='_blank'>
-              <img src={githubSVG} alt='github' />
+            {navRoutes.map((item, i) => {
+              const isActive = location.pathname === item.path
+              return (
+                <Link
+                  key={i}
+                  href={item.path}
+                  className={`header__nav-link${isActive ? ' active' : ''}`}
+                >
+                  {item.name}
+                </Link>
+              )
+            })}
+            <Link className='header__github' href={GithubLink} target='_blank'>
+              <Image src={githubSVG} width={35} height={35} alt='github' />
             </Link>
             <div className='header__indicator' ref={indicatorRef} />
           </nav>

@@ -2,6 +2,7 @@ import { FC, useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ArrowSvg from './icons/right-arrow.svg'
 import './Carousel.scss'
+import Image from 'next/image'
 
 export const Carousel: FC<{ paths: string[]; filesPath: string }> = ({
   paths,
@@ -75,9 +76,11 @@ export const Carousel: FC<{ paths: string[]; filesPath: string }> = ({
             className='carousel__button carousel__button--prev'
             onClick={() => handleSelect(activeIndex - 1)}
           >
-            <img
+            <Image
               src={ArrowSvg}
               alt='left arrow'
+              width={30}
+              height={30}
               style={{ transform: 'rotate(180deg)' }}
             />
           </button>
@@ -87,7 +90,7 @@ export const Carousel: FC<{ paths: string[]; filesPath: string }> = ({
             className='carousel__button carousel__button--next'
             onClick={() => handleSelect(activeIndex + 1)}
           >
-            <img src={ArrowSvg} alt='left arrow' />
+            <Image src={ArrowSvg} width={30} height={30} alt='left arrow' />
           </button>
         )}
 

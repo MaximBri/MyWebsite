@@ -56,6 +56,11 @@ export const skillsItems = [
     techName: 'docker.png',
   },
   {
+    title: 'Jest - библиотека для написания тестов',
+    scale: '1',
+    techName: 'jest.svg',
+  },
+  {
     title: 'MobX - простой и удобный стейт менеджер, аналог Redux',
     scale: '1.3',
     techName: 'mobx.png',

@@ -1,1 +1,1 @@
-export { WorkPage } from './WorkPage'
+export { WorkPage } from './ui/WorkPage'
