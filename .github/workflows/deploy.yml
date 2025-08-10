@@ -80,14 +80,14 @@ jobs:
             fi
             ls -la
             if [ -d .next ] && [ -d public ] && [ -d node_modules ]; then
+              # Перемещаем содержимое public в корень
               mv public/* .
-              mv public/.* . 2>/dev/null || true
-              rmdir public || true
-              mv .next _next
-              chown -R ${REMOTE_USER}:${REMOTE_USER} _next node_modules
-              chmod -R 755 _next node_modules
+              mv public/.* . 2>/dev/null || true # Обрабатываем скрытые файлы, игнорируя ошибки, если их нет
+              rmdir public || true # Удаляем пустую папку public, игнорируя ошибку, если она уже удалена
+              chown -R ${REMOTE_USER}:${REMOTE_USER} .next node_modules
+              chmod -R 755 .next node_modules
               pm2 kill
-              pm2 start "PORT=3000 HOST=0.0.0.0 NEXT_PRIVATE_BUILD_DIR=_next npm run start" --name front-craft --cwd /var/www/front-craft
+              pm2 start "PORT=3000 HOST=0.0.0.0 npm run start" --name front-craft --cwd /var/www/front-craft
               pm2 save
             else
               echo "Error: Required directories (.next, public, node_modules) are missing"
