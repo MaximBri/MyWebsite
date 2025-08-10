@@ -1,9 +1,9 @@
-import { NavLink } from 'react-router-dom'
 import { FC, useEffect, useState } from 'react'
 
 import { navRoutes } from '@/shared/data/navRoutes'
 import { GithubLink } from '@/shared/data/private'
 import Image from 'next/image'
+import Link from 'next/link'
 const githubSVG = '/images/globals/github.svg'
 
 export const BurgerMenu: FC<{ close: () => void }> = ({ close }) => {
@@ -30,19 +30,19 @@ export const BurgerMenu: FC<{ close: () => void }> = ({ close }) => {
           </button>
           {navRoutes.map((item, i) => {
             return (
-              <NavLink
+              <Link
                 key={i}
                 onClick={handleClick}
                 className='burger__link'
-                to={item.path}
+                href={item.path}
               >
                 {item.name}
-              </NavLink>
+              </Link>
             )
           })}
-          <NavLink className='burger__github' to={GithubLink} target='_blank'>
+          <Link className='burger__github' href={GithubLink} target='_blank'>
             <Image src={githubSVG} alt='github' />
-          </NavLink>
+          </Link>
         </div>
       </section>
       {isOpen && <div className='burger__bg' onClick={handleClick}></div>}
