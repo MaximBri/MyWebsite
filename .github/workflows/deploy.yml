@@ -1,54 +1,3 @@
-# name: CI/CD Deploy to VPS
-
-# on:
-#   push:
-#     branches:
-#       - main
-
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: '22'
-#           cache: 'npm'
-
-#       - name: Install production dependencies (CI)
-#         run: |
-#           npm ci --legacy-peer-deps --production --prefer-offline --no-audit
-
-#       - name: Build Next.js app
-#         run: npm run build
-
-#       - name: Archive production files
-#         run: tar -czf build.tar.gz .next public package.json package-lock.json node_modules
-
-#       - name: Deploy to server
-#         uses: appleboy/scp-action@v0.1.4
-#         with:
-#           host: ${{ secrets.REMOTE_HOST }}
-#           username: ${{ secrets.REMOTE_USER }}
-#           key: ${{ secrets.SSH_PRIVATE_KEY }}
-#           source: "build.tar.gz"
-#           target: "/var/www/front-craft"
-
-#       - name: SSH restart app
-#         uses: appleboy/ssh-action@v0.1.8
-#         with:
-#           host: ${{ secrets.REMOTE_HOST }}
-#           username: ${{ secrets.REMOTE_USER }}
-#           key: ${{ secrets.SSH_PRIVATE_KEY }}
-#           script: |
-#             cd /var/www/front-craft
-#             tar -xzf build.tar.gz
-#             pm2 delete front-craft || true
-#             pm2 start npm --name front-craft -- run start
-#             pm2 save
 name: CI/CD Deploy to VPS
 
 on:
@@ -82,7 +31,7 @@ jobs:
           mkdir -p build-dir
           cp -r .next public package.json package-lock.json node_modules build-dir/
           tar -czf build.tar.gz -C build-dir .
-          ls -lh build.tar.gz # Проверка размера архива
+          ls -lh build.tar.gz
 
       - name: Create SSH key file
         run: |
