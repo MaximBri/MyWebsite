@@ -70,6 +70,7 @@ jobs:
             cd /var/www/front-craft || { echo "Directory /var/www/front-craft does not exist"; exit 1; }
             df -h
             ls -la
+            rm -rf .next public node_modules package.json package-lock.json favicons fonts images screenshots || true
             if [ -f build.tar.gz ]; then
               tar -xzf build.tar.gz
               rm -f build.tar.gz
@@ -92,14 +93,3 @@ jobs:
               echo "Error: Required directories (.next, public, node_modules) are missing"
               exit 1
             fi
-          # script: |
-          #   set -e
-          #   cd /var/www/front-craft
-          #   df -h
-          #   ls -la
-          #   rm -rf .next public node_modules package.json package-lock.json || true
-          #   tar -xzf build.tar.gz
-          #   ls -la
-          #   pm2 delete front-craft || true
-          #   pm2 start npm --name front-craft -- run start
-          #   pm2 save
