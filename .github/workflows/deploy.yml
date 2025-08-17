@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,78 +18,33 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci --legacy-peer-deps --prefer-offline --no-audit
+      - name: Install & Build
+        run: |
+          npm ci --legacy-peer-deps
+          npm run build
 
-      - name: Build Next.js app
-        run: npm run build
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to VPS
         env:
-          NODE_ENV: production
-
-      - name: Archive production files
+          RSYNC_RSH: 'ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no'
         run: |
-          mkdir -p build-dir
-          cp -r .next public package.json package-lock.json node_modules build-dir/
-          tar -czf build.tar.gz -C build-dir .
-          ls -lh build.tar.gz
+          # убедимся, что out/ существует
+          if [ ! -d "./out" ]; then
+            echo "ERROR: out/ not found — build probably failed"
+            exit 1
+          fi
 
-      - name: Create SSH key file
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key
-          chmod 600 ssh_key
+          # rsync: копируем содержимое out/ в REMOTE_PATH (удаляем неиспользуемые файлы)
+          rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+            ./out/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
 
-      - name: Test SSH connection and prepare directory
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            whoami
-            mkdir -p /var/www/front-craft
-            chown ${REMOTE_USER}:${REMOTE_USER} /var/www/front-craft
-            chmod 755 /var/www/front-craft
-            ls -ld /var/www/front-craft
-            df -h /var/www/front-craft
-            echo "SSH connection and directory setup successful"
-
-      - name: Upload file via SCP
-        run: |
-          scp -o StrictHostKeyChecking=no -i ssh_key build.tar.gz ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/var/www/front-craft/build.tar.gz
-        env:
-          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: SSH and deploy
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            set -e
-            cd /var/www/front-craft || { echo "Directory /var/www/front-craft does not exist"; exit 1; }
-            df -h
-            ls -la
-            rm -rf .next public node_modules package.json package-lock.json favicons fonts images screenshots || true
-            if [ -f build.tar.gz ]; then
-              tar -xzf build.tar.gz
-              rm -f build.tar.gz
-            else
-              echo "Error: build.tar.gz not found"
-              exit 1
-            fi
-            ls -la
-            if [ -d .next ] && [ -d public ] && [ -d node_modules ]; then
-              # Перемещаем содержимое public в корень
-              mv public/* .
-              mv public/.* . 2>/dev/null || true # Обрабатываем скрытые файлы, игнорируя ошибки, если их нет
-              rmdir public || true # Удаляем пустую папку public, игнорируя ошибку, если она уже удалена
-              chown -R ${REMOTE_USER}:${REMOTE_USER} .next node_modules
-              chmod -R 755 .next node_modules
-              pm2 kill
-              pm2 start "PORT=3000 HOST=0.0.0.0 npm run start" --name front-craft --cwd /var/www/front-craft
-              pm2 save
-            else
-              echo "Error: Required directories (.next, public, node_modules) are missing"
-              exit 1
-            fi
+        # run: |
+        #   rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+        #     --delete ./dist/ \
+        #     ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
