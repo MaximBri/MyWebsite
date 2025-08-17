@@ -11,7 +11,7 @@ export const SkillsSection = () => {
     <section className='skills'>
       <div className='skills__top'>
         <SectionTitle title='Стек, навыки' />
-        <h3 id='animation' className='skills__descr fade-in-right'>
+        <h3 className='skills__descr fade-in-right'>
           <svg
             width='20px'
             height='20px'
@@ -27,7 +27,7 @@ export const SkillsSection = () => {
           Кликабельно
         </h3>
       </div>
-      <ul id='animation' className='skill__box fade-in-top'>
+      <ul className='skill__box fade-in-top'>
         {skillsItems.map((item, i) => (
           <SkillItem
             img={item.techName}

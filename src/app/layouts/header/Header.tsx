@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
+// import { useMediaQuery } from 'react-responsive'
 import { createPortal } from 'react-dom'
 
 import { navRoutes } from '@/shared/data/navRoutes'
@@ -11,11 +11,12 @@ import '../burger/BurgerMenu.scss'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useMediaQuery } from '@/shared/hooks/useMediaQuery'
 const logo = '/images/globals/Logo-light.png'
 const githubSVG = '/images/globals/github.svg'
 
 export const Header = () => {
-  const isMobile = useMediaQuery({ maxWidth: 768 })
+  const isMobile = useMediaQuery(768)
   const location = useRouter()
 
   const header = useRef<HTMLElement>(null)

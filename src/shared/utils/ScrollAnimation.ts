@@ -18,14 +18,15 @@ const ScrollAnimation = () => {
     lazyLoadOnScroll('animation', 0.8)
   }
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll)
+  //   handleScroll()
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [works])
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll)
+  //   }
+  // }, [works])
+  return null
 }
 
 export default ScrollAnimation

@@ -1,36 +1,36 @@
 .fade-in-left {
-  opacity: 0;
-  transform: translateX(-rem(50));
-  transition: opacity 0.5s, transform 0.5s;
+  // opacity: 0;
+  // transform: translateX(-rem(50));
+  // transition: opacity 0.5s, transform 0.5s;
 }
 
 .fade-in-right {
-  opacity: 0;
-  transform: translateX(rem(50));
-  transition: opacity 0.5s, transform 0.5s;
+  // opacity: 0;
+  // transform: translateX(rem(50));
+  // transition: opacity 0.5s, transform 0.5s;
 }
 
 .fade-in-btm {
-  opacity: 0;
-  transform: translateY(-rem(50));
-  transition: opacity 0.5s, transform 0.5s;
+  // opacity: 0;
+  // transform: translateY(-rem(50));
+  // transition: opacity 0.5s, transform 0.5s;
 }
 
 .fade-in-top {
-  opacity: 0;
-  transform: translateY(rem(50));
-  transition: opacity 0.5s, transform 0.5s;
+  // opacity: 0;
+  // transform: translateY(rem(50));
+  // transition: opacity 0.5s, transform 0.5s;
 }
 
 .fade-in-z {
-  opacity: 0;
-  transform: translateZ(-rem(500));
-  transition: opacity 0.5s, transform 0.5s;
+  // opacity: 0;
+  // transform: translateZ(-rem(500));
+  // transition: opacity 0.5s, transform 0.5s;
 }
 
 .fade-in {
-  opacity: 1;
-  transform: translateX(0);
-  transform: translateY(0);
-  transform: translateZ(0);
+  // opacity: 1;
+  // transform: translateX(0);
+  // transform: translateY(0);
+  // transform: translateZ(0);
 }

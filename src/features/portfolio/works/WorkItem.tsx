@@ -3,11 +3,7 @@ import './WorkItem.scss'
 
 export const WorkItem = ({ data }: WorkItemInterface) => {
   return (
-    <Link
-      id='animation'
-      href={`/Portfolio/${data.img}`}
-      className='work fade-in-top'
-    >
+    <Link href={`/Portfolio/${data.img}`} className='work fade-in-top'>
       <h2 className='work__title'>{data.title}</h2>
       <img
         className='work__img'

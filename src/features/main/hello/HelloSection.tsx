@@ -13,10 +13,10 @@ export const HelloSection = () => {
 
   return (
     <section className='hello'>
-      <h2 id='animation' className='title fade-in-btm'>
+      <h2 className='title fade-in-btm'>
         {helloText}
       </h2>
-      <h1 id='animation' className='hello__subtitle fade-in-right'>
+      <h1 className='hello__subtitle fade-in-right'>
         {subtitle}
       </h1>
       <Image

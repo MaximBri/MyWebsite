@@ -6,7 +6,7 @@ export const ServicesSection = () => {
   return (
     <section className='services'>
       <SectionTitle title={'Услуги 👇'} />
-      <div id='animation' className='services__body fade-in-top'>
+      <div className='services__body fade-in-top'>
         <ul className='services__box'>
           {services.map((item, i) => {
             return <li key={i}>✅ {item}</li>
