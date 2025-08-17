@@ -10,7 +10,7 @@ import Image from 'next/image'
 
 export const WorkPage = ({ work }) => {
   if (!work) {
-    return null;
+    return null
   }
 
   return (
