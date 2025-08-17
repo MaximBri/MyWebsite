@@ -41,7 +41,7 @@ export const BurgerMenu: FC<{ close: () => void }> = ({ close }) => {
             )
           })}
           <Link className='burger__github' href={GithubLink} target='_blank'>
-            <Image src={githubSVG} alt='github' />
+            <Image width={50} height={50} src={githubSVG} alt='github' />
           </Link>
         </div>
       </section>
