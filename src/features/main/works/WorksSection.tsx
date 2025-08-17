@@ -16,7 +16,7 @@ export const WorksSection = () => {
               })
             : Array.from({ length: 3 }).map((_, index) => (
                 <li className='work' key={index}>
-                  <WorkItemLoader />
+                  <WorkItemLoader index={index} />
                 </li>
               ))}
         </ul>

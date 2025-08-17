@@ -1,15 +1,15 @@
 import ContentLoader from 'react-content-loader'
 
-export const WorkItemLoader = (props) => (
+export const WorkItemLoader = ({ index, ...props }) => (
   <ContentLoader
     speed={0.5}
     width='100%'
-    // height={177}
     height={props.height || 'auto'}
     preserveAspectRatio='xMinYMin meet'
     viewBox='0 0 270 177'
     backgroundColor='#383838ff'
     foregroundColor='#696969ff'
+    uniqueKey={`loader-${index}`}
     {...props}
   >
     <rect x='0' y='0' rx='8' ry='8' width='80%' height='30' />

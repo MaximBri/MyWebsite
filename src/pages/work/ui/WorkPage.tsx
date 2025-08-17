@@ -1,48 +1,35 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 import { routes } from '@/shared/config/routes'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
-import { useMainContext } from '@/app/context/MainContext'
 import { Carousel } from '@/features/portfolio/carousel'
 import './WorkPage.scss'
 import Image from 'next/image'
 
-export const WorkPage = () => {
-  const router = useRouter()
-  const { id } = router.query
-  const { works } = useMainContext()
-
-  if (!id || Array.isArray(id)) return null
-
-  const data = works?.find((item) => item.img === id)
-
-  if (works && !data) {
-    router.push(routes.home)
-    return null
+export const WorkPage = ({ work }) => {
+  if (!work) {
+    return null;
   }
-
-  if (!data) return null
 
   return (
     <section className='workpage'>
       <div className='workpage__path'>
         <Link href={routes.portfolio}>Работы /</Link>
-        <span>{data.title}</span>
+        <span>{work.title}</span>
       </div>
-      <h2 className='workpage__title'>{data.title}</h2>
+      <h2 className='workpage__title'>{work.title}</h2>
       <Carousel
-        paths={data.allImages}
-        filesPath={`/images/works/${data.img.toLowerCase()}/`}
+        paths={work.allImages}
+        filesPath={`/images/works/${work.img.toLowerCase()}/`}
       />
       <SectionTitle title='Доступы' withAnimation={false} />
       <nav className='workpage__nav'>
-        {data.appLink !== 'private' ? (
+        {work.appLink !== 'private' ? (
           <Link
             className='workpage__nav-button'
-            href={data.appLink ?? ''}
+            href={work.appLink ?? ''}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -53,10 +40,10 @@ export const WorkPage = () => {
             Нигде не развёрнут
           </div>
         )}
-        {data.gitRepo !== 'private' ? (
+        {work.gitRepo !== 'private' ? (
           <Link
             className='workpage__nav-button'
-            href={data.gitRepo ?? ''}
+            href={work.gitRepo ?? ''}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -81,12 +68,12 @@ export const WorkPage = () => {
           disallowedElements={[]}
           allowElement={(node) => true}
         >
-          {data.about}
+          {work.about}
         </ReactMarkdown>
       </div>
       <SectionTitle title='Стек' withAnimation={false} />
       <ul className='workpage__stack'>
-        {data.tags.map((item) => (
+        {work.tags.map((item) => (
           <li
             className={`word-${item.toLowerCase()} workpage__stack-item`}
             key={item}
