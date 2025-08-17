@@ -40,7 +40,6 @@
     "front-craft/types/**/*.ts",
     "next-env.d.ts",
     "src",
-    "react/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

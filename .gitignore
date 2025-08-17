@@ -14,6 +14,7 @@
 /.next
 /react
 /front-craft
+/out
 
 # misc
 .DS_Store
