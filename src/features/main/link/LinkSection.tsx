@@ -4,7 +4,7 @@ import './LinkSection.scss'
 import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
 
 export const LinkSection = () => {
-  const blockRef = useInViewAnimation<HTMLDivElement>('fade-in-top', 0.9)
+  const blockRef = useInViewAnimation<HTMLDivElement>('fade-in-top', 0.2)
 
   return (
     <section className='link'>

@@ -1,35 +1,89 @@
 import { useEffect, useRef } from 'react'
 
-export const useInViewAnimation = <T extends HTMLElement>(
+export function useInViewAnimation<T extends HTMLElement = HTMLElement>(
   baseClass: string,
-  threshold = 0.8
-) => {
-  const ref = useRef<T>(null)
+  threshold = 0.8,
+  exitThreshold = threshold - 0.2
+) {
+  const ref = useRef<T | null>(null)
+  const enterTimer = useRef<number | null>(null)
+  const exitTimer = useRef<number | null>(null)
+  const currentlyVisible = useRef(false)
+
+  const rootMargin = '0px 0px -10% 0px'
+  const enterDelay = 60
+  const exitDelay = 120
+  const visibleClass = 'visible'
 
   useEffect(() => {
-    if (!ref.current) return
+    const el = ref.current
+    if (!el) return
 
-    ref.current.classList.add(baseClass)
+    el.classList.add(baseClass)
+
+    const clearEnterTimer = () => {
+      if (enterTimer.current) {
+        window.clearTimeout(enterTimer.current)
+        enterTimer.current = null
+      }
+    }
+    const clearExitTimer = () => {
+      if (exitTimer.current) {
+        window.clearTimeout(exitTimer.current)
+        exitTimer.current = null
+      }
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          } else {
-            entry.target.classList.remove('visible')
+          const ratio = entry.intersectionRatio ?? 0
+
+          if (ratio >= threshold) {
+            clearExitTimer()
+
+            if (currentlyVisible.current) return
+
+            clearEnterTimer()
+            enterTimer.current = window.setTimeout(() => {
+              entry.target.classList.add(visibleClass)
+              currentlyVisible.current = true
+              enterTimer.current = null
+            }, enterDelay)
+
+            return
+          }
+
+          if (ratio <= exitThreshold) {
+            clearEnterTimer()
+
+            if (!currentlyVisible.current) return
+
+            clearExitTimer()
+            exitTimer.current = window.setTimeout(() => {
+              entry.target.classList.remove(visibleClass)
+              currentlyVisible.current = false
+              exitTimer.current = null
+            }, exitDelay)
+
+            return
           }
         })
       },
-      { threshold }
+      {
+        threshold: Array.from({ length: 101 }, (_, i) => i / 100),
+        rootMargin,
+      }
     )
 
-    observer.observe(ref.current)
+    observer.observe(el)
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current)
+      observer.disconnect()
+      clearEnterTimer()
+      clearExitTimer()
     }
-  }, [baseClass, threshold])
+  }, [baseClass, threshold, exitThreshold])
 
   return ref
 }

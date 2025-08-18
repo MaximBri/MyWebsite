@@ -4,7 +4,7 @@ import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
 
 export const ServicesSection = () => {
-  const blockRef = useInViewAnimation<HTMLDivElement>('fade-in-top', 0.2)
+  const blockRef = useInViewAnimation<HTMLDivElement>('fade-in-top', 0.1, 0)
 
   return (
     <section className='services'>
