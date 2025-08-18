@@ -6,6 +6,7 @@ import ThanksPopUp from '@/widgets/pop-ups/thanks/ThanksPopUp'
 import loaderSvg from './icons/loader.svg'
 import './LinkForm.scss'
 import Image from 'next/image'
+import { createPortal } from 'react-dom'
 
 export const LinkForm = () => {
   const { chatId, token } = useMainContext()
@@ -69,7 +70,11 @@ export const LinkForm = () => {
           )}
         </button>
       </form>
-      {popUp && <ThanksPopUp changeValue={setPopUp} value={popUp} />}
+      {popUp &&
+        createPortal(
+          <ThanksPopUp changeValue={setPopUp} value={popUp} />,
+          document.body
+        )}
     </>
   )
 }

@@ -1,12 +1,15 @@
 import { services, servicesFeatures } from '@/shared/data/services'
 import './ServicesSection.scss'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
+import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
 
 export const ServicesSection = () => {
+  const blockRef = useInViewAnimation<HTMLDivElement>('fade-in-top', 0.2)
+
   return (
     <section className='services'>
       <SectionTitle title={'Услуги 👇'} />
-      <div className='services__body fade-in-top'>
+      <div ref={blockRef} className='services__body'>
         <ul className='services__box'>
           {services.map((item, i) => {
             return <li key={i}>✅ {item}</li>

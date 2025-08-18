@@ -3,15 +3,18 @@ import { SkillItem } from '../skill-item'
 import './SkillsSection.scss'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 import Image from 'next/image'
+import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
 const man1 = '/images/skills/operator (1).png'
 const man2 = '/images/skills/operator (2).png'
 
 export const SkillsSection = () => {
+  const hintRef = useInViewAnimation<HTMLDivElement>('fade-in-right', 0.9)
+
   return (
     <section className='skills'>
       <div className='skills__top'>
         <SectionTitle title='Стек, навыки' />
-        <h3 className='skills__descr fade-in-right'>
+        <h3 ref={hintRef} className='skills__descr'>
           <svg
             width='20px'
             height='20px'
@@ -27,7 +30,7 @@ export const SkillsSection = () => {
           Кликабельно
         </h3>
       </div>
-      <ul className='skill__box fade-in-top'>
+      <ul className='skill__box'>
         {skillsItems.map((item, i) => (
           <SkillItem
             img={item.techName}

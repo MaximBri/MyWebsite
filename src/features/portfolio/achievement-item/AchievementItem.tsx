@@ -2,13 +2,16 @@ import { FC, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { AchievementModel } from '@/shared/data/achievements'
 import { ImageCreator } from '@/widgets/pop-ups/image-creator'
+import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
 
 export const AchievementItem: FC<{ data: AchievementModel }> = ({ data }) => {
+  const blockRef = useInViewAnimation<HTMLLIElement>('fade-in-btm', 0.1)
+
   const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
 
   return (
     <>
-      <li className='achievements__item'>
+      <li ref={blockRef} className='achievements__item'>
         <h3 className='achievements__item-title'>{data.title}</h3>
         <p className='achievements__item-description'>{data.description}</p>
         <button

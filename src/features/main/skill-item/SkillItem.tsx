@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import './SkillItem.scss'
+import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
 
 export const SkillItem = ({ title, img, scale }: SkillItemInterface) => {
+  const blockRef = useInViewAnimation<HTMLLIElement>('fade-in-right', 0.2)
+
   const [active, setActive] = useState<boolean>(false)
-  
+
   return (
     <li
+      ref={blockRef}
       className={`skill__box-item ${active ? 'flipped' : ''}`}
       onClick={() => setActive(!active)}
     >

@@ -4,7 +4,9 @@ import { useMainContext } from '@/app/context/MainContext'
 import './WorksSection.scss'
 
 export const WorksSection = () => {
+
   const { works } = useMainContext()
+
   return (
     <section className='works'>
       <SectionTitle title={'Мои работы'} />

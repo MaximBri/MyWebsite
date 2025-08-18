@@ -7,15 +7,16 @@ import bigCircleSvg from './icons/circle-big.svg'
 import './MyGroup.scss'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
+import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 
 export const MyGroup = () => {
+  const blockRef = useInViewAnimation<HTMLDivElement>('fade-in-top')
+
   return (
     <section className='my-group__header'>
-      <div className='fade-in-left'>
-        <h2 className='title'>Моё сообщество в Telegram</h2>
-        <div className='dot'></div>
-      </div>
-      <div className='my-group fade-in-top'>
+      <SectionTitle title='Моё сообщество в Telegram' />
+      <div ref={blockRef} className='my-group fade-in-top'>
         <Link className='my-group__link' href={TgGroupLink} target='_blank'>
           <Image src={tgSvg} alt='telegram' />
         </Link>
