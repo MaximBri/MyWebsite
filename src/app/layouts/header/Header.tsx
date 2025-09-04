@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-// import { useMediaQuery } from 'react-responsive'
 import { createPortal } from 'react-dom'
 
 import { navRoutes } from '@/shared/data/navRoutes'
@@ -9,10 +8,10 @@ import { BurgerMenu } from '../burger/BurgerMenu'
 import './Header.scss'
 import '../burger/BurgerMenu.scss'
 import { useRouter } from 'next/router'
+import { useMediaQuery } from '@/shared/hooks/useMediaQuery'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useMediaQuery } from '@/shared/hooks/useMediaQuery'
-const logo = '/images/globals/Logo-light.png'
+const logo = '/favicons/favicon-128x128.png'
 const githubSVG = '/images/globals/github.svg'
 
 export const Header = () => {

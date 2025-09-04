@@ -25,9 +25,11 @@
   }
 
   &__logo {
-    height: 100%;
-    max-height: rem(60);
-    margin-top: rem(10);
+    width: rem(50);
+    height: rem(50);
+
+    margin-top: rem(5);
+    margin-right: rem(5);
   }
 
   &__fire {

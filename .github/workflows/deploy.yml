@@ -43,8 +43,3 @@ jobs:
           # rsync: копируем содержимое out/ в REMOTE_PATH (удаляем неиспользуемые файлы)
           rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
             ./out/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/
-
-        # run: |
-        #   rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-        #     --delete ./dist/ \
-        #     ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/

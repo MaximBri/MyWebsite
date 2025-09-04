@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react'
 
 import { getDataToSendMessages } from '@/shared/utils/getDataToSendMessages'
@@ -14,14 +13,22 @@ export const MainLayout = ({ children }) => {
   const { setChatId, setToken, works, setWorks } = useMainContext()
 
   const setDataInStore = async () => {
-    const [data] = await getDataToSendMessages()
-    setChatId(data.chat_id)
-    setToken(data.token)
+    try {
+      const [data] = await getDataToSendMessages()
+      setChatId(data.chat_id)
+      setToken(data.token)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const getAndSetWorks = async () => {
-    const data = await getWorks()
-    setWorks(data)
+    try {
+      const data = await getWorks()
+      setWorks(data)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   useEffect(() => {
@@ -33,6 +40,18 @@ export const MainLayout = ({ children }) => {
       getAndSetWorks()
     }
   }, [works])
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+      const swUrl = '/service-worker.js'
+      navigator.serviceWorker
+        .register(swUrl)
+        .then((reg) => {
+          console.log('SW registered', reg.scope)
+        })
+        .catch(console.error)
+    }
+  }, [])
 
   return (
     <>
