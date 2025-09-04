@@ -8,14 +8,13 @@ export const ServicesSection = () => {
 
   return (
     <section className='services'>
-      <SectionTitle title={'Услуги 👇'} />
+      <SectionTitle title={'Что могу 👇'} />
       <div ref={blockRef} className='services__body'>
         <ul className='services__box'>
           {services.map((item, i) => {
             return <li key={i}>✅ {item}</li>
           })}
         </ul>
-        <h2 className='services__subtitle'>Нюансы:</h2>
         <div className='services__features'>
           {servicesFeatures.map((item, i) => {
             return <h3 key={i}>❗️ {item}</h3>

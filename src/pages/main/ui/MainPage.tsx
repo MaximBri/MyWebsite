@@ -1,3 +1,4 @@
+import { Experience } from '@/features/main/experience'
 import { HelloSection } from '@/features/main/hello'
 import { LinkSection } from '@/features/main/link'
 import { MarqueeSection } from '@/features/main/marquee'
@@ -14,6 +15,7 @@ export const MainPage = () => {
       <SkillsSection />
       <MarqueeSection />
       <ServicesSection />
+      <Experience />
       <MyGroup />
       <LinkSection />
     </>
