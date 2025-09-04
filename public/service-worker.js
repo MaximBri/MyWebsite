@@ -1,16 +1,10 @@
-const CACHE_NAME = 'pwa-cache-v3'
+const CACHE_NAME = 'pwa-cache-v4'
+const PRECACHE_URLS = ['/', '/index.html', '/manifest.json']
 
 self.addEventListener('install', (event) => {
   self.skipWaiting()
   event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then((cache) =>
-        cache.addAll([
-          '/index.html',
-          '/manifest.json',
-        ])
-      )
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS))
   )
 })
 
@@ -28,67 +22,116 @@ self.addEventListener('activate', (event) => {
   )
 })
 
+async function safeCachePut(request, response) {
+  try {
+    const cache = await caches.open(CACHE_NAME)
+    await cache.put(request.url, response.clone())
+  } catch (e) {}
+}
+
 self.addEventListener('fetch', (event) => {
   const req = event.request
   const url = new URL(req.url)
 
-  if (req.method !== 'GET' || url.origin !== location.origin) return
+  if (req.method !== 'GET') return
 
-  if (event.request.mode === 'navigate') {
+  if (url.hostname.includes('mokky.dev')) {
     event.respondWith(
-      caches
-        .match('/index.html')
-        .then((cached) => cached || fetch('/index.html'))
+      (async () => {
+        const cache = await caches.open(CACHE_NAME)
+        const cached = await cache.match(req)
+
+        try {
+          const res = await fetch(req)
+          if (res.ok) {
+            cache.put(req, res.clone())
+          }
+          return res
+        } catch (e) {
+          return (
+            cached ||
+            new Response('Offline data not available', { status: 503 })
+          )
+        }
+      })()
     )
     return
   }
 
-  if (req.destination === 'script' && url.pathname.endsWith('.js')) return
+  if (req.mode === 'navigate') {
+    event.respondWith(
+      (async () => {
+        try {
+          const networkResp = await fetch(req)
+          safeCachePut(req, networkResp)
+          return networkResp
+        } catch (err) {
+          const cache = await caches.open(CACHE_NAME)
+          const cachedIndex =
+            (await cache.match('/index.html')) || (await cache.match('/'))
+          if (cachedIndex) return cachedIndex
+          const offline = await cache.match('/offline.html')
+          return (
+            offline ||
+            new Response('Offline', { status: 503, statusText: 'Offline' })
+          )
+        }
+      })()
+    )
+    return
+  }
 
   if (url.pathname.startsWith('/api/')) {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          if (res.ok) {
-            const copy = res.clone()
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy))
-          }
+          if (res && res.ok) safeCachePut(req, res)
           return res
         })
-        .catch(() => caches.match(req))
+        .catch(async () => {
+          const cache = await caches.open(CACHE_NAME)
+          return cache.match(req.url) || new Response(null, { status: 504 })
+        })
     )
     return
   }
 
   if (
     req.destination === 'image' ||
-    url.pathname.match(/\.(png|jpe?g|gif|svg)$/)
+    /\.(png|jpe?g|gif|svg|webp|avif)(\?.*)?$/.test(url.pathname)
   ) {
     event.respondWith(
-      caches.match(req).then((cached) => {
+      (async () => {
+        const cache = await caches.open(CACHE_NAME)
+        const cached = await cache.match(req.url)
         if (cached) return cached
-        return fetch(req).then((res) => {
-          if (res.ok) {
-            const copy = res.clone()
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy))
-          }
-          return res
-        })
-      })
+        try {
+          const resp = await fetch(req)
+          if (resp && resp.ok) await cache.put(req.url, resp.clone())
+          return resp
+        } catch (err) {
+          return (
+            cache.match('/images/fallback.png') ||
+            new Response(null, { status: 504 })
+          )
+        }
+      })()
     )
     return
   }
 
   event.respondWith(
-    caches.match(req).then((cached) => {
+    (async () => {
+      const cache = await caches.open(CACHE_NAME)
+      const cached = await cache.match(req.url)
       if (cached) return cached
-      return fetch(req).then((res) => {
-        if (res.ok && res.type === 'basic') {
-          const copy = res.clone()
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy))
-        }
-        return res
-      })
-    })
+      try {
+        const resp = await fetch(req)
+        if (resp && resp.ok) await cache.put(req.url, resp.clone())
+        return resp
+      } catch (err) {
+        return new Response(null, { status: 504 })
+      }
+    })()
   )
 })
