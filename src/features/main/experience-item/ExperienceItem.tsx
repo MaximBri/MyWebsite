@@ -8,7 +8,7 @@ export const ExperienceItem: FC<{
   data: ExperienceItemModel
   index: number
 }> = ({ data, index }) => {
-  const blockRef = useInViewAnimation<HTMLLIElement>('fade-in-btm', 0.1, 0.8)
+  const blockRef = useInViewAnimation<HTMLLIElement>('fade-in-btm', 0.2)
 
   return (
     <li className={styles['exp-item']} ref={blockRef}>

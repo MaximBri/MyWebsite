@@ -4,7 +4,7 @@ export type ExperienceItemModel = {
   stack: string[]
   period: { start: string; end: string }
   role: string
-  imagePath?: string 
+  imagePath?: string
 }
 
 function parseDMY(dateStr: string): Date {
@@ -13,7 +13,6 @@ function parseDMY(dateStr: string): Date {
 }
 
 function monthsBetween(start: Date, end: Date): number {
-  // год/месяц разница
   const yearDiff = end.getFullYear() - start.getFullYear()
   const monthDiff = end.getMonth() - start.getMonth()
   let months = yearDiff * 12 + monthDiff
@@ -43,7 +42,7 @@ export function getTotalExperienceMonths(list: ExperienceItemModel[]): number {
   }, 0)
 }
 
-function formatMonths(monthsTotal: number) {
+export function formatMonths(monthsTotal: number) {
   const years = Math.floor(monthsTotal / 12)
   const months = monthsTotal % 12
   if (years === 0) return `${months} мес.`

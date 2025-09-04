@@ -4,7 +4,6 @@ import { experienceList } from '@/shared/data/experience'
 import { ExperienceItem } from '../experience-item'
 
 export const Experience = () => {
-
   return (
     <div className={styles.exp}>
       <SectionTitle title='Опыт' />
