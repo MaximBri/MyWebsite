@@ -25,16 +25,16 @@ export const experienceList: ExperienceItemModel[] = [
     role: 'Frontend-разработчик',
     imagePath: 'spaceChat.png',
   },
-  {
-    name: 'Фриланс',
-    description:
-      'Верстал и интегрировал сайты и лендинги: адаптивная и кроссбраузерная вёрстка, оптимизация загрузки, интеграция форм и простая бэкенд-логика на PHP/WordPress',
-    stack: ['HTML', 'Css/sass/scss', 'JavaScript', 'PHP', 'CMS Wordpress'],
-    period: {
-      start: '29.07.2024',
-      end: '01.10.2024',
-    },
-    role: 'Frontend-разработчик / Верстальщик',
-    imagePath: 'kwork.webp',
-  },
+  // {
+  //   name: 'Фриланс',
+  //   description:
+  //     'Верстал и интегрировал сайты и лендинги: адаптивная и кроссбраузерная вёрстка, оптимизация загрузки, интеграция форм и простая бэкенд-логика на PHP/WordPress',
+  //   stack: ['HTML', 'Css/sass/scss', 'JavaScript', 'PHP', 'CMS Wordpress'],
+  //   period: {
+  //     start: '29.07.2024',
+  //     end: '01.10.2024',
+  //   },
+  //   role: 'Frontend-разработчик / Верстальщик',
+  //   imagePath: 'kwork.webp',
+  // },
 ]
