@@ -5,7 +5,7 @@ import './NotFound.scss'
 import Link from 'next/link'
 import { Meta } from '@/shared/utils/Meta'
 
-export const NotFound: FC = () => {
+const NotFound: FC = () => {
   return (
     <>
       <Meta title='FrontCraft | 404' />
@@ -19,3 +19,5 @@ export const NotFound: FC = () => {
     </>
   )
 }
+
+export default NotFound

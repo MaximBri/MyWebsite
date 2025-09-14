@@ -1,16 +1,15 @@
+'use client'
+
 import { MouseEvent, useRef, useState } from 'react'
 
-import { useMainContext } from '@/app/context/MainContext'
 import { sendMessageInTg } from '@/shared/utils/sendMessageInTg'
+import { createPortal } from 'react-dom'
 import ThanksPopUp from '@/widgets/pop-ups/thanks/ThanksPopUp'
 import loaderSvg from './icons/loader.svg'
 import './LinkForm.scss'
 import Image from 'next/image'
-import { createPortal } from 'react-dom'
 
 export const LinkForm = () => {
-  const { chatId, token } = useMainContext()
-
   const hiddenInput = useRef<HTMLInputElement>(null)
 
   const [message, setMessage] = useState<string>('')
@@ -19,11 +18,11 @@ export const LinkForm = () => {
 
   const sendForm = async (e: MouseEvent) => {
     e.preventDefault()
-    if (message && !hiddenInput.current?.value && !loading && chatId && token) {
+    if (message && !hiddenInput.current?.value && !loading) {
       setLoading(true)
       try {
         const text = `Сообщение: ${message}`
-        await sendMessageInTg(chatId, token, text)
+        await sendMessageInTg(text)
         setMessage('')
         setPopUp(true)
         setTimeout(() => setPopUp(false), 3000)

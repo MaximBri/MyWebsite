@@ -1,1 +1,2 @@
-export { PortfolioPage } from './ui/PortfolioPage'
+import PortfolioPage from './ui/PortfolioPage'
+export default PortfolioPage

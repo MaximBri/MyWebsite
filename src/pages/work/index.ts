@@ -1,1 +1,2 @@
-export { WorkPage } from './ui/WorkPage'
+import WorkPage from './ui/WorkPage'
+export default WorkPage

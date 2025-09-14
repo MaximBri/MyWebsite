@@ -3,7 +3,6 @@ import path from 'path'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true,
@@ -17,7 +16,7 @@ const nextConfig = {
   },
   sassOptions: {
     includePaths: [path.join(process.cwd(), 'src')],
-    additionalData: `@use "src/app/styles/vars" as *;\n@use "src/app/styles/mixins" as *;\n`,
+    additionalData: `@use "src/shared/styles/vars" as *;\n@use "src/shared/styles/mixins" as *;\n`,
   },
 }
 

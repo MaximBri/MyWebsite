@@ -1,3 +1,5 @@
+'use client'
+
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
@@ -9,7 +11,7 @@ import { Carousel } from '@/features/portfolio/carousel'
 import { Meta } from '@/shared/utils/Meta'
 import './WorkPage.scss'
 
-export const WorkPage = ({ work }) => {
+const WorkPage = ({ work }) => {
   if (!work) {
     return null
   }
@@ -89,3 +91,5 @@ export const WorkPage = ({ work }) => {
     </>
   )
 }
+
+export default WorkPage

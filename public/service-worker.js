@@ -35,28 +35,28 @@ self.addEventListener('fetch', (event) => {
 
   if (req.method !== 'GET') return
 
-  if (url.hostname.includes('mokky.dev')) {
-    event.respondWith(
-      (async () => {
-        const cache = await caches.open(CACHE_NAME)
-        const cached = await cache.match(req)
+  // if (url.hostname.includes('mokky.dev')) {
+  //   event.respondWith(
+  //     (async () => {
+  //       const cache = await caches.open(CACHE_NAME)
+  //       const cached = await cache.match(req)
 
-        try {
-          const res = await fetch(req)
-          if (res.ok) {
-            cache.put(req, res.clone())
-          }
-          return res
-        } catch (e) {
-          return (
-            cached ||
-            new Response('Offline data not available', { status: 503 })
-          )
-        }
-      })()
-    )
-    return
-  }
+  //       try {
+  //         const res = await fetch(req)
+  //         if (res.ok) {
+  //           cache.put(req, res.clone())
+  //         }
+  //         return res
+  //       } catch (e) {
+  //         return (
+  //           cached ||
+  //           new Response('Offline data not available', { status: 503 })
+  //         )
+  //       }
+  //     })()
+  //   )
+  //   return
+  // }
 
   if (req.mode === 'navigate') {
     event.respondWith(

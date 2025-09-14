@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import './SkillItem.scss'
 import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'

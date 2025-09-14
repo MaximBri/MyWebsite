@@ -19,7 +19,7 @@ export const Meta: FC<MetaProps> = ({
   twitterCard = 'summary',
 }) => {
   return (
-    <Head>
+    <>
       <meta charSet='utf-8' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta name='author' content='Maxim Bryzgalov' />
@@ -56,6 +56,6 @@ export const Meta: FC<MetaProps> = ({
       <link rel='manifest' href='/manifest.json' />
 
       <title>{title}</title>
-    </Head>
+    </>
   )
 }

@@ -1,11 +1,10 @@
 import { WorkItem, WorkItemLoader } from '@/features/portfolio/works'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
-import { useMainContext } from '@/app/context/MainContext'
+import { getWorks } from '@/shared/utils/getWorks'
 import './WorksSection.scss'
 
 export const WorksSection = () => {
-
-  const { works } = useMainContext()
+  const works = getWorks()
 
   return (
     <section className='works'>

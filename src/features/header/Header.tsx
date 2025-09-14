@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -7,16 +9,16 @@ import { routes } from '@/shared/config/routes'
 import { BurgerMenu } from '../burger/BurgerMenu'
 import './Header.scss'
 import '../burger/BurgerMenu.scss'
-import { useRouter } from 'next/router'
 import { useMediaQuery } from '@/shared/hooks/useMediaQuery'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 const logo = '/favicons/favicon-128x128.png'
 const githubSVG = '/images/globals/github.svg'
 
 export const Header = () => {
   const isMobile = useMediaQuery(768)
-  const location = useRouter()
+  const pathname = usePathname()
 
   const header = useRef<HTMLElement>(null)
   const navRef = useRef<HTMLElement>(null)
@@ -33,7 +35,7 @@ export const Header = () => {
       indicatorRef.current.style.transform = `translateX(${offsetLeft}px)`
       indicatorRef.current.style.width = `${offsetWidth}px`
     }
-  }, [location.pathname])
+  }, [pathname])
 
   useEffect(() => {
     if (header.current) header.current.classList.remove('unvisible')
@@ -60,7 +62,7 @@ export const Header = () => {
         {!isMobile && (
           <nav className='header__nav' ref={navRef}>
             {navRoutes.map((item, i) => {
-              const isActive = location.pathname === item.path
+              const isActive = pathname === item.path
               return (
                 <Link
                   key={i}
