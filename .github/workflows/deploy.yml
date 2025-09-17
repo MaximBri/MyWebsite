@@ -20,7 +20,7 @@ jobs:
     #   NEXT_PUBLIC_BASE_URL: https://front-craft.ru
     #   NEXT_PUBLIC_TG_LINK: https://t.me/Maxim_Bars
     #   NEXT_PUBLIC_GITHUB_LINK: https://github.com/MaximBri
-    #   NEXT_PUBLIC_TG_GROUP_LINK: 
+    #   NEXT_PUBLIC_TG_GROUP_LINK:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,11 +32,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ${{ env.IMAGE }}
+          platforms: linux/amd64
 
   deploy:
     name: Deploy to VPS
@@ -50,29 +51,20 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.REMOTE_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Pull image and restart container on VPS
-        env:
-          IMAGE: ${{ env.IMAGE }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+      - name: Pull Docker image
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no "${REMOTE_USER}@${REMOTE_HOST}" << 'EOF'
-            set -e
-            echo "Pulling image: ${IMAGE}"
-            docker pull "${IMAGE}"
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
+            "docker pull ${{ env.IMAGE }}"
 
-            echo "Stopping old container (if exists)..."
-            docker stop portfolio-app || true
-            docker rm portfolio-app || true
+      - name: Stop old container
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
+            "docker stop portfolio-app || true && docker rm portfolio-app || true"
 
-            echo "Starting new container..."
-            # Example with resource limits to protect small VPS (adjust as needed)
-            docker run -d \
-              --name portfolio-app \
-              --restart unless-stopped \
-              -p 3000:3000 \
-              --memory=900m --cpus=".5" \
-              "${IMAGE}"
-
-            echo "Done."
-          EOF
+      - name: Start new container
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
+            "docker run -d --name portfolio-app --restart unless-stopped -p 3000:3000 --memory=900m --cpus='.5' ${{ env.IMAGE }}"
