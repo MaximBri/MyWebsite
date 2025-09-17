@@ -1,3 +1,3 @@
-export const TgLink: string = process.env.NEXT_PUBLIC_TG_LINK!
-export const GithubLink: string = process.env.NEXT_PUBLIC_GITHUB_LINK!
-export const TgGroupLink: string = process.env.NEXT_PUBLIC_TG_GROUP_LINK!
+export const TgLink: string = 'https://t.me/Maxim_Bars'
+export const GithubLink: string = 'https://github.com/MaximBri'
+export const TgGroupLink: string = ''
