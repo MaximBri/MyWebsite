@@ -4,6 +4,7 @@ import path from 'path'
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
+  output: 'standalone',
   images: {
     unoptimized: true,
   },

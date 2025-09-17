@@ -25,7 +25,11 @@ const InnerLayout = ({ children }: { children: ReactNode }) => {
   }, [works])
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+    if (
+      typeof window !== 'undefined' &&
+      process.env.NODE_ENV === 'production' &&
+      'serviceWorker' in navigator
+    ) {
       const swUrl = '/service-worker.js'
       navigator.serviceWorker
         .register(swUrl)
