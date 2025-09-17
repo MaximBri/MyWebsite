@@ -8,7 +8,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  dynamicParams: true,
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),

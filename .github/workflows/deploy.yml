@@ -14,13 +14,6 @@ jobs:
   build-and-push:
     name: Build & Push image
     runs-on: ubuntu-latest
-    # env:
-    #   TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN}}
-    #   TG_CHAT_ID: ${{ secrets.TG_CHAT_ID}}
-    #   NEXT_PUBLIC_BASE_URL: https://front-craft.ru
-    #   NEXT_PUBLIC_TG_LINK: https://t.me/Maxim_Bars
-    #   NEXT_PUBLIC_GITHUB_LINK: https://github.com/MaximBri
-    #   NEXT_PUBLIC_TG_GROUP_LINK:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,6 +31,13 @@ jobs:
           push: true
           tags: ${{ env.IMAGE }}
           platforms: linux/amd64
+          build-args: |
+            TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }}
+            TG_CHAT_ID=${{ secrets.TG_CHAT_ID }}
+            NEXT_PUBLIC_BASE_URL=${{ secrets.BASE_URL }}
+            NEXT_PUBLIC_TG_LINK=${{ secrets.TG_LINK }}
+            NEXT_PUBLIC_GITHUB_LINK=${{ secrets.GH_LINK }}
+            NEXT_PUBLIC_TG_GROUP_LINK=${{ secrets.TG_GROUP_LINK }}
 
   deploy:
     name: Deploy to VPS
