@@ -14,7 +14,7 @@ export const experienceList: ExperienceItemModel[] = [
     imagePath: 'kardo.jpg',
   },
   {
-    name: 'ИП Сапрыкин В.М. (SpaceChat)',
+    name: 'SpaceChat - стартап',
     description:
       'Разработал ключевые экраны и основную логику приложения: pixel-perfect вёрстка, кеширование данных, debounce, infinite-scroll и realtime через WebSocket.',
     stack: ['React', 'Scss (modules)', 'Redux-toolkit', 'TypeScript'],
@@ -25,16 +25,16 @@ export const experienceList: ExperienceItemModel[] = [
     role: 'Frontend-разработчик',
     imagePath: 'spaceChat.png',
   },
-  // {
-  //   name: 'Фриланс',
-  //   description:
-  //     'Верстал и интегрировал сайты и лендинги: адаптивная и кроссбраузерная вёрстка, оптимизация загрузки, интеграция форм и простая бэкенд-логика на PHP/WordPress',
-  //   stack: ['HTML', 'Css/sass/scss', 'JavaScript', 'PHP', 'CMS Wordpress'],
-  //   period: {
-  //     start: '29.07.2024',
-  //     end: '01.10.2024',
-  //   },
-  //   role: 'Frontend-разработчик / Верстальщик',
-  //   imagePath: 'kwork.webp',
-  // },
+  {
+    name: 'Фриланс',
+    description:
+      'Верстал и интегрировал сайты и лендинги: адаптивная и кроссбраузерная вёрстка, оптимизация загрузки, интеграция форм и простая бэкенд-логика на PHP/WordPress',
+    stack: ['HTML', 'Css/sass/scss', 'JavaScript', 'PHP', 'CMS Wordpress'],
+    period: {
+      start: '29.07.2024',
+      end: '01.10.2024',
+    },
+    role: 'Frontend-разработчик / Верстальщик',
+    imagePath: 'kwork.webp',
+  },
 ]

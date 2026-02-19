@@ -43,7 +43,9 @@ const InnerLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Header />
-      <main className='main container'>{children}</main>
+      <main className='main container'>
+        <div className='wrapper'>{children}</div>
+      </main>
       <Footer />
     </>
   )

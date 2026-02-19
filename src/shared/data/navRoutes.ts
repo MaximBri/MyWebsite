@@ -6,4 +6,5 @@ interface routesInterface {
 export const navRoutes: routesInterface[] = [
   { name: 'Главная', path: '/' },
   { name: 'Работы', path: '/Portfolio/' },
+  { name: 'Мой путь', path: '/MyPath/' },
 ]

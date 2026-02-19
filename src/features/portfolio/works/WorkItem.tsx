@@ -1,15 +1,20 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import './WorkItem.scss'
-import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
+import { useFadeIn } from '@/shared/lib/animations'
+
+const MotionLink = motion.create(Link)
 
 export const WorkItem = ({ data }: WorkItemInterface) => {
-  const blockRef = useInViewAnimation<HTMLAnchorElement>('fade-in-top', 0.5)
+  const fadeProps = useFadeIn<HTMLAnchorElement>('left')
 
   return (
-    <Link
-      ref={blockRef}
+    <MotionLink
+      {...fadeProps}
       href={`/Portfolio/${data.img}`}
-      className='work fade-in-top'
+      className='work'
     >
       <h2 className='work__title'>{data.title}</h2>
       <img
@@ -18,6 +23,6 @@ export const WorkItem = ({ data }: WorkItemInterface) => {
         alt='Картинка портфолио'
       ></img>
       {data.specialTag && <h3 className='work__hint'>{data.specialTag}</h3>}
-    </Link>
+    </MotionLink>
   )
 }

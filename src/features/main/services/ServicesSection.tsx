@@ -1,26 +1,36 @@
-import { services, servicesFeatures } from '@/shared/data/services'
-import './ServicesSection.scss'
+'use client'
+
+import { motion } from 'framer-motion'
+import { services } from '@/shared/data/services'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
-import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
+import { useFadeIn } from '@/shared/lib/animations'
+import './ServicesSection.scss'
 
 export const ServicesSection = () => {
-  const blockRef = useInViewAnimation<HTMLDivElement>('fade-in-top', 0.1, 0)
-
   return (
     <section className='services'>
       <SectionTitle title={'Что могу 👇'} />
-      <div ref={blockRef} className='services__body'>
-        <ul className='services__box'>
-          {services.map((item, i) => {
-            return <li key={i}>✅ {item}</li>
-          })}
-        </ul>
-        <div className='services__features'>
-          {servicesFeatures.map((item, i) => {
-            return <h3 key={i}>❗️ {item}</h3>
-          })}
-        </div>
-      </div>
+      <ul className='services__grid'>
+        {services.map((service) => (
+          <ServiceCard key={service.title} service={service} />
+        ))}
+      </ul>
     </section>
+  )
+}
+
+const ServiceCard = ({ service }: { service: (typeof services)[number] }) => {
+  const fade = useFadeIn<HTMLLIElement>('right')
+
+  return (
+    <motion.li {...fade} className='services__card'>
+      <img
+        className='services__card-icon'
+        src={`/images/skills/${service.icon}`}
+        alt={service.title}
+      />
+      <h3 className='services__card-title'>{service.title}</h3>
+      <p className='services__card-description'>{service.description}</p>
+    </motion.li>
   )
 }

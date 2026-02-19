@@ -1,53 +1,52 @@
 .services {
   padding: rem(50) 0 0;
 
-  &__body {
-    background-color: $grey;
-    border: rem(1) solid rgb(255 255 255 / 25%);
-    border-radius: rem(10);
-    padding: rem(15) rem(20);
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: rem(16);
+    margin-top: rem(32);
+    list-style: none;
+    padding: 0;
+    margin-top: rem(32);
   }
 
-  &__box {
+  &__card {
+    background: $grey;
+    border: rem(1) solid rgba(255, 255, 255, 0.1);
+    border-radius: rem(12);
+    padding: rem(24);
     display: flex;
     flex-direction: column;
-    gap: rem(20);
-    font-size: rem(20);
-    line-height: 1.2;
-    margin-bottom: rem(30);
+    gap: rem(10);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: rgba($green, 0.4);
+        box-shadow: 0 0 rem(20) rgba($green, 0.08);
+      }
+    }
   }
 
-  &__subtitle {
-    font-size: rem(22);
-    margin-bottom: rem(20);
+  &__card-icon {
+    width: rem(40);
+    height: rem(40);
+    object-fit: contain;
+    flex-shrink: 0;
   }
 
-  &__features {
-    display: flex;
-    flex-direction: column;
-    gap: rem(20);
-    font-size: rem(20);
-    margin-top: rem(30);
-    padding-top: rem(10);
-    border-top: 2px solid rgb(255 255 255 / 25%);
+  &__card-title {
+    font-size: rem(18);
+    font-weight: 700;
+    margin: 0;
   }
-}
 
-@media (width <= rem(1024)) {
-  .services {
-    padding: rem(40) 0 0;
-
-    &__box {
-      font-size: rem(18);
-    }
-
-    &__subtitle {
-      font-size: rem(20);
-    }
-
-    &__features {
-      font-size: rem(18);
-    }
+  &__card-description {
+    font-size: rem(14);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
   }
 }
 
@@ -55,44 +54,35 @@
   .services {
     padding: rem(30) 0 0;
 
-    &__body {
-      padding: rem(10) rem(15);
-    }
-
-    &__box {
-      gap: rem(15);
-      font-size: rem(16);
-      margin-bottom: rem(20);
-    }
-
-    &__subtitle {
-      font-size: rem(18);
-      margin-bottom: rem(10);
-    }
-
-    &__features {
-      gap: rem(10);
-      font-size: rem(16);
+    &__grid {
+      grid-template-columns: 1fr;
     }
   }
 }
 
-@media (width <= rem(420)) {
+@media (width <= rem(576)) {
   .services {
-    padding: rem(20) 0 0;
+    &__card {
+      padding: rem(16);
+      gap: rem(8);
 
-    &__box {
-      gap: rem(10);
-      font-size: rem(14);
-      margin-bottom: rem(15);
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+      }
     }
 
-    &__subtitle {
-      font-size: rem(15);
+    &__card-icon {
+      width: rem(28);
+      height: rem(28);
     }
 
-    &__features {
-      font-size: rem(14);
+    &__card-title {
+      font-size: rem(16);
+    }
+
+    &__card-description {
+      font-size: rem(13);
     }
   }
 }

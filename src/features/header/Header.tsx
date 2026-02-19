@@ -44,48 +44,50 @@ export const Header = () => {
   return (
     <>
       <header ref={header} className='header unvisible'>
-        <div className='header__left'>
-          <Link href={routes.home}>
-            <Image
-              src={logo}
-              width={85}
-              height={60}
-              alt='Logo'
-              className='header__logo'
-            />
-          </Link>
-          <div>
-            Frontend-разработка
-            <div className='header__fire'></div>
-          </div>
-        </div>
-        {!isMobile && (
-          <nav className='header__nav' ref={navRef}>
-            {navRoutes.map((item, i) => {
-              const isActive = pathname === item.path
-              return (
-                <Link
-                  key={i}
-                  href={item.path}
-                  className={`header__nav-link${isActive ? ' active' : ''}`}
-                >
-                  {item.name}
-                </Link>
-              )
-            })}
-            <Link className='header__github' href={GithubLink} target='_blank'>
-              <Image src={githubSVG} width={35} height={35} alt='github' />
+        <div className='header__wrapper'>
+          <div className='header__left'>
+            <Link href={routes.home}>
+              <Image
+                src={logo}
+                width={85}
+                height={60}
+                alt='Logo'
+                className='header__logo'
+              />
             </Link>
-            <div className='header__indicator' ref={indicatorRef} />
-          </nav>
-        )}
-        {isMobile && (
-          <div className='burger--open' onClick={() => setBurgerIsOpen(true)}>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div>
+              Web-разработка
+              <div className='header__fire'></div>
+            </div>
           </div>
-        )}
+          {!isMobile && (
+            <nav className='header__nav' ref={navRef}>
+              {navRoutes.map((item, i) => {
+                const isActive = pathname === item.path
+                return (
+                  <Link
+                    key={i}
+                    href={item.path}
+                    className={`header__nav-link${isActive ? ' active' : ''}`}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              })}
+              <Link className='header__github' href={GithubLink} target='_blank'>
+                <Image src={githubSVG} width={35} height={35} alt='github' />
+              </Link>
+              <div className='header__indicator' ref={indicatorRef} />
+            </nav>
+          )}
+          {isMobile && (
+            <div className='burger--open' onClick={() => setBurgerIsOpen(true)}>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          )}
+        </div>
       </header>
       {burgerIsOpen &&
         createPortal(

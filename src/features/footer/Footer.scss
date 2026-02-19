@@ -1,19 +1,28 @@
 .footer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: rem(50);
   font-size: rem(18);
   flex-shrink: 0;
   text-align: center;
   background-color: $grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: rem(50);
+    width: 100%;
+    max-width: 1920px;
+    margin-inline: 10vw;
+  }
 
   &__github {
     position: absolute;
     top: 50%;
-    right: rem(50);
-    transform: translate(50%, -50%);
+    right: 0;
+    transform: translate(-50%, -50%);
     width: rem(30);
 
     > img {
@@ -41,6 +50,18 @@
 
     &__author {
       font-size: rem(18);
+    }
+
+    &__wrapper {
+      margin-inline: 5vw;
+    }
+  }
+}
+
+@media (width <= rem(576)) {
+  .footer {
+    &__wrapper {
+      margin-inline: rem(20);
     }
   }
 }

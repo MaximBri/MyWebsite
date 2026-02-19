@@ -1,13 +1,22 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: rem(10) rem(24);
+  padding: rem(10) 0;
   transition: all 1s;
   background-color: $grey;
   gap: rem(30);
-  max-height: rem(70);
   border-bottom: rem(1) solid rgb(255 255 255 / 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1920px;
+    padding-inline: 10vw;
+    box-sizing: content-box;
+  }
 
   &__left {
     display: flex;
@@ -76,7 +85,9 @@
       height: rem(4);
       border-radius: 2px;
       background-color: $green;
-      transition: transform 0.3s ease, width 0.3s ease;
+      transition:
+        transform 0.3s ease,
+        width 0.3s ease;
       z-index: 0;
       width: 0;
     }
@@ -134,19 +145,22 @@
     }
 
     &__logo {
-      max-height: rem(70);
+      max-height: rem(50);
     }
 
     &__nav {
       gap: rem(20);
       font-size: rem(16);
     }
+    &__wrapper {
+      padding-inline: 5vw;
+    }
   }
 }
 
 @media (width <= rem(768)) {
   .header {
-    max-height: rem(60);
+    max-height: none;
 
     &__nav {
       display: none;
@@ -154,18 +168,22 @@
   }
 }
 
+@media (width <= rem(576)) {
+  .header {
+    &__wrapper {
+      padding-inline: rem(20);
+    }
+  }
+}
+
 @media (width <= rem(460)) {
   .header {
-    padding: rem(8) rem(14);
+    padding: rem(8) 0;
 
     &__left {
       > div {
         display: none;
       }
-    }
-
-    &__logo {
-      max-height: rem(50);
     }
   }
 }

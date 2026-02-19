@@ -1,6 +1,9 @@
+'use client'
+
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import './HelloSection.scss'
-import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
+import { useFadeIn } from '@/shared/lib/animations'
 
 const browser = `/images/hello/browser-web-development-svgrepo-com.svg`
 const html = `/images/hello/html5-svgrepo-com.svg`
@@ -8,21 +11,21 @@ const webDevelopment = `/images/hello/web-development-svgrepo-com.svg`
 const wordpress = `/images/hello/react.svg`
 
 export const HelloSection = () => {
-  const titleRef = useInViewAnimation<HTMLHeadingElement>('fade-in-btm')
-  const subtitleRef = useInViewAnimation<HTMLHeadingElement>('fade-in-right')
+  const titleFade = useFadeIn<HTMLHeadingElement>('left')
+  const subtitleFade = useFadeIn<HTMLHeadingElement>('right')
 
-  const helloText = '✌️ Привет, меня зовут Максим, я - Frontend разработчик.'
+  const helloText = '✌️ Привет, меня зовут Максим, я — Frontend разработчик.'
   const subtitle =
-    'Я занимаюсь разработкой визуальной части приложений. Больше обо мне ниже 👇'
+    'Делаю интерфейсы на React / Next.js + TypeScript, умею в бэкенд и DevOps. Больше обо мне ниже 👇'
 
   return (
     <section className='hello'>
-      <h2 ref={titleRef} className='title'>
+      <motion.h2 {...titleFade} className='title'>
         {helloText}
-      </h2>
-      <h1 ref={subtitleRef} className='hello__subtitle'>
+      </motion.h2>
+      <motion.h1 {...subtitleFade} className='hello__subtitle'>
         {subtitle}
-      </h1>
+      </motion.h1>
       <Image
         className='hello__browser'
         width={70}

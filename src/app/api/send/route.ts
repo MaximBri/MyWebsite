@@ -6,7 +6,7 @@ const TELEGRAM_CHAT_ID = process.env.TG_CHAT_ID
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}))
   const text = body?.text
-  const chatId = body?.chatId ?? TELEGRAM_CHAT_ID
+  const chatId = TELEGRAM_CHAT_ID
 
   if (!text || typeof text !== 'string')
     return NextResponse.json({ error: 'Missing text' }, { status: 400 })

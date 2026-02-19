@@ -45,7 +45,13 @@ body {
     width: 7px;
     height: 7px;
   }
-  cursor: url('/cursor.cur') 8 8, auto;
+  cursor:
+    url('/cursor.cur') 8 8,
+    auto;
+}
+
+main{
+  margin-bottom: auto;
 }
 
 .App {
@@ -77,6 +83,12 @@ body {
 
 .container {
   margin-inline: 10vw;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 1920px;
 }
 
 @media (width <= rem(1024)) {

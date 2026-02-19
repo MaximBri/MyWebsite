@@ -1,17 +1,20 @@
+'use client'
+
+import { motion } from 'framer-motion'
 import { LinkForm } from '@/features/main/link-form'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 import './LinkSection.scss'
-import { useInViewAnimation } from '@/shared/hooks/useInViewAnimation'
+import { useFadeIn } from '@/shared/lib/animations'
 
 export const LinkSection = () => {
-  const blockRef = useInViewAnimation<HTMLDivElement>('fade-in-top', 0.2)
+  const fadeProps = useFadeIn<HTMLDivElement>('left')
 
   return (
     <section className='link'>
       <SectionTitle title={'Для связи со мной'} />
-      <div ref={blockRef} className='link__wrapper'>
+      <motion.div {...fadeProps} className='link__wrapper'>
         <LinkForm />
-      </div>
+      </motion.div>
     </section>
   )
 }

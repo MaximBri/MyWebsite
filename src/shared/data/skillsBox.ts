@@ -1,68 +1,53 @@
-export const skillsItems = [
+export interface SkillItem {
+  name: string
+  icon?: string
+}
+
+export interface SkillCategory {
+  label: string
+  items: SkillItem[]
+}
+
+export const skillsCategories: SkillCategory[] = [
   {
-    title: 'HTML 5 - язык гипертекстовой разметки',
-    scale: '1.4',
-    techName: 'html5.png',
-  },
-  { title: 'CSS 3 - язык каскадных стилей', scale: '1', techName: 'css3.png' },
-  {
-    title: 'Scss - препроцессор CSS',
-    scale: '1',
-    techName: 'scsslogo.png',
-  },
-  {
-    title: 'Tailwind - утилитарный CSS‑фреймворк',
-    scale: '1.5',
-    techName: 'tailwind.png',
-  },
-  {
-    title: 'Material UI - библиотека React‑компонентов',
-    scale: '1.2',
-    techName: 'mui.svg',
-  },
-  {
-    title: 'JavaScript - ЯП для создания динамики на сайте',
-    scale: '1',
-    techName: 'js.png',
-  },
-  {
-    title: 'React - библиотека для построения UI на основе компонентов',
-    scale: '2',
-    techName: 'react.svg',
-  },
-  {
-    title: 'Redux / RTK / RTK Query - инструменты кэширования данных',
-    scale: '2.5',
-    techName: 'redux.png',
+    label: 'Frontend',
+    items: [
+      { name: 'HTML', icon: 'html5.png' },
+      { name: 'CSS', icon: 'css3.png' },
+      { name: 'SCSS', icon: 'scsslogo.png' },
+      { name: 'Tailwind', icon: 'tailwind.png' },
+      { name: 'JavaScript', icon: 'js.png' },
+      { name: 'TypeScript', icon: 'Typescript.png' },
+      { name: 'React', icon: 'react.svg' },
+      { name: 'Next.js', icon: 'next.svg' },
+      { name: 'Redux / RTK', icon: 'redux.svg' },
+      { name: 'MobX', icon: 'mobx.png' },
+      // { name: 'Material UI', icon: 'mui.svg' },
+      { name: 'Jest', icon: 'jest.svg' },
+      { name: 'Git', icon: 'git.png' },
+      { name: 'TsDoc' },
+      { name: 'React Query', icon: 'react-query.svg' },
+      { name: 'Zod', icon: 'zod.svg' },
+      { name: 'React Hook Form', icon: 'react-hook-form.svg' },
+      { name: 'Zustand' },
+    ],
   },
   {
-    title: 'Next.js - фреймворк для React с серверным рендерингом',
-    scale: '1.1',
-    techName: 'next.svg',
+    label: 'Backend',
+    items: [
+      { name: 'Node.js', icon: 'node.svg' },
+      { name: 'NestJS', icon: 'nest.svg' },
+      { name: 'PostgreSQL', icon: 'postgres.svg' },
+      { name: 'Prisma', icon: 'prisma.svg' },
+      { name: 'Git', icon: 'git.png' },
+    ],
   },
   {
-    title: 'TypeScript - надстройка JavaScript с поддержкой типизации',
-    scale: '1',
-    techName: 'Typescript.png',
-  },
-  {
-    title: 'Git - распределённая система контроля версий',
-    scale: '1.5',
-    techName: 'git.png',
-  },
-  {
-    title: 'Docker - платформа контейнеризации для развёртывания приложений',
-    scale: '1.3',
-    techName: 'docker.png',
-  },
-  {
-    title: 'Jest - библиотека для написания тестов',
-    scale: '1',
-    techName: 'jest.svg',
-  },
-  {
-    title: 'MobX - простой и удобный стейт менеджер, аналог Redux',
-    scale: '1.3',
-    techName: 'mobx.png',
+    label: 'DevOps',
+    items: [
+      { name: 'Docker', icon: 'docker.png' },
+      { name: 'GitHub Actions', icon: 'github-actions.svg' },
+      { name: 'Nginx', icon: 'nginx.svg' },
+    ],
   },
 ]
