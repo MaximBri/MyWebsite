@@ -25,7 +25,12 @@ export function useFadeIn<T extends HTMLElement = HTMLElement>(direction: Direct
     if (!el) return
 
     const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
       { threshold: 0, rootMargin: ROOT_MARGIN }
     )
 
