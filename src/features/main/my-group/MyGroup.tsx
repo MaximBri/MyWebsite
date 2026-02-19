@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { TgGroupLink } from '@/shared/data/private'
 import tgSvg from './icons/tg.svg'
 import megaphoneSvg from './icons/megaphone.svg'
@@ -14,12 +13,12 @@ import { useFadeIn } from '@/shared/lib/animations'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 
 export const MyGroup = () => {
-  const fadeProps = useFadeIn<HTMLDivElement>('left')
+  const ref = useFadeIn('left')
 
   return (
     <section className='my-group__header'>
       <SectionTitle title='Моё сообщество в Telegram' />
-      <motion.div {...fadeProps} className='my-group'>
+      <div ref={ref} className='my-group'>
         <Link className='my-group__link' href={TgGroupLink} target='_blank'>
           <Image src={tgSvg} alt='telegram' />
         </Link>
@@ -54,7 +53,7 @@ export const MyGroup = () => {
             alt='big circle'
           />
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

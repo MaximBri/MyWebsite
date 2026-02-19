@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { skillsCategories } from '@/shared/data/skillsBox'
 import { SkillItem } from '../skill-item'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
@@ -21,14 +20,15 @@ export const SkillsSection = () => {
 }
 
 const CategoryGroup = ({ category }: { category: (typeof skillsCategories)[number] }) => {
-  const labelFade = useFadeIn<HTMLHeadingElement>('left')
+  const labelRef = useFadeIn('left')
+  const listRef = useFadeIn('bottom')
 
   return (
     <div className='skills__group'>
-      <motion.h3 {...labelFade} className='skills__group-label'>
+      <h3 ref={labelRef} className='skills__group-label'>
         {category.label}
-      </motion.h3>
-      <ul className='skills__group-list'>
+      </h3>
+      <ul ref={listRef} className='skills__group-list'>
         {category.items.map((item) => (
           <SkillItem key={item.name} name={item.name} icon={item.icon} />
         ))}

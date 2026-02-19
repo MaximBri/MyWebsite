@@ -1,18 +1,16 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import './WorkItem.scss'
 import { useFadeIn } from '@/shared/lib/animations'
 
-const MotionLink = motion.create(Link)
 
 export const WorkItem = ({ data }: WorkItemInterface) => {
-  const fadeProps = useFadeIn<HTMLAnchorElement>('left')
+  const ref = useFadeIn('left')
 
   return (
-    <MotionLink
-      {...fadeProps}
+    <Link
+      ref={ref}
       href={`/Portfolio/${data.img}`}
       className='work'
     >
@@ -23,6 +21,6 @@ export const WorkItem = ({ data }: WorkItemInterface) => {
         alt='Картинка портфолио'
       ></img>
       {data.specialTag && <h3 className='work__hint'>{data.specialTag}</h3>}
-    </MotionLink>
+    </Link>
   )
 }

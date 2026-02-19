@@ -2,18 +2,17 @@
 
 import { FC, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { motion } from 'framer-motion'
 import { AchievementModel } from '@/shared/data/achievements'
 import { ImageCreator } from '@/widgets/pop-ups/image-creator'
 import { useFadeIn } from '@/shared/lib/animations'
 
 export const AchievementItem: FC<{ data: AchievementModel }> = ({ data }) => {
   const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
-  const fadeProps = useFadeIn<HTMLLIElement>('left')
+  const ref = useFadeIn('left')
 
   return (
     <>
-      <motion.li {...fadeProps} className='achievements__item'>
+      <li ref={ref} className='achievements__item'>
         <h3 className='achievements__item-title'>{data.title}</h3>
         <p className='achievements__item-description'>{data.description}</p>
         <button
@@ -26,7 +25,7 @@ export const AchievementItem: FC<{ data: AchievementModel }> = ({ data }) => {
             alt='sertificate'
           />
         </button>
-      </motion.li>
+      </li>
       {popupIsActive &&
         createPortal(
           <ImageCreator

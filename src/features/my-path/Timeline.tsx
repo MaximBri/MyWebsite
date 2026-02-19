@@ -21,24 +21,31 @@ export const Timeline = () => {
   )
 
   useEffect(() => {
+    let ticking = false
+
     const handleScroll = () => {
-      const centerY = window.innerHeight / 2
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const centerY = window.innerHeight / 2
 
-      let closest = -1
-      let minDist = Infinity
+        let closest = -1
+        let minDist = Infinity
 
-      itemRefs.current.forEach((el, i) => {
-        if (!el) return
-        const rect = el.getBoundingClientRect()
-        const elCenter = rect.top + rect.height / 2
-        const dist = Math.abs(elCenter - centerY)
-        if (dist < minDist) {
-          minDist = dist
-          closest = i
-        }
+        itemRefs.current.forEach((el, i) => {
+          if (!el) return
+          const rect = el.getBoundingClientRect()
+          const elCenter = rect.top + rect.height / 2
+          const dist = Math.abs(elCenter - centerY)
+          if (dist < minDist) {
+            minDist = dist
+            closest = i
+          }
+        })
+
+        setActiveIndex(closest)
+        ticking = false
       })
-
-      setActiveIndex(closest)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })

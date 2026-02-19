@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import './HelloSection.scss'
 import { useFadeIn } from '@/shared/lib/animations'
 
@@ -11,8 +10,8 @@ const webDevelopment = `/images/hello/web-development-svgrepo-com.svg`
 const wordpress = `/images/hello/react.svg`
 
 export const HelloSection = () => {
-  const titleFade = useFadeIn<HTMLHeadingElement>('left')
-  const subtitleFade = useFadeIn<HTMLHeadingElement>('right')
+  const titleRef = useFadeIn('left')
+  const subtitleRef = useFadeIn('right')
 
   const helloText = '✌️ Привет, меня зовут Максим, я — Frontend разработчик.'
   const subtitle =
@@ -20,12 +19,12 @@ export const HelloSection = () => {
 
   return (
     <section className='hello'>
-      <motion.h2 {...titleFade} className='title'>
+      <h2 ref={titleRef} className='title'>
         {helloText}
-      </motion.h2>
-      <motion.h1 {...subtitleFade} className='hello__subtitle'>
+      </h2>
+      <h1 ref={subtitleRef} className='hello__subtitle'>
         {subtitle}
-      </motion.h1>
+      </h1>
       <Image
         className='hello__browser'
         width={70}

@@ -1,47 +1,40 @@
-import { useEffect, useRef, useState } from 'react'
-import type { Transition } from 'framer-motion'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 
-const transition: Transition = { duration: 0.6, ease: 'easeOut' }
-
-const animate = {
-  top: { visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: -50 } },
-  bottom: { visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 50 } },
-  left: { visible: { opacity: 1, x: 0 }, hidden: { opacity: 0, x: -50 } },
-  right: { visible: { opacity: 1, x: 0 }, hidden: { opacity: 0, x: 50 } },
-} as const
-
-type Direction = keyof typeof animate
+type Direction = 'top' | 'bottom' | 'left' | 'right'
 
 // rootMargin: top inset keeps element visible a bit past top edge,
 // bottom inset prevents triggering at the very edge (no feedback loop from y-transform)
-const ROOT_MARGIN = '-50px 0px -150px 0px'
+const MARGIN = '-50px 0px -150px 0px'
 
-export function useFadeIn<T extends HTMLElement = HTMLElement>(direction: Direction) {
-  const ref = useRef<T>(null)
-  const [isInView, setIsInView] = useState(false)
+export function useFadeIn(direction: Direction) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const ref = useRef<any>(null)
+
+  useLayoutEffect(() => {
+    if (window.matchMedia('(max-width: 768px)').matches) return
+    const el = ref.current
+    if (!el) return
+    el.classList.add(`fade-${direction}`)
+  }, [direction])
 
   useEffect(() => {
+    if (window.matchMedia('(max-width: 768px)').matches) return
     const el = ref.current
     if (!el) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsInView(true)
+          el.classList.add('fade-visible')
           observer.disconnect()
         }
       },
-      { threshold: 0, rootMargin: ROOT_MARGIN }
+      { threshold: 0, rootMargin: MARGIN }
     )
 
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
 
-  return {
-    ref,
-    initial: animate[direction].hidden,
-    animate: isInView ? animate[direction].visible : animate[direction].hidden,
-    transition,
-  }
+  return ref
 }

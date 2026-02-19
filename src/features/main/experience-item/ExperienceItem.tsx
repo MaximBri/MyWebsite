@@ -1,7 +1,6 @@
 'use client'
 
 import { FC } from 'react'
-import { motion } from 'framer-motion'
 import { ExperienceItemModel } from '../experience/utils/experienceCalculator'
 import styles from './ExperienceItem.module.scss'
 import Image from 'next/image'
@@ -11,10 +10,10 @@ export const ExperienceItem: FC<{
   data: ExperienceItemModel
   index: number
 }> = ({ data, index }) => {
-  const fadeProps = useFadeIn<HTMLLIElement>('right')
+  const ref = useFadeIn('right')
 
   return (
-    <motion.li {...fadeProps} className={styles['exp-item']}>
+    <li ref={ref} className={styles['exp-item']}>
       {data.imagePath && (
         <Image
           className={styles['exp-item__background']}
@@ -32,6 +31,6 @@ export const ExperienceItem: FC<{
         {data.period.start} -{' '}
         {data.period.end === 'now' ? 'настоящее время' : data.period.end}
       </span>
-    </motion.li>
+    </li>
   )
 }

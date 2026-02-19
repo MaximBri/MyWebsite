@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { services } from '@/shared/data/services'
 import { SectionTitle } from '@/shared/ui/section-title/SectionTitle'
 import { useFadeIn } from '@/shared/lib/animations'
@@ -20,10 +19,10 @@ export const ServicesSection = () => {
 }
 
 const ServiceCard = ({ service }: { service: (typeof services)[number] }) => {
-  const fade = useFadeIn<HTMLLIElement>('right')
+  const ref = useFadeIn('right')
 
   return (
-    <motion.li {...fade} className='services__card'>
+    <li ref={ref} className='services__card'>
       <img
         className='services__card-icon'
         src={`/images/skills/${service.icon}`}
@@ -31,6 +30,6 @@ const ServiceCard = ({ service }: { service: (typeof services)[number] }) => {
       />
       <h3 className='services__card-title'>{service.title}</h3>
       <p className='services__card-description'>{service.description}</p>
-    </motion.li>
+    </li>
   )
 }

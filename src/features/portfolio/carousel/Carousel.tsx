@@ -1,5 +1,5 @@
 import { FC, useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import ArrowSvg from './icons/right-arrow.svg'
 import './Carousel.scss'
 import Image from 'next/image'
@@ -95,7 +95,7 @@ export const Carousel: FC<{ paths: string[]; filesPath: string }> = ({
         )}
 
         <AnimatePresence initial={false} custom={direction}>
-          <motion.div
+          <m.div
             key={activePath}
             ref={slideRef}
             custom={direction}
@@ -137,7 +137,7 @@ export const Carousel: FC<{ paths: string[]; filesPath: string }> = ({
                 }}
               />
             )}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </div>
       <div ref={moreRef} className='carousel__more'>

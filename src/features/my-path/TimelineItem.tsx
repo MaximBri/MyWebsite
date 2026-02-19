@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import type { PathStep } from '@/shared/data/pathSteps'
 import { useFadeIn } from '@/shared/lib/animations'
 import styles from './Timeline.module.scss'
@@ -22,8 +22,7 @@ export const TimelineItem = ({
 }: TimelineItemProps) => {
   const isEven = index % 2 === 0
   const direction = isMobile ? 'right' : isEven ? 'right' : 'left'
-  const cardFade = useFadeIn<HTMLDivElement>(direction)
-  const dotFade = useFadeIn<HTMLDivElement>(isEven ? 'right' : 'left')
+  const cardRef = useFadeIn(direction)
 
   return (
     <div
@@ -31,8 +30,8 @@ export const TimelineItem = ({
       className={`${styles.item} ${isEven ? styles['item--right'] : styles['item--left']}`}
     >
       <div className={styles.item__content}>
-        <motion.div
-          {...cardFade}
+        <div
+          ref={cardRef}
           className={`${styles.item__card} ${isActive ? styles['item__card--active'] : ''}`}
         >
           <img
@@ -43,13 +42,13 @@ export const TimelineItem = ({
           <span className={styles.item__date}>{step.date}</span>
           <h3 className={styles.item__title}>{step.title}</h3>
           <p className={styles.item__description}>{step.description}</p>
-        </motion.div>
+        </div>
       </div>
 
-      <motion.div
-        ref={dotFade.ref}
+      <m.div
         initial={{ scale: 0 }}
-        animate={dotFade.animate.opacity === 1 ? { scale: 1 } : { scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true, margin: '-50px 0px -150px 0px' }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
         className={`${styles.item__dot} ${isActive ? styles['item__dot--active'] : ''}`}
       />
